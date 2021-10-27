@@ -1,0 +1,5 @@
+1	2	uma cama de casal	false
+2	3	uma cama de casal e uma de solteiro	true
+3	1	cama de solteiro	false
+5	1	uma cama de solteiro	false
+17	2	Uma cama de casal e um ar condicionado	false
