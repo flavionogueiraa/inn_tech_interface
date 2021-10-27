@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 public class MainInterface extends Application {
 	@Override
 	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-
 		Parent StartInterface = FXMLLoader.load(getClass().getResource("/interface_package/FxmlDoccument.fxml"));
 		Scene cena = new Scene(StartInterface);
 
