@@ -4,12 +4,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacote_interface.LoginControler">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacote_interface.LoginControler">
 	<children>
-		<Button layoutX="336.0" layoutY="300.0" mnemonicParsing="false" onAction="#login" text="Entrar" />
-		<TextField fx:id="campo_cpf" layoutX="182.0" layoutY="171.0" prefWidth="355.0" promptText="CPF" />
-		<TextField fx:id="campo_senha" layoutX="182.0" layoutY="223.0" prefHeight="26.0" prefWidth="355.0" promptText="Senha" />
-      <Label fx:id="mensagem_erro" layoutX="297.0" layoutY="370.0" textFill="#e70f0f" />
+		<Button layoutX="431.0" layoutY="563.0" mnemonicParsing="fal	se" onAction="#login" prefHeight="50.0" prefWidth="150.0" text="Entrar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+		<TextField fx:id="campo_cpf" layoutX="330.0" layoutY="371.0" prefHeight="50.0" prefWidth="355.0" promptText="CPF">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+		<TextField fx:id="campo_senha" layoutX="332.0" layoutY="462.0" prefHeight="50.0" prefWidth="355.0" promptText="Senha">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <Label fx:id="mensagem_erro" layoutX="420.0" layoutY="663.0" prefHeight="27.0" prefWidth="190.0" textFill="#e70f0f">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
 	</children>
 </AnchorPane>
