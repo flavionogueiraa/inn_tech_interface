@@ -2,6 +2,7 @@ package pacote_interface;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main_interface.LoginInterface;
 
@@ -13,6 +14,9 @@ public class LoginControler {
 	private TextField campo_senha;
 
 	@FXML
+	private Label mensagem_erro;
+
+	@FXML
 	void login(ActionEvent event) {
 		String CPF = campo_cpf.getText();
 		String senha = campo_senha.getText();
@@ -21,7 +25,11 @@ public class LoginControler {
 			campo_cpf.clear();
 			campo_senha.clear();
 
+			mensagem_erro.setText("");
+
 			MainInterface.trocaTela("menu");
+		} else {
+			mensagem_erro.setText("Informações incorretas!");
 		}
 	}
 }
