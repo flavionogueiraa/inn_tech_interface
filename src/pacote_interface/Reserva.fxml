@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacote_interface.UsuarioControler">
+<AnchorPane prefHeight="768.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacote_interface.MenuControler">
    <children>
       <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1032.0">
          <items>
-            <Button mnemonicParsing="false" prefHeight="75.0" text="Usuários" textFill="#1816b7">
+            <Button mnemonicParsing="false" onAction="#menuUsuario" prefHeight="75.0" text="Usuários">
                <font>
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuReserva" prefHeight="75.0" text="Reservas">
+            <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Reservas" textFill="#3416ae">
                <font>
                   <Font size="36.0" />
                </font>
@@ -36,7 +36,7 @@
             </Button>
          </items>
       </ToolBar>
-      <ToolBar layoutY="702.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="75.0" prefWidth="1032.0">
+      <ToolBar layoutY="693.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="75.0" prefWidth="1032.0">
          <items>
             <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#sair" prefHeight="50.0" prefWidth="90.0" text="Sair">
                <font>
@@ -45,17 +45,17 @@
             </Button>
          </items>
       </ToolBar>
-      <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="294.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Cadastrar">
+      <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="284.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Listar">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="429.0" layoutY="294.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Listar">
+      <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="129.0" layoutY="284.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Cadastrar">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="709.0" layoutY="294.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Excluir">
+      <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="699.0" layoutY="284.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Excluir">
          <font>
             <Font size="36.0" />
          </font>

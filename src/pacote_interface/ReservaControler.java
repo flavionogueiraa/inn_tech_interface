@@ -3,10 +3,10 @@ package pacote_interface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class UsuarioControler {
+public class ReservaControler {
 	@FXML
-	void menuReserva(ActionEvent event) {
-		MainInterface.trocaTela("reserva");
+	void menuUsuario(ActionEvent event) {
+		MainInterface.trocaTela("usuario");
 	}
 
 	@FXML
