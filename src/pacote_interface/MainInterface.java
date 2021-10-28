@@ -1,5 +1,6 @@
-package interface_package;
+package pacote_interface;
 
+import arquivo.Arquivo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,24 +8,24 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainInterface extends Application {
-
 	private static Stage stage;
 
-	private static Scene cenaTeste;
 	private static Scene cenaLogin;
+	private static Scene cenaMenu;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
+		Arquivo.inicializaVariaveis();
 		stage = primeiroEstagio;
 
-		Parent FXMLTeste = FXMLLoader.load(getClass().getResource("/interface_package/FxmlDoccument.fxml"));
-		cenaTeste = new Scene(FXMLTeste);
-
-		Parent FXMLLogin = FXMLLoader.load(getClass().getResource("/interface_package/Login.fxml"));
+		Parent FXMLLogin = FXMLLoader.load(getClass().getResource("/pacote_interface/Login.fxml"));
 		cenaLogin = new Scene(FXMLLogin);
 
-		primeiroEstagio.setTitle("Meu novo programa com interface");
-		primeiroEstagio.setScene(cenaTeste);
+		Parent FXMLMenu = FXMLLoader.load(getClass().getResource("/pacote_interface/Menu.fxml"));
+		cenaMenu = new Scene(FXMLMenu);
+
+		primeiroEstagio.setTitle("Login");
+		primeiroEstagio.setScene(cenaLogin);
 		primeiroEstagio.show();
 	}
 
@@ -34,12 +35,14 @@ public class MainInterface extends Application {
 
 	public static void trocaTela(String nomeTela) {
 		switch (nomeTela) {
-		case "teste":
-			stage.setScene(cenaTeste);
+		case "login":
+			stage.setTitle("Login");
+			stage.setScene(cenaLogin);
 			break;
 
-		case "login":
-			stage.setScene(cenaLogin);
+		case "menu":
+			stage.setTitle("Menu");
+			stage.setScene(cenaMenu);
 			break;
 
 		default:
