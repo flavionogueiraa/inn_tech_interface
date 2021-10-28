@@ -5,9 +5,9 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="720.0"
 	xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="interface_package.InterfaceControler">
+	fx:controller="interface_package.LoginControler">
 	<children>
-		<Button fx:id="the_button" layoutX="322.0" layoutY="237.0"
-			mnemonicParsing="false" onAction="#testeFuncao" text="The button" />
+		<Button layoutX="337.0" layoutY="237.0" mnemonicParsing="false"
+			text="Login" />
 	</children>
 </AnchorPane>

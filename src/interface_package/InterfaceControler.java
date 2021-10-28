@@ -11,5 +11,6 @@ public class InterfaceControler {
 	@FXML
 	void testeFuncao(ActionEvent event) {
 		System.out.println("Clicou");
+		MainInterface.trocaTela("login");
 	}
 }
