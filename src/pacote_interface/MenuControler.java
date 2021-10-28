@@ -1,5 +1,11 @@
 package pacote_interface;
 
-public class MenuControler {
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
+public class MenuControler {
+	@FXML
+	void sair(ActionEvent event) {
+		MainInterface.trocaTela("login");
+	}
 }

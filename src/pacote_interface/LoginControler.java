@@ -18,6 +18,9 @@ public class LoginControler {
 		String senha = campo_senha.getText();
 
 		if (LoginInterface.realizarLoginInterface(CPF, senha) != null) {
+			campo_cpf.clear();
+			campo_senha.clear();
+
 			MainInterface.trocaTela("menu");
 		}
 	}
