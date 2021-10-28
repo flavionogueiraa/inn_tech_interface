@@ -15,6 +15,11 @@ public class MenuControler {
 	}
 
 	@FXML
+	void visualizaCaixa(ActionEvent event) {
+		MainInterface.trocaTela("caixa");
+	}
+
+	@FXML
 	void sair(ActionEvent event) {
 		MainInterface.trocaTela("login");
 	}

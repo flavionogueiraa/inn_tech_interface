@@ -19,7 +19,7 @@
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="137.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Caixa">
+            <Button layoutX="137.0" layoutY="41.0" mnemonicParsing="false" onAction="#visualizaCaixa" prefHeight="75.0" text="Caixa">
                <font>
                   <Font size="36.0" />
                </font>
