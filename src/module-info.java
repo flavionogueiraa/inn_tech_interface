@@ -8,5 +8,5 @@ module ProjetoPOO {
 	requires javafx.web;
 	requires java.sql;
 	
-	opens pacote_interface;
+	opens controler;
 }

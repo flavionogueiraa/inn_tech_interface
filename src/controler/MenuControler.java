@@ -1,4 +1,4 @@
-package pacote_interface;
+package controler;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

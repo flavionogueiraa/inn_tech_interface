@@ -1,4 +1,4 @@
-package pacote_interface;
+package controler;
 
 import arquivo.Arquivo;
 import javafx.application.Application;
@@ -21,19 +21,19 @@ public class MainInterface extends Application {
 		Arquivo.inicializaVariaveis();
 		stage = primeiroEstagio;
 
-		Parent FXMLLogin = FXMLLoader.load(getClass().getResource("/pacote_interface/Login.fxml"));
+		Parent FXMLLogin = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		cenaLogin = new Scene(FXMLLogin);
 
-		Parent FXMLMenu = FXMLLoader.load(getClass().getResource("/pacote_interface/Menu.fxml"));
+		Parent FXMLMenu = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		cenaMenu = new Scene(FXMLMenu);
 
-		Parent FXMLUsuario = FXMLLoader.load(getClass().getResource("/pacote_interface/Usuario.fxml"));
+		Parent FXMLUsuario = FXMLLoader.load(getClass().getResource("/view/Usuario.fxml"));
 		cenaUsuario = new Scene(FXMLUsuario);
 
-		Parent FXMLReserva = FXMLLoader.load(getClass().getResource("/pacote_interface/Reserva.fxml"));
+		Parent FXMLReserva = FXMLLoader.load(getClass().getResource("/view/Reserva.fxml"));
 		cenaReserva = new Scene(FXMLReserva);
 
-		Parent FXMLCaixa= FXMLLoader.load(getClass().getResource("/pacote_interface/Caixa.fxml"));
+		Parent FXMLCaixa= FXMLLoader.load(getClass().getResource("/view/Caixa.fxml"));
 		cenaCaixa= new Scene(FXMLCaixa);
 
 		primeiroEstagio.setTitle("Login");
