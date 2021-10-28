@@ -9,7 +9,7 @@
 	<children>
       <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1024.0">
         <items>
-          <Button mnemonicParsing="false" prefHeight="75.0" text="Usuários">
+          <Button mnemonicParsing="false" onAction="#MenuUsuario" prefHeight="75.0" text="Usuários">
                <font>
                   <Font size="36.0" />
                </font></Button>
