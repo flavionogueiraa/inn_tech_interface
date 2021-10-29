@@ -13,6 +13,11 @@ public class UsuarioControler {
 	void visualizaCaixa(ActionEvent event) {
 		MainInterface.trocaTela("caixa");
 	}
+	
+	@FXML
+	void menuRelatorio(ActionEvent event) {
+		MainInterface.trocaTela("relatorio");
+	}
 
 	@FXML
 	void sair(ActionEvent event) {

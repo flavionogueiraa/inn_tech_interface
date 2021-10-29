@@ -8,6 +8,11 @@ public class ReservaControler {
 	void menuUsuario(ActionEvent event) {
 		MainInterface.trocaTela("usuario");
 	}
+	
+	@FXML
+	void menuRelatorio(ActionEvent event) {
+		MainInterface.trocaTela("relatorio");
+	}
 
 	@FXML
 	void visualizaCaixa(ActionEvent event) {

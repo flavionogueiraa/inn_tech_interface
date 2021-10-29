@@ -5,6 +5,11 @@ import javafx.fxml.FXML;
 
 public class MenuControler {
 	@FXML
+	void menuRelatorio(ActionEvent event) {
+		MainInterface.trocaTela("relatorio");
+	}
+
+	@FXML
 	void menuReserva(ActionEvent event) {
 		MainInterface.trocaTela("reserva");
 	}

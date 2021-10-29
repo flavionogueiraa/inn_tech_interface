@@ -23,12 +23,12 @@
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="264.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Relatório">
+            <Button layoutX="264.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuRelatorio" prefHeight="75.0" text="Relatório">
                <font>
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="392.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Saídas">
+            <Button layoutX="392.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuSaida" prefHeight="75.0" text="Saídas">
                <font>
                   <Font size="36.0" />
                </font>

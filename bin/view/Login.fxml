@@ -12,11 +12,11 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-		<TextField fx:id="campo_cpf" layoutX="330.0" layoutY="371.0" prefHeight="50.0" prefWidth="355.0" promptText="CPF">
+		<TextField fx:id="campo_cpf" layoutX="330.0" layoutY="371.0" prefHeight="50.0" prefWidth="355.0" promptText="CPF" text="896.692.120-57">
          <font>
             <Font size="18.0" />
          </font></TextField>
-		<TextField fx:id="campo_senha" layoutX="332.0" layoutY="462.0" prefHeight="50.0" prefWidth="355.0" promptText="Senha">
+		<TextField fx:id="campo_senha" layoutX="332.0" layoutY="462.0" prefHeight="50.0" prefWidth="355.0" promptText="Senha" text="kaio123">
          <font>
             <Font size="18.0" />
          </font></TextField>
