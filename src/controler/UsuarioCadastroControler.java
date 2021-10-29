@@ -1,5 +1,5 @@
 package controler;
 
-public class UsuarioCadastroControler {
+public class UsuarioCadastroControler extends MenuControler {
 
 }

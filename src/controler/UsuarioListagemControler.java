@@ -1,5 +1,5 @@
 package controler;
 
-public class UsuarioListagemControler {
+public class UsuarioListagemControler extends MenuControler {
 
 }
