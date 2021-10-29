@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.CaixaControler">
+   <children>
+      <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1024.0">
+         <items>
+            <Button mnemonicParsing="false" onAction="#menuUsuario" prefHeight="75.0" text="Usuários">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuReserva" prefHeight="75.0" text="Reservas">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button layoutX="137.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Caixa" textFill="#2c0ec4">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button layoutX="264.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuRelatorio" prefHeight="75.0" text="Relatório">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button layoutX="392.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuSaida" prefHeight="75.0" text="Saídas">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+         </items>
+      </ToolBar>
+      <ToolBar layoutY="693.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="75.0" prefWidth="1024.0">
+         <items>
+            <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#sair" prefHeight="50.0" prefWidth="90.0" text="Sair">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </items>
+      </ToolBar>
+      <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="284.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Caixa">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

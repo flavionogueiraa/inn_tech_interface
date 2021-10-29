@@ -5,30 +5,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacote_interface.MenuControler">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MenuControler">
 	<children>
       <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1024.0">
         <items>
-          <Button mnemonicParsing="false" prefHeight="75.0" text="Usuários">
+          <Button mnemonicParsing="false" onAction="#menuUsuario" prefHeight="75.0" text="Usuários">
                <font>
                   <Font size="36.0" />
                </font></Button>
-            <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Reservas">
+            <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuReserva" prefHeight="75.0" text="Reservas">
                <font>
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="137.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Caixa">
+            <Button layoutX="137.0" layoutY="41.0" mnemonicParsing="false" onAction="#visualizaCaixa" prefHeight="75.0" text="Caixa">
                <font>
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="264.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Relatório">
+            <Button layoutX="264.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuRelatorio" prefHeight="75.0" text="Relatório">
                <font>
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="392.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Saídas">
+            <Button layoutX="392.0" layoutY="41.0" mnemonicParsing="false" onAction="#menuSaida" prefHeight="75.0" text="Saídas">
                <font>
                   <Font size="36.0" />
                </font>
