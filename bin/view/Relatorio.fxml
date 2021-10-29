@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MenuControler">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.RelatorioControler">
    <children>
       <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="1024.0">
          <items>
@@ -24,7 +24,7 @@
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button layoutX="264.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Relatório">
+            <Button layoutX="264.0" layoutY="41.0" mnemonicParsing="false" prefHeight="75.0" text="Relatório" textFill="#4416dc">
                <font>
                   <Font size="36.0" />
                </font>

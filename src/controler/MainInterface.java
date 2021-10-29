@@ -16,6 +16,7 @@ public class MainInterface extends Application {
 	private static Scene cenaReserva;
 	private static Scene cenaCaixa;
 	private static Scene cenaRelatorio;
+	private static Scene cenaSaida;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
@@ -34,11 +35,14 @@ public class MainInterface extends Application {
 		Parent FXMLReserva = FXMLLoader.load(getClass().getResource("/view/Reserva.fxml"));
 		cenaReserva = new Scene(FXMLReserva);
 
-		Parent FXMLCaixa= FXMLLoader.load(getClass().getResource("/view/Caixa.fxml"));
-		cenaCaixa= new Scene(FXMLCaixa);
+		Parent FXMLCaixa = FXMLLoader.load(getClass().getResource("/view/Caixa.fxml"));
+		cenaCaixa = new Scene(FXMLCaixa);
 
-		Parent FXMLRelatorio= FXMLLoader.load(getClass().getResource("/view/Relatorio.fxml"));
-		cenaRelatorio= new Scene(FXMLRelatorio);
+		Parent FXMLRelatorio = FXMLLoader.load(getClass().getResource("/view/Relatorio.fxml"));
+		cenaRelatorio = new Scene(FXMLRelatorio);
+
+		Parent FXMLSaida = FXMLLoader.load(getClass().getResource("/view/Saida.fxml"));
+		cenaSaida = new Scene(FXMLSaida);
 
 		primeiroEstagio.setTitle("Login");
 		primeiroEstagio.setScene(cenaLogin);
@@ -79,6 +83,11 @@ public class MainInterface extends Application {
 		case "relatorio":
 			stage.setTitle("Relatório");
 			stage.setScene(cenaRelatorio);
+			break;
+
+		case "saida":
+			stage.setTitle("Saídas");
+			stage.setScene(cenaSaida);
 			break;
 
 		default:

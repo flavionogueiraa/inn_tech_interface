@@ -18,6 +18,11 @@ public class UsuarioControler {
 	void menuRelatorio(ActionEvent event) {
 		MainInterface.trocaTela("relatorio");
 	}
+	
+	@FXML
+	void menuSaida(ActionEvent event) {
+		MainInterface.trocaTela("saida");
+	}
 
 	@FXML
 	void sair(ActionEvent event) {

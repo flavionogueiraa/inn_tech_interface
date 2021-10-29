@@ -20,6 +20,12 @@ public class ReservaControler {
 	}
 
 	@FXML
+	void menuSaida(ActionEvent event) {
+		MainInterface.trocaTela("saida");
+	}
+
+
+	@FXML
 	void sair(ActionEvent event) {
 		MainInterface.trocaTela("login");
 	}

@@ -3,12 +3,7 @@ package controler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class CaixaControler {
-	@FXML
-	void menuUsuario(ActionEvent event) {
-		MainInterface.trocaTela("usuario");
-	}
-
+public class SaidaControler {
 	@FXML
 	void menuRelatorio(ActionEvent event) {
 		MainInterface.trocaTela("relatorio");
@@ -20,8 +15,13 @@ public class CaixaControler {
 	}
 
 	@FXML
-	void menuSaida(ActionEvent event) {
-		MainInterface.trocaTela("saida");
+	void menuUsuario(ActionEvent event) {
+		MainInterface.trocaTela("usuario");
+	}
+
+	@FXML
+	void visualizaCaixa(ActionEvent event) {
+		MainInterface.trocaTela("caixa");
 	}
 
 	@FXML
