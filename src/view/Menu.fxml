@@ -13,34 +13,34 @@
         <menus>
           <Menu mnemonicParsing="false" text="Usuários">
             <items>
-              <MenuItem mnemonicParsing="false" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" text="Listar" />
-                  <MenuItem mnemonicParsing="false" text="Excluir" />
+              <MenuItem mnemonicParsing="false" onAction="#usuarioCadastrar" text="Cadastrar" />
+                  <MenuItem mnemonicParsing="false" onAction="#usuarioListar" text="Listar" />
+                  <MenuItem mnemonicParsing="false" onAction="#usuarioExcluir" text="Excluir" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Reservas">
             <items>
-              <MenuItem mnemonicParsing="false" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" text="Listar" />
-                  <MenuItem mnemonicParsing="false" text="Excluir" />
+              <MenuItem mnemonicParsing="false" onAction="#reservaCadastrar" text="Cadastrar" />
+                  <MenuItem mnemonicParsing="false" onAction="#reservaListar" text="Listar" />
+                  <MenuItem mnemonicParsing="false" onAction="#reservaExcluir" text="Excluir" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Caixa">
             <items>
-              <MenuItem mnemonicParsing="false" text="Visualizar" />
+              <MenuItem mnemonicParsing="false" onAction="#caixaVisualizar" text="Visualizar" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Relatórios">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Entradas" />
-                  <MenuItem mnemonicParsing="false" text="Saídas" />
+                  <MenuItem mnemonicParsing="false" onAction="#relatorioEntradas" text="Entradas" />
+                  <MenuItem mnemonicParsing="false" onAction="#relatorioSaidas" text="Saídas" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Saídas">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" text="Listar" />
-                  <MenuItem mnemonicParsing="false" text="Excluir" />
+                  <MenuItem mnemonicParsing="false" onAction="#saidaCadastrar" text="Cadastrar" />
+                  <MenuItem mnemonicParsing="false" onAction="#saidaListar" text="Listar" />
+                  <MenuItem mnemonicParsing="false" onAction="#saidaExcluir" text="Excluir" />
                </items>
             </Menu>
         </menus>

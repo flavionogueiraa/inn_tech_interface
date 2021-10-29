@@ -5,30 +5,65 @@ import javafx.fxml.FXML;
 
 public class MenuControler {
 	@FXML
-	void menuRelatorio(ActionEvent event) {
-		MainInterface.trocaTela("relatorio");
-	}
+    void caixaVisualizar(ActionEvent event) {
 
-	@FXML
-	void menuReserva(ActionEvent event) {
-		MainInterface.trocaTela("reserva");
-	}
+    }
 
-	@FXML
-	void menuUsuario(ActionEvent event) {
-		MainInterface.trocaTela("usuario");
-	}
+    @FXML
+    void relatorioEntradas(ActionEvent event) {
 
-	@FXML
-	void visualizaCaixa(ActionEvent event) {
-		MainInterface.trocaTela("caixa");
-	}
+    }
 
-	@FXML
-	void menuSaida(ActionEvent event) {
-		MainInterface.trocaTela("saida");
-	}
+    @FXML
+    void relatorioSaidas(ActionEvent event) {
 
+    }
+
+    @FXML
+    void reservaCadastrar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void reservaExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void reservaListar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saidaCadastrar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saidaExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saidaListar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void usuarioCadastrar(ActionEvent event) {
+    	MainInterface.trocaTela("usuarioCadastrar");
+    }
+
+    @FXML
+    void usuarioExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void usuarioListar(ActionEvent event) {
+
+    }
+    
 	@FXML
 	void sair(ActionEvent event) {
 		MainInterface.trocaTela("login");

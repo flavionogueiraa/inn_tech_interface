@@ -13,6 +13,7 @@ public class MainInterface extends Application {
 
 	private static Scene cenaLogin;
 	private static Scene cenaMenu;
+	private static Scene cenaUsuarioCadastro;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
@@ -24,6 +25,9 @@ public class MainInterface extends Application {
 
 		Parent FXMLMenu = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
 		cenaMenu = new Scene(FXMLMenu);
+
+		Parent FXMLUsuarioCadastro= FXMLLoader.load(getClass().getResource("/view/UsuarioCadastro.fxml"));
+		cenaUsuarioCadastro = new Scene(FXMLUsuarioCadastro);
 
 		primeiroEstagio.getIcons().add(new Image(getClass().getResourceAsStream("/img/18x18_pixel_icon.png")));
 		primeiroEstagio.setTitle("Login");
@@ -45,6 +49,11 @@ public class MainInterface extends Application {
 		case "menu":
 			stage.setTitle("Menu");
 			stage.setScene(cenaMenu);
+			break;
+
+		case "usuarioCadastrar":
+			stage.setTitle("Cadastro de usuários");
+			stage.setScene(cenaUsuarioCadastro);
 			break;
 
 		default:
