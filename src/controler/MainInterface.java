@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainInterface extends Application {
@@ -44,6 +45,7 @@ public class MainInterface extends Application {
 		Parent FXMLSaida = FXMLLoader.load(getClass().getResource("/view/Saida.fxml"));
 		cenaSaida = new Scene(FXMLSaida);
 
+		primeiroEstagio.getIcons().add(new Image(getClass().getResourceAsStream("/img/18x18_pixel_icon.png")));
 		primeiroEstagio.setTitle("Login");
 		primeiroEstagio.setScene(cenaLogin);
 		primeiroEstagio.show();
