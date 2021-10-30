@@ -6,30 +6,38 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MenuControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.UsuarioListagemControler">
+   <bottom>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <Button mnemonicParsing="false" onAction="#sair" text="Logout" />
+         </items>
+      </ToolBar>
+   </bottom>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Usuários">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#usuarioCadastrar" text="Cadastrar" />
+         <menus>
+            <Menu mnemonicParsing="false" text="Usuários">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#usuarioCadastrar" text="Cadastrar" />
                   <MenuItem mnemonicParsing="false" onAction="#usuarioListar" text="Listar" />
                   <MenuItem mnemonicParsing="false" onAction="#usuarioExcluir" text="Excluir" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Reservas">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#reservaCadastrar" text="Cadastrar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Reservas">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#reservaCadastrar" text="Cadastrar" />
                   <MenuItem mnemonicParsing="false" onAction="#reservaListar" text="Listar" />
                   <MenuItem mnemonicParsing="false" onAction="#reservaExcluir" text="Excluir" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Caixa">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#caixaVisualizar" text="Visualizar" />
-            </items>
-          </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Caixa">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#caixaVisualizar" text="Visualizar" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Relatórios">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#relatorioEntradas" text="Entradas" />
@@ -43,14 +51,10 @@
                   <MenuItem mnemonicParsing="false" onAction="#saidaExcluir" text="Excluir" />
                </items>
             </Menu>
-        </menus>
+         </menus>
       </MenuBar>
    </top>
-   <bottom>
-      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-          <Button mnemonicParsing="false" onAction="#sair" text="Logout" />
-        </items>
-      </ToolBar>
-   </bottom>
+   <center>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tela de listagem dos usuários" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

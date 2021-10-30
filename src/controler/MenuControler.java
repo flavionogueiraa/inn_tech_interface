@@ -5,30 +5,65 @@ import javafx.fxml.FXML;
 
 public class MenuControler {
 	@FXML
-	void menuRelatorio(ActionEvent event) {
-		MainInterface.trocaTela("relatorio");
-	}
+    void caixaVisualizar(ActionEvent event) {
+    	MainInterface.trocaTela("caixaVisualizar");
+    }
 
-	@FXML
-	void menuReserva(ActionEvent event) {
-		MainInterface.trocaTela("reserva");
-	}
+    @FXML
+    void relatorioEntradas(ActionEvent event) {
+    	MainInterface.trocaTela("relatorioEntradas");
+    }
 
-	@FXML
-	void menuUsuario(ActionEvent event) {
-		MainInterface.trocaTela("usuario");
-	}
+    @FXML
+    void relatorioSaidas(ActionEvent event) {
+    	MainInterface.trocaTela("relatorioSaidas");
+    }
 
-	@FXML
-	void visualizaCaixa(ActionEvent event) {
-		MainInterface.trocaTela("caixa");
-	}
+    @FXML
+    void reservaCadastrar(ActionEvent event) {
+    	MainInterface.trocaTela("reservaCadastrar");
+    }
 
-	@FXML
-	void menuSaida(ActionEvent event) {
-		MainInterface.trocaTela("saida");
-	}
+    @FXML
+    void reservaExcluir(ActionEvent event) {
+    	MainInterface.trocaTela("reservaExcluir");
+    }
 
+    @FXML
+    void reservaListar(ActionEvent event) {
+    	MainInterface.trocaTela("reservaListar");
+    }
+
+    @FXML
+    void saidaCadastrar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saidaExcluir(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saidaListar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void usuarioCadastrar(ActionEvent event) {
+    	MainInterface.trocaTela("usuarioCadastrar");
+    }
+
+    @FXML
+    void usuarioExcluir(ActionEvent event) {
+    	MainInterface.trocaTela("usuarioExcluir");
+    }
+
+    @FXML
+    void usuarioListar(ActionEvent event) {
+    	MainInterface.trocaTela("usuarioListar");
+    }
+    
 	@FXML
 	void sair(ActionEvent event) {
 		MainInterface.trocaTela("login");
