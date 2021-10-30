@@ -13,25 +13,31 @@ public class MainInterface extends Application {
 
 	private static Scene cenaLogin;
 	private static Scene cenaMenu;
+
 	private static Scene cenaUsuarioCadastro;
 	private static Scene cenaUsuarioListagem;
+	private static Scene cenaUsuarioExclusao;
+
+	private static Scene cenaReservaCadastro;
+	private static Scene cenaReservaListagem;
+	private static Scene cenaReservaExclusao;
+
+	private static Scene cenaCaixaVisualizar;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
 		Arquivo.inicializaVariaveis();
 		stage = primeiroEstagio;
 
-		Parent FXMLLogin = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-		cenaLogin = new Scene(FXMLLogin);
+		carregaTelasLogin();
 
-		Parent FXMLMenu = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
-		cenaMenu = new Scene(FXMLMenu);
+		carregaTelasMenu();
 
-		Parent FXMLUsuarioCadastro= FXMLLoader.load(getClass().getResource("/view/UsuarioCadastro.fxml"));
-		cenaUsuarioCadastro = new Scene(FXMLUsuarioCadastro);
+		carregaTelasUsuario();
 
-		Parent FXMLUsuarioListagem= FXMLLoader.load(getClass().getResource("/view/UsuarioListagem.fxml"));
-		cenaUsuarioListagem= new Scene(FXMLUsuarioListagem);
+		carregaTelasReserva();
+
+		carregaTelasCaixa();
 
 		primeiroEstagio.getIcons().add(new Image(getClass().getResourceAsStream("/img/18x18_pixel_icon.png")));
 		primeiroEstagio.setTitle("Login");
@@ -65,8 +71,70 @@ public class MainInterface extends Application {
 			stage.setScene(cenaUsuarioListagem);
 			break;
 
+		case "usuarioExcluir":
+			stage.setTitle("Exclusão de usuários");
+			stage.setScene(cenaUsuarioExclusao);
+			break;
+
+		case "reservaCadastrar":
+			stage.setTitle("Cadastro de reservas");
+			stage.setScene(cenaReservaCadastro);
+			break;
+
+		case "reservaListar":
+			stage.setTitle("Listagem de reservas");
+			stage.setScene(cenaReservaListagem);
+			break;
+
+		case "reservaExcluir":
+			stage.setTitle("Exclusão de reservas");
+			stage.setScene(cenaReservaExclusao);
+			break;
+
+		case "caixaVisualizar":
+			stage.setTitle("Visualização do caixa");
+			stage.setScene(cenaCaixaVisualizar);
+			break;
+
 		default:
 			break;
 		}
+	}
+
+	private void carregaTelasLogin() throws Exception {
+		Parent FXMLLogin = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+		cenaLogin = new Scene(FXMLLogin);
+	}
+
+	private void carregaTelasMenu() throws Exception {
+		Parent FXMLMenu = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+		cenaMenu = new Scene(FXMLMenu);
+	}
+
+	private void carregaTelasUsuario() throws Exception {
+		Parent FXMLUsuarioCadastro = FXMLLoader.load(getClass().getResource("/view/UsuarioCadastro.fxml"));
+		cenaUsuarioCadastro = new Scene(FXMLUsuarioCadastro);
+
+		Parent FXMLUsuarioListagem = FXMLLoader.load(getClass().getResource("/view/UsuarioListagem.fxml"));
+		cenaUsuarioListagem = new Scene(FXMLUsuarioListagem);
+
+		Parent FXMLUsuarioExclusao = FXMLLoader.load(getClass().getResource("/view/UsuarioExclusao.fxml"));
+		cenaUsuarioExclusao = new Scene(FXMLUsuarioExclusao);
+	}
+
+	private void carregaTelasReserva() throws Exception {
+		Parent FXMLReservaCadastro = FXMLLoader.load(getClass().getResource("/view/ReservaCadastro.fxml"));
+		cenaReservaCadastro = new Scene(FXMLReservaCadastro);
+
+		Parent FXMLReservaListagem = FXMLLoader.load(getClass().getResource("/view/ReservaListagem.fxml"));
+		cenaReservaListagem = new Scene(FXMLReservaListagem);
+
+		Parent FXMLReservaExclusao = FXMLLoader.load(getClass().getResource("/view/ReservaExclusao.fxml"));
+		cenaReservaExclusao = new Scene(FXMLReservaExclusao);
+	}
+
+	private void carregaTelasCaixa() throws Exception {
+		Parent FXMLCaixaVisualiza = FXMLLoader.load(getClass().getResource("/view/CaixaVisualizar.fxml"));
+		cenaCaixaVisualizar = new Scene(FXMLCaixaVisualiza);
 	}
 }

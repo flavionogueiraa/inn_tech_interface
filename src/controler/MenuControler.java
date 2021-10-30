@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 public class MenuControler {
 	@FXML
     void caixaVisualizar(ActionEvent event) {
-
+    	MainInterface.trocaTela("caixaVisualizar");
     }
 
     @FXML
@@ -21,17 +21,17 @@ public class MenuControler {
 
     @FXML
     void reservaCadastrar(ActionEvent event) {
-
+    	MainInterface.trocaTela("reservaCadastrar");
     }
 
     @FXML
     void reservaExcluir(ActionEvent event) {
-
+    	MainInterface.trocaTela("reservaExcluir");
     }
 
     @FXML
     void reservaListar(ActionEvent event) {
-
+    	MainInterface.trocaTela("reservaListar");
     }
 
     @FXML
@@ -56,7 +56,7 @@ public class MenuControler {
 
     @FXML
     void usuarioExcluir(ActionEvent event) {
-
+    	MainInterface.trocaTela("usuarioExcluir");
     }
 
     @FXML
