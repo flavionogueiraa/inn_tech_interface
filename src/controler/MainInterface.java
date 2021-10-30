@@ -16,6 +16,9 @@ public class MainInterface extends Application {
 	private static Scene cenaUsuarioCadastro;
 	private static Scene cenaUsuarioListagem;
 	private static Scene cenaUsuarioExclusao;
+	private static Scene cenaReservaCadastro;
+	private static Scene cenaReservaListagem;
+	private static Scene cenaReservaExclusao;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
@@ -36,6 +39,15 @@ public class MainInterface extends Application {
 
 		Parent FXMLUsuarioExclusao = FXMLLoader.load(getClass().getResource("/view/UsuarioExclusao.fxml"));
 		cenaUsuarioExclusao= new Scene(FXMLUsuarioExclusao);
+
+		Parent FXMLReservaCadastro= FXMLLoader.load(getClass().getResource("/view/ReservaCadastro.fxml"));
+		cenaReservaCadastro = new Scene(FXMLReservaCadastro);
+
+		Parent FXMLReservaListagem= FXMLLoader.load(getClass().getResource("/view/ReservaListagem.fxml"));
+		cenaReservaListagem= new Scene(FXMLReservaListagem);
+
+		Parent FXMLReservaExclusao = FXMLLoader.load(getClass().getResource("/view/ReservaExclusao.fxml"));
+		cenaReservaExclusao= new Scene(FXMLReservaExclusao);
 
 		primeiroEstagio.getIcons().add(new Image(getClass().getResourceAsStream("/img/18x18_pixel_icon.png")));
 		primeiroEstagio.setTitle("Login");
@@ -72,6 +84,21 @@ public class MainInterface extends Application {
 		case "usuarioExcluir":
 			stage.setTitle("Exclusão de usuários");
 			stage.setScene(cenaUsuarioExclusao);
+			break;
+
+		case "reservaCadastrar":
+			stage.setTitle("Cadastro de reservas");
+			stage.setScene(cenaReservaCadastro);
+			break;
+
+		case "reservaListar":
+			stage.setTitle("Listagem de reservas");
+			stage.setScene(cenaReservaListagem);
+			break;
+
+		case "reservaExcluir":
+			stage.setTitle("Exclusão de reservas");
+			stage.setScene(cenaReservaExclusao);
 			break;
 
 		default:

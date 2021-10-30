@@ -21,17 +21,17 @@ public class MenuControler {
 
     @FXML
     void reservaCadastrar(ActionEvent event) {
-
+    	MainInterface.trocaTela("reservaCadastrar");
     }
 
     @FXML
     void reservaExcluir(ActionEvent event) {
-
+    	MainInterface.trocaTela("reservaExcluir");
     }
 
     @FXML
     void reservaListar(ActionEvent event) {
-
+    	MainInterface.trocaTela("reservaListar");
     }
 
     @FXML
