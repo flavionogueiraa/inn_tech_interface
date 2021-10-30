@@ -27,6 +27,10 @@ public class MainInterface extends Application {
 	private static Scene cenaRelatorioEntradas;
 	private static Scene cenaRelatorioSaidas;
 
+	private static Scene cenaSaidaCadastro;
+	private static Scene cenaSaidaListagem;
+	private static Scene cenaSaidaExclusao;
+
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
 		Arquivo.inicializaVariaveis();
@@ -38,6 +42,7 @@ public class MainInterface extends Application {
 		carregaTelasReserva();
 		carregaTelasCaixa();
 		carregaTelasRelatorio();
+		carregaTelasSaida();
 
 		primeiroEstagio.getIcons().add(new Image(getClass().getResourceAsStream("/img/18x18_pixel_icon.png")));
 		primeiroEstagio.setTitle("Login");
@@ -106,6 +111,21 @@ public class MainInterface extends Application {
 			stage.setScene(cenaRelatorioSaidas);
 			break;
 
+		case "saidaCadastrar":
+			stage.setTitle("Cadastro de saídas");
+			stage.setScene(cenaSaidaCadastro);
+			break;
+
+		case "saidaListar":
+			stage.setTitle("Listagem de saídas");
+			stage.setScene(cenaSaidaListagem);
+			break;
+
+		case "saidaExcluir":
+			stage.setTitle("Exclusão de saídas");
+			stage.setScene(cenaSaidaExclusao);
+			break;
+
 		default:
 			break;
 		}
@@ -154,5 +174,16 @@ public class MainInterface extends Application {
 
 		Parent FXMLRelatorioSaidas = FXMLLoader.load(getClass().getResource("/view/RelatorioSaidas.fxml"));
 		cenaRelatorioSaidas = new Scene(FXMLRelatorioSaidas);
+	}
+
+	private void carregaTelasSaida() throws Exception {
+		Parent FXMLSaidaCadastro = FXMLLoader.load(getClass().getResource("/view/SaidaCadastro.fxml"));
+		cenaSaidaCadastro = new Scene(FXMLSaidaCadastro);
+
+		Parent FXMLSaidaListagem = FXMLLoader.load(getClass().getResource("/view/SaidaListagem.fxml"));
+		cenaSaidaListagem = new Scene(FXMLSaidaListagem);
+
+		Parent FXMLSaidaExclusao = FXMLLoader.load(getClass().getResource("/view/SaidaExclusao.fxml"));
+		cenaSaidaExclusao = new Scene(FXMLSaidaExclusao);
 	}
 }
