@@ -56,7 +56,7 @@ public class MenuControler {
 
     @FXML
     void usuarioExcluir(ActionEvent event) {
-
+    	MainInterface.trocaTela("usuarioExcluir");
     }
 
     @FXML
