@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 public class MenuControler {
 	@FXML
     void caixaVisualizar(ActionEvent event) {
-
+    	MainInterface.trocaTela("caixaVisualizar");
     }
 
     @FXML
