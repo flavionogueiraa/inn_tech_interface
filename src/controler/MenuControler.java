@@ -11,12 +11,12 @@ public class MenuControler {
 
     @FXML
     void relatorioEntradas(ActionEvent event) {
-
+    	MainInterface.trocaTela("relatorioEntradas");
     }
 
     @FXML
     void relatorioSaidas(ActionEvent event) {
-
+    	MainInterface.trocaTela("relatorioSaidas");
     }
 
     @FXML
