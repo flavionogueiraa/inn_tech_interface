@@ -31,12 +31,30 @@ public class Reserva {
 		return dataChegada;
 	}
 
+	public String getDataChegadaFormatada() {
+		if (this.dataChegada != null) {
+			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+			return formatar.format(this.getDataChegada());
+		} else {
+			return "-";
+		}
+	}
+
 	public void setDataChegada(Date dataChegada) {
 		this.dataChegada = dataChegada;
 	}
 
 	public Date getDataSaida() {
 		return dataSaida;
+	}
+
+	public String getDataSaidaFormatada() {
+		if (this.dataSaida != null) {
+			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+			return formatar.format(this.getDataSaida());
+		} else {
+			return "-";
+		}
 	}
 
 	public void setDataSaida(Date dataSaida) {
@@ -51,7 +69,7 @@ public class Reserva {
 		this.hospede = hospede;
 	}
 
-	public double getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
