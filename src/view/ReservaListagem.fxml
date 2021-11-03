@@ -74,11 +74,11 @@
                <columns>
                   <TableColumn fx:id="reserva_hospede" minWidth="100.0" prefWidth="100.0" text="Nome" />
                   <TableColumn fx:id="reserva_valor" minWidth="100.0" prefWidth="110.39998626708984" text="Valor" />
-                  <TableColumn fx:id="reserva_data_hora_chegada" prefWidth="190.4000244140625" text="Data e  Hora Chegada" />
-                  <TableColumn fx:id="reserva_data_hora_saida" minWidth="61.60003662109375" prefWidth="160.00003051757812" text="Data e Hora Saída" />
-                  <TableColumn fx:id="reserva_observacoes" minWidth="64.79998779296875" prefWidth="137.5999755859375" text="Observações" />
-                  <TableColumn fx:id="reserva_quarto" prefWidth="100.0" text="Quarto" />
-                  <TableColumn fx:id="reserva_pago" prefWidth="100.0" text="Pago" />
+                  <TableColumn fx:id="reserva_data_hora_chegada" prefWidth="165.5999755859375" text="Data e  Hora Chegada" />
+                  <TableColumn fx:id="reserva_data_hora_saida" minWidth="61.60003662109375" prefWidth="158.39999389648438" text="Data e Hora Saída" />
+                  <TableColumn fx:id="reserva_observacoes" minWidth="64.79998779296875" prefWidth="155.20001220703125" text="Observações" />
+                  <TableColumn fx:id="reserva_quarto" prefWidth="100.79998779296875" text="Quarto" />
+                  <TableColumn fx:id="reserva_pago" prefWidth="116.800048828125" text="Pago" />
                </columns>
             </TableView>
          </children>
