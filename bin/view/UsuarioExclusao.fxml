@@ -4,23 +4,11 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.UsuarioListagemControler">
-   <bottom>
-      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <items>
-            <Button mnemonicParsing="false" onAction="#sair" text="Logout" />
-         </items>
-      </ToolBar>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.UsuarioExclusaoControler">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
@@ -59,27 +47,14 @@
          </menus>
       </MenuBar>
    </top>
+   <bottom>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <Button mnemonicParsing="false" onAction="#sair" text="Logout" />
+         </items>
+      </ToolBar>
+   </bottom>
    <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="189.00000610351563" minHeight="0.0" prefHeight="53.600007629394526" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="535.9999954223632" minHeight="10.0" prefHeight="527.1999923706054" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Listagem de usuários" />
-            <TableView fx:id="tabela_usuarios" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-              <columns>
-                <TableColumn fx:id="nome_usuario" minWidth="100.0" prefWidth="100.0" text="Nome" />
-                <TableColumn fx:id="cpf_usuario" minWidth="100.0" prefWidth="110.39998626708984" text="CPF" />
-                  <TableColumn fx:id="senha_usuario" prefWidth="114.4000244140625" text="Senha" />
-                  <TableColumn fx:id="proprietario_usuario" minWidth="61.60003662109375" prefWidth="124.79998779296875" text="Proprietário" />
-                  <TableColumn fx:id="acoes_usuario" minWidth="164.00003051757812" prefWidth="164.00003051757812" text="Ações" />
-              </columns>
-            </TableView>
-         </children>
-      </GridPane>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tela de exclusão de um usuário" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

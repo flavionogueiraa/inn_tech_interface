@@ -4,16 +4,11 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.UsuarioListagemControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.SaidaListagemControler">
    <bottom>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
@@ -60,28 +55,6 @@
       </MenuBar>
    </top>
    <center>
-      <GridPane BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="189.00000610351563" minHeight="0.0" prefHeight="53.600007629394526" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="535.9999954223632" minHeight="10.0" prefHeight="527.1999923706054" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Listagem de reservas" />
-            <TableView fx:id="tabela_reservas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <columns>
-                  <TableColumn fx:id="reserva_hospede" minWidth="100.0" prefWidth="100.0" text="Nome" />
-                  <TableColumn fx:id="reserva_valor" minWidth="100.0" prefWidth="110.39998626708984" text="Valor" />
-                  <TableColumn fx:id="reserva_data_hora_chegada" prefWidth="190.4000244140625" text="Data e  Hora Chegada" />
-                  <TableColumn fx:id="reserva_data_hora_saida" minWidth="61.60003662109375" prefWidth="160.00003051757812" text="Data e Hora Saída" />
-                  <TableColumn fx:id="reserva_observacoes" minWidth="64.79998779296875" prefWidth="137.5999755859375" text="Observações" />
-                  <TableColumn fx:id="reserva_quarto" prefWidth="100.0" text="Quarto" />
-                  <TableColumn fx:id="reserva_pago" prefWidth="100.0" text="Pago" />
-               </columns>
-            </TableView>
-         </children>
-      </GridPane>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tela de listagem das saídas" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

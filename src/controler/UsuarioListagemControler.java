@@ -22,6 +22,9 @@ public class UsuarioListagemControler extends MenuControler implements Initializ
 
 	@FXML
 	private TableColumn<Usuario, String> cpf_usuario;
+	
+    @FXML
+    private TableColumn<Usuario, String> senha_usuario;
 
 	@FXML
 	private TableColumn<Usuario, Boolean> proprietario_usuario;
@@ -35,6 +38,7 @@ public class UsuarioListagemControler extends MenuControler implements Initializ
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		nome_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNome()));
 		cpf_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCPF()));
+		senha_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSenha()));
 		proprietario_usuario.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isProprietario()));
 		acoes_usuario.setCellValueFactory(data -> new SimpleStringProperty("Teste"));
 		
