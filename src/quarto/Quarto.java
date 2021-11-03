@@ -14,7 +14,7 @@ public class Quarto {
 
 	public static ArrayList<Quarto> quartos = new ArrayList<>();
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
