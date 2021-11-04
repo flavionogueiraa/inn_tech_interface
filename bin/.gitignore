@@ -1,4 +1,11 @@
-/view/
+/arquivo/
 /controler/
-/usuario/
 /financeiro/
+/main/
+/main_interface/
+/module-info.class
+/quarto/
+/reserva/
+/usuario/
+/validacao/
+/view/
