@@ -25,12 +25,6 @@ public class UsuarioCadastroControler extends MenuControler {
 		String CPF = campo_cpf.getText();
 		String senha = campo_senha.getText();
 		Boolean proprietario = campo_proprietario.isSelected();
-		
-		System.out.println(nome);
-		System.out.println(CPF);
-		System.out.println(senha);
-		System.out.println(proprietario);
-		
 
 		Usuario.cadastraUsuarioInterface(nome, CPF, senha, proprietario);
 	}

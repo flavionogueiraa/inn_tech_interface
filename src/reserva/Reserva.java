@@ -151,6 +151,12 @@ public class Reserva {
 		reservas.add(this);
 	}
 
+	public static void cadastraReservaInterface(String hospede, Double valor, Date dataChegada, Date dataSaida,
+			String observacoes, boolean pago, Quarto quarto) {
+		new Reserva(hospede, valor, dataChegada, null, observacoes, pago, quarto);
+		ConfigArquivoReservas.atualizaReservas();
+	}
+
 	public static void listaReservas() {
 		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		int i = 1;
