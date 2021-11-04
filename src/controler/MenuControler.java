@@ -61,7 +61,7 @@ public class MenuControler {
 
 	@FXML
 	void usuarioListar(ActionEvent event) {
-		MainInterface.trocaTela("usuarioListar");
+		MainInterface.trocaTela("usuario");
 	}
 
 	@FXML

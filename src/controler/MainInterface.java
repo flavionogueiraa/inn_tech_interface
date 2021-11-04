@@ -14,8 +14,7 @@ public class MainInterface extends Application {
 	private static Scene cenaLogin;
 	private static Scene cenaMenu;
 
-	private static Scene cenaUsuarioCadastro;
-	private static Scene cenaUsuarioListagem;
+	private static Scene cenaUsuario;
 	private static Scene cenaUsuarioExclusao;
 
 	private static Scene cenaReservaCadastro;
@@ -67,14 +66,9 @@ public class MainInterface extends Application {
 			stage.setScene(cenaMenu);
 			break;
 
-		case "usuarioCadastrar":
-			stage.setTitle("Cadastro de usuários");
-			stage.setScene(cenaUsuarioCadastro);
-			break;
-
-		case "usuarioListar":
-			stage.setTitle("Listagem de usuários");
-			stage.setScene(cenaUsuarioListagem);
+		case "usuario":
+			stage.setTitle("Usuários");
+			stage.setScene(cenaUsuario);
 			break;
 
 		case "usuarioExcluir":
@@ -143,11 +137,8 @@ public class MainInterface extends Application {
 	}
 
 	private void carregaTelasUsuario() throws Exception {
-		Parent FXMLUsuarioCadastro = FXMLLoader.load(getClass().getResource("/view/UsuarioCadastro.fxml"));
-		cenaUsuarioCadastro = new Scene(FXMLUsuarioCadastro);
-
-		Parent FXMLUsuarioListagem = FXMLLoader.load(getClass().getResource("/view/UsuarioListagem.fxml"));
-		cenaUsuarioListagem = new Scene(FXMLUsuarioListagem);
+		Parent FXMLUsuario = FXMLLoader.load(getClass().getResource("/view/Usuario.fxml"));
+		cenaUsuario = new Scene(FXMLUsuario);
 
 		Parent FXMLUsuarioExclusao = FXMLLoader.load(getClass().getResource("/view/UsuarioExclusao.fxml"));
 		cenaUsuarioExclusao = new Scene(FXMLUsuarioExclusao);

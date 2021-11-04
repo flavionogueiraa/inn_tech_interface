@@ -37,7 +37,7 @@ public class ReservaCadastroControler extends MenuControler {
 		try {
 			dataChegada = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_chegada.getText());
 		} catch (ParseException e) {
-			System.err.println("Saída inválida");
+			System.err.println("Data e hora inválidas!");
 		}
 		String hospede = campo_hospede.getText();
 		String observacoes = campo_observacoes.getText();
