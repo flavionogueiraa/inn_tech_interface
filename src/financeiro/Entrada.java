@@ -25,7 +25,7 @@ public class Entrada {
 		Entrada.totalEntradas = totalEntradas;
 	}
 
-	public double getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
@@ -35,6 +35,15 @@ public class Entrada {
 
 	public Date getDataCriacao() {
 		return dataCriacao;
+	}
+	
+	public String getDataCriacaoFormatada() {
+		if (this.dataCriacao != null) {
+			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+			return formatar.format(this.getDataCriacao());
+		} else {
+			return "-";
+		}
 	}
 
 	public void setDataCriacao(Date dataCriacao) {
