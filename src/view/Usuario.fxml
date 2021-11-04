@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -151,6 +152,23 @@
                               <Button layoutX="160.0" layoutY="41.0" mnemonicParsing="false" onAction="#editarUsuario" prefWidth="70.0" text="Editar" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
+                        <Label text="Campo obrigatório*" textFill="#b91919" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets left="10.0" top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Campo obrigatório*" textFill="#b91919" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets left="10.0" top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Campo obrigatório*" textFill="#b91919" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets left="10.0" top="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label textFill="#b91919" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="label_erro" layoutX="160.0" layoutY="436.0" textFill="#b91919" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
                      </children>
                   </GridPane>
                </children>
