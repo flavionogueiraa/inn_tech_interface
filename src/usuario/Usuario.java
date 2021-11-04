@@ -76,6 +76,11 @@ public class Usuario {
 		this.proprietario = proprietario;
 		usuarios.add(this);
 	}
+	
+	public static void cadastraUsuarioInterface(String nome, String CPF, String senha, boolean proprietario) {
+		new Usuario(nome, CPF, senha, proprietario);
+		ConfigArquivoUsuarios.atualizaUsuarios();
+	}
 
 	public static Usuario login(String CPF, String senha) {
 		Usuario.usuarioLogado = getUsuario(CPF);

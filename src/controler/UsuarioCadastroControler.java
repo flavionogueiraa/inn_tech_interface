@@ -21,7 +21,6 @@ public class UsuarioCadastroControler extends MenuControler {
 
 	@FXML
 	void cadastrarUsuario(ActionEvent event) {
-		System.out.println("Opa");
 		String nome = campo_nome.getText();
 		String CPF = campo_cpf.getText();
 		String senha = campo_senha.getText();
@@ -33,6 +32,6 @@ public class UsuarioCadastroControler extends MenuControler {
 		System.out.println(proprietario);
 		
 
-		new Usuario(nome, CPF, senha, proprietario);
+		Usuario.cadastraUsuarioInterface(nome, CPF, senha, proprietario);
 	}
 }
