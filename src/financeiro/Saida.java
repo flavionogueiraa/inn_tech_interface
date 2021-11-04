@@ -39,7 +39,7 @@ public class Saida {
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
-	
+
 	public String getDataCriacaoFormatada() {
 		if (this.dataCriacao != null) {
 			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -92,6 +92,11 @@ public class Saida {
 		this.observacoes = observacoes;
 		saidas.add(this);
 		Saida.totalSaidas += this.valor;
+	}
+
+	public static void cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes) {
+		new Saida(valor, dataCriacao, motivo, observacoes);
+		ConfigArquivoSaidas.atualizaSaida();
 	}
 
 	public static void listaSaidas() {
