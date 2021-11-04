@@ -77,8 +77,14 @@ public class Usuario {
 		usuarios.add(this);
 	}
 	
-	public static void cadastraUsuarioInterface(String nome, String CPF, String senha, boolean proprietario) {
-		new Usuario(nome, CPF, senha, proprietario);
+	public static Usuario cadastraUsuarioInterface(String nome, String CPF, String senha, boolean proprietario) {
+		Usuario novo_usuario = new Usuario(nome, CPF, senha, proprietario);
+		ConfigArquivoUsuarios.atualizaUsuarios();
+		return novo_usuario;
+	}
+	
+	public void deletaUsuario() {
+		Usuario.usuarios.remove(this);
 		ConfigArquivoUsuarios.atualizaUsuarios();
 	}
 
