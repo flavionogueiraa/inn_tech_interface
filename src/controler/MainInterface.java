@@ -35,6 +35,7 @@ public class MainInterface extends Application {
 	public void start(Stage primeiroEstagio) throws Exception {
 		Arquivo.inicializaVariaveis();
 		stage = primeiroEstagio;
+		primeiroEstagio.setResizable(false);
 
 		carregaTelasLogin();
 		carregaTelasMenu();
