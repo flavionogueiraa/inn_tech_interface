@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -50,9 +49,6 @@ public class UsuarioControler extends MenuControler implements Initializable {
 
 	@FXML
 	private Label label_erro;
-
-	@FXML
-	private Button botao_cadastrar;
 
 	ObservableList<Usuario> lista = FXCollections.observableArrayList();
 
@@ -139,9 +135,14 @@ public class UsuarioControler extends MenuControler implements Initializable {
 
 	@FXML
 	void excluirUsuario(ActionEvent event) {
-		Usuario usuario = tabela_usuarios.getSelectionModel().getSelectedItem();
-		tabela_usuarios.getItems().remove(usuario);
-		usuario.deletaUsuario();
+		label_erro.setText("");
+		try {
+			Usuario usuario = tabela_usuarios.getSelectionModel().getSelectedItem();
+			tabela_usuarios.getItems().remove(usuario);
+			usuario.deletaUsuario();
+		} catch (Exception error) {
+			label_erro.setText("Nenhum usuário selecionado");
+		}
 	}
 
 	@Override
