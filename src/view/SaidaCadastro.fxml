@@ -27,13 +27,10 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
-            <Menu mnemonicParsing="false" text="Usuários">
+          <Menu mnemonicParsing="false" text="Usuários">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#usuarioCadastrar" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" onAction="#usuarioListar" text="Listar" />
-                  <MenuItem mnemonicParsing="false" onAction="#usuarioExcluir" text="Excluir" />
-               </items>
-            </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#usuario" text="Todos os usuários" />
+               </items></Menu>
             <Menu mnemonicParsing="false" text="Reservas">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#reservaCadastrar" text="Cadastrar" />
