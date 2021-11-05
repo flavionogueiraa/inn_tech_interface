@@ -135,9 +135,14 @@ public class UsuarioControler extends MenuControler implements Initializable {
 
 	@FXML
 	void excluirUsuario(ActionEvent event) {
-		Usuario usuario = tabela_usuarios.getSelectionModel().getSelectedItem();
-		tabela_usuarios.getItems().remove(usuario);
-		usuario.deletaUsuario();
+		label_erro.setText("");
+		try {
+			Usuario usuario = tabela_usuarios.getSelectionModel().getSelectedItem();
+			tabela_usuarios.getItems().remove(usuario);
+			usuario.deletaUsuario();
+		} catch (Exception error) {
+			label_erro.setText("Nenhum usuário selecionado");
+		}
 	}
 
 	@Override
