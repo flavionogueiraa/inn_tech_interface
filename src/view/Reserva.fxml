@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.ReservaControler">
+   <bottom>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <Button mnemonicParsing="false" onAction="#sair" text="Logout" />
+            <Button mnemonicParsing="false" onAction="#salvarEdicaoReserva" text="Salvar edições" />
+         </items>
+      </ToolBar>
+   </bottom>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+          <Menu mnemonicParsing="false" text="Usuários">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#usuario" text="Todos os usuários" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Reservas">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#reserva" text="Todas as reservas" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Caixa">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#caixaVisualizar" text="Visualizar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Relatórios">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#relatorioEntradas" text="Entradas" />
+                  <MenuItem mnemonicParsing="false" onAction="#relatorioSaidas" text="Saídas" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Saídas">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#saidaCadastrar" text="Cadastrar" />
+                  <MenuItem mnemonicParsing="false" onAction="#saidaListar" text="Listar" />
+                  <MenuItem mnemonicParsing="false" onAction="#saidaExcluir" text="Excluir" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="189.00000610351563" minHeight="0.0" prefHeight="53.600007629394526" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="375.80000152587894" minHeight="0.0" prefHeight="287.60003662109375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="535.9999954223632" minHeight="10.0" prefHeight="248.39996337890625" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionalidades das reservas">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <TableView fx:id="tabela_reservas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="reserva_hospede" minWidth="100.0" prefWidth="181.0" text="Nome" />
+                <TableColumn fx:id="reserva_valor" prefWidth="75.0" text="Valor" />
+                  <TableColumn fx:id="reserva_data_hora_chegada" prefWidth="125.0" text="Data e hora chegada" />
+                  <TableColumn fx:id="reserva_data_hora_saida" prefWidth="125.0" text="Data e hora saída" />
+                  <TableColumn fx:id="reserva_observacoes" prefWidth="185.0" text="Observações" />
+                  <TableColumn fx:id="reserva_quarto" prefWidth="103.20001220703125" text="Quarto" />
+                  <TableColumn fx:id="reserva_pago" minWidth="100.0" prefWidth="0.0" text="Pago" />
+              </columns>
+            </TableView>
+            <GridPane GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="757.9999694824219" minWidth="10.0" prefWidth="420.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="757.9999694824219" minWidth="10.0" prefWidth="420.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="442.79998779296875" minWidth="10.0" prefWidth="172.39997558593745" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="campo_nome_hospede" promptText="Nome do hóspede*">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="campo_valor" layoutX="20.0" layoutY="18.0" promptText="Valor*" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="campo_data_hora_chegada" layoutX="20.0" layoutY="18.0" promptText="Data e hora chegada*" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextArea fx:id="campo_observacoes" prefHeight="200.0" prefWidth="200.0" promptText="Observações" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="70.0" />
+                     </GridPane.margin>
+                  </TextArea>
+                  <TextField fx:id="campo_quarto" promptText="Quarto*" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <CheckBox fx:id="campo_pago" mnemonicParsing="false" text="Pago?" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="10.0" top="-20.0" />
+                     </GridPane.margin>
+                  </CheckBox>
+                  <Button mnemonicParsing="false" onAction="#cadastrarReserva" prefWidth="70.0" text="Cadastrar" GridPane.columnIndex="2" />
+                  <Button layoutX="776.0" layoutY="25.0" mnemonicParsing="false" onAction="#excluirReserva" prefWidth="70.0" text="Excluir" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button layoutX="776.0" layoutY="136.0" mnemonicParsing="false" onAction="#editarReserva" prefWidth="70.0" text="Editar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="campo_data_hora_saida" promptText="Data e hora saída" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label fx:id="label_erro" textFill="#b91919" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="label_quartos_disponiveis" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

@@ -16,9 +16,7 @@ public class MainInterface extends Application {
 
 	private static Scene cenaUsuario;
 
-	private static Scene cenaReservaCadastro;
-	private static Scene cenaReservaListagem;
-	private static Scene cenaReservaExclusao;
+	private static Scene cenaReserva;
 
 	private static Scene cenaCaixaVisualizar;
 
@@ -44,7 +42,7 @@ public class MainInterface extends Application {
 		carregaTelasSaida();
 
 		primeiroEstagio.getIcons().add(new Image(getClass().getResourceAsStream("/img/18x18_pixel_icon.png")));
-		primeiroEstagio.setTitle("Login");
+		primeiroEstagio.setTitle("Inn Tech");
 		primeiroEstagio.setScene(cenaLogin);
 		primeiroEstagio.show();
 	}
@@ -56,62 +54,42 @@ public class MainInterface extends Application {
 	public static void trocaTela(String nomeTela) {
 		switch (nomeTela) {
 		case "login":
-			stage.setTitle("Login");
 			stage.setScene(cenaLogin);
 			break;
 
 		case "menu":
-			stage.setTitle("Menu");
 			stage.setScene(cenaMenu);
 			break;
 
 		case "usuario":
-			stage.setTitle("Usuários");
 			stage.setScene(cenaUsuario);
 			break;
 
-		case "reservaCadastrar":
-			stage.setTitle("Cadastro de reservas");
-			stage.setScene(cenaReservaCadastro);
-			break;
-
-		case "reservaListar":
-			stage.setTitle("Listagem de reservas");
-			stage.setScene(cenaReservaListagem);
-			break;
-
-		case "reservaExcluir":
-			stage.setTitle("Exclusão de reservas");
-			stage.setScene(cenaReservaExclusao);
+		case "reserva":
+			stage.setScene(cenaReserva);
 			break;
 
 		case "caixaVisualizar":
-			stage.setTitle("Visualização do caixa");
 			stage.setScene(cenaCaixaVisualizar);
 			break;
 
 		case "relatorioEntradas":
-			stage.setTitle("Relatório de entradas");
 			stage.setScene(cenaRelatorioEntradas);
 			break;
 
 		case "relatorioSaidas":
-			stage.setTitle("Relatório de saídas");
 			stage.setScene(cenaRelatorioSaidas);
 			break;
 
 		case "saidaCadastrar":
-			stage.setTitle("Cadastro de saídas");
 			stage.setScene(cenaSaidaCadastro);
 			break;
 
 		case "saidaListar":
-			stage.setTitle("Listagem de saídas");
 			stage.setScene(cenaSaidaListagem);
 			break;
 
 		case "saidaExcluir":
-			stage.setTitle("Exclusão de saídas");
 			stage.setScene(cenaSaidaExclusao);
 			break;
 
@@ -136,14 +114,8 @@ public class MainInterface extends Application {
 	}
 
 	private void carregaTelasReserva() throws Exception {
-		Parent FXMLReservaCadastro = FXMLLoader.load(getClass().getResource("/view/ReservaCadastro.fxml"));
-		cenaReservaCadastro = new Scene(FXMLReservaCadastro);
-
-		Parent FXMLReservaListagem = FXMLLoader.load(getClass().getResource("/view/ReservaListagem.fxml"));
-		cenaReservaListagem = new Scene(FXMLReservaListagem);
-
-		Parent FXMLReservaExclusao = FXMLLoader.load(getClass().getResource("/view/ReservaExclusao.fxml"));
-		cenaReservaExclusao = new Scene(FXMLReservaExclusao);
+		Parent FXMLReserva = FXMLLoader.load(getClass().getResource("/view/Reserva.fxml"));
+		cenaReserva = new Scene(FXMLReserva);
 	}
 
 	private void carregaTelasCaixa() throws Exception {

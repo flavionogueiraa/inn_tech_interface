@@ -87,6 +87,15 @@ public class Quarto {
 		return null;
 	}
 
+	public static Quarto getQuartoDisponivel(int numero) {
+		for (Quarto quarto : quartos) {
+			if (quarto.numero == numero && quarto.isOcupado() == false) {
+				return quarto;
+			}
+		}
+		return null;
+	}
+
 	public static void editaQuarto(Scanner sc) {
 		Quarto.listaQuartos();
 		int opcaoSaida = ValidacaoInt.validacao(sc, "Informe um ID para editar:", true);
@@ -133,5 +142,18 @@ public class Quarto {
 		} else {
 			System.out.println("ID inválido");
 		}
+	}
+
+	public static String quartosDisponiveis() {
+		String quartosDisponiveis = "";
+		for (Quarto quarto : Quarto.quartos) {
+			if (!quarto.isOcupado()) {
+				quartosDisponiveis += quarto.getNumero() + " ";
+			}
+		}
+		if (quartosDisponiveis.isEmpty()) {
+			quartosDisponiveis = "Nenhum";
+		}
+		return quartosDisponiveis;
 	}
 }

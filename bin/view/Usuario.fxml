@@ -36,9 +36,7 @@
                </items></Menu>
             <Menu mnemonicParsing="false" text="Reservas">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#reservaCadastrar" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" onAction="#reservaListar" text="Listar" />
-                  <MenuItem mnemonicParsing="false" onAction="#reservaExcluir" text="Excluir" />
+                  <MenuItem mnemonicParsing="false" onAction="#reserva" text="Todas as reservas" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Caixa">
