@@ -23,19 +23,17 @@
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
             <Button mnemonicParsing="false" onAction="#sair" text="Logout" />
+            <Button mnemonicParsing="false" onAction="#salvarEdicaoUsuario" text="Salvar edições" />
          </items>
       </ToolBar>
    </bottom>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
-            <Menu mnemonicParsing="false" text="Usuários">
+          <Menu mnemonicParsing="false" text="Usuários">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#usuarioCadastrar" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" onAction="#usuarioListar" text="Listar" />
-                  <MenuItem mnemonicParsing="false" onAction="#usuarioExcluir" text="Excluir" />
-               </items>
-            </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#usuario" text="Todos os usuários" />
+               </items></Menu>
             <Menu mnemonicParsing="false" text="Reservas">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#reservaCadastrar" text="Cadastrar" />
@@ -74,10 +72,13 @@
           <RowConstraints maxHeight="535.9999954223632" minHeight="10.0" prefHeight="527.1999923706054" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuários">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionalidades dos usuários">
                <font>
                   <Font size="26.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
             </Text>
             <GridPane GridPane.rowIndex="1">
               <columnConstraints>
@@ -90,10 +91,10 @@
                <children>
                   <TableView fx:id="tabela_usuarios" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <columns>
-                        <TableColumn fx:id="nome_usuario" minWidth="145.0" prefWidth="100.0" text="Nome" />
-                        <TableColumn fx:id="cpf_usuario" minWidth="145.0" prefWidth="110.39998626708984" text="CPF     " />
-                        <TableColumn fx:id="senha_usuario" minWidth="145.0" prefWidth="164.8000030517578" text="Senha" />
-                        <TableColumn fx:id="proprietario_usuario" minWidth="145.0" prefWidth="128.79998779296875" text="Proprietário" />
+                        <TableColumn fx:id="nome_usuario" minWidth="143.0" prefWidth="100.0" text="Nome" />
+                        <TableColumn fx:id="cpf_usuario" minWidth="143.0" prefWidth="110.39998626708984" text="CPF     " />
+                        <TableColumn fx:id="senha_usuario" minWidth="143.0" prefWidth="164.8000030517578" text="Senha" />
+                        <TableColumn fx:id="proprietario_usuario" minWidth="143.0" prefWidth="128.79998779296875" text="Proprietário" />
                      </columns>
                   </TableView>
                   <GridPane>
@@ -108,28 +109,28 @@
                         <RowConstraints minHeight="0.0" prefHeight="0.0" valignment="TOP" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="campo_nome" promptText="Nome">
+                        <TextField fx:id="campo_nome" promptText="Nome" GridPane.valignment="TOP">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
+                              <Insets left="10.0" right="10.0" top="20.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="campo_senha" layoutX="10.0" layoutY="85.0" promptText="Senha" GridPane.rowIndex="2">
+                        <TextField fx:id="campo_senha" layoutX="10.0" layoutY="85.0" promptText="Senha" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
+                              <Insets left="10.0" right="10.0" top="20.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="campo_cpf" layoutX="10.0" layoutY="262.0" promptText="CPF" GridPane.rowIndex="1">
+                        <TextField fx:id="campo_cpf" layoutX="10.0" layoutY="262.0" promptText="CPF" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
+                              <Insets left="10.0" right="10.0" top="20.0" />
                            </GridPane.margin>
                         </TextField>
                         <CheckBox fx:id="campo_proprietario" mnemonicParsing="false" text="É um proprietário?" GridPane.rowIndex="3">
@@ -147,24 +148,24 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#cadastrarUsuario" prefWidth="70.0" text="Adicionar" />
+                              <Button fx:id="botao_cadastrar" mnemonicParsing="false" onAction="#cadastrarUsuario" prefWidth="70.0" text="Cadastrar" />
                               <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#excluirUsuario" prefWidth="70.0" text="Excluir" GridPane.columnIndex="2" />
                               <Button layoutX="160.0" layoutY="41.0" mnemonicParsing="false" onAction="#editarUsuario" prefWidth="70.0" text="Editar" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                         <Label text="Campo obrigatório*" textFill="#b91919" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                            <GridPane.margin>
-                              <Insets left="10.0" top="20.0" />
+                              <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
                         <Label text="Campo obrigatório*" textFill="#b91919" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
-                              <Insets left="10.0" top="20.0" />
+                              <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
                         <Label text="Campo obrigatório*" textFill="#b91919" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <GridPane.margin>
-                              <Insets left="10.0" top="20.0" />
+                              <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
                         <Label textFill="#b91919" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
