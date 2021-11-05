@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -50,9 +49,6 @@ public class UsuarioControler extends MenuControler implements Initializable {
 
 	@FXML
 	private Label label_erro;
-
-	@FXML
-	private Button botao_cadastrar;
 
 	ObservableList<Usuario> lista = FXCollections.observableArrayList();
 
