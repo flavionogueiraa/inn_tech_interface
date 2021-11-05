@@ -50,17 +50,7 @@ public class MenuControler {
 	}
 
 	@FXML
-	void usuarioCadastrar(ActionEvent event) {
-		MainInterface.trocaTela("usuarioCadastrar");
-	}
-
-	@FXML
-	void usuarioExcluir(ActionEvent event) {
-		MainInterface.trocaTela("usuarioExcluir");
-	}
-
-	@FXML
-	void usuarioListar(ActionEvent event) {
+	void usuario(ActionEvent event) {
 		MainInterface.trocaTela("usuario");
 	}
 
