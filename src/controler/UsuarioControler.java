@@ -3,6 +3,7 @@ package controler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import arquivo.ConfigArquivoUsuarios;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -49,6 +51,9 @@ public class UsuarioControler extends MenuControler implements Initializable {
 	@FXML
 	private Label label_erro;
 
+	@FXML
+	private Button botao_cadastrar;
+
 	ObservableList<Usuario> lista = FXCollections.observableArrayList();
 
 	private void limparCampos() {
@@ -63,13 +68,24 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		label_erro.setText("");
 		String CPF = ValidacaoCPFInterface.validacaoNormal(campo_cpf.getText());
 		if (CPF != null) {
-			String nome = campo_nome.getText();
-			String senha = campo_senha.getText();
-			Boolean proprietario = campo_proprietario.isSelected();
+			CPF = ValidacaoCPFInterface.validacaoCadastro(CPF);
 
-			Usuario novo_usuario = Usuario.cadastraUsuarioInterface(nome, CPF, senha, proprietario);
-			tabela_usuarios.getItems().add(novo_usuario);
-			limparCampos();
+			if (CPF != null) {
+				String nome = campo_nome.getText();
+				String senha = campo_senha.getText();
+				Boolean proprietario = campo_proprietario.isSelected();
+
+				if (!nome.isEmpty() && !senha.isEmpty()) {
+					Usuario novo_usuario = Usuario.cadastraUsuarioInterface(nome, CPF, senha, proprietario);
+					tabela_usuarios.getItems().add(novo_usuario);
+					limparCampos();
+				} else {
+					label_erro.setText("Preencha todos os campos");
+				}
+			} else {
+				label_erro.setText("CPF já cadastrado");
+			}
+
 		} else {
 			label_erro.setText("CPF inválido");
 		}
@@ -77,7 +93,48 @@ public class UsuarioControler extends MenuControler implements Initializable {
 
 	@FXML
 	void editarUsuario(ActionEvent event) {
-		System.out.println(tabela_usuarios.getSelectionModel().getSelectedItem().getNome());
+		label_erro.setText("");
+		try {
+			Usuario usuarioEscolhido = tabela_usuarios.getSelectionModel().getSelectedItem();
+			campo_nome.setText(usuarioEscolhido.getNome());
+			campo_cpf.setText(usuarioEscolhido.getCPF());
+			campo_senha.setText(usuarioEscolhido.getSenha());
+			campo_proprietario.setSelected((usuarioEscolhido.isProprietario()));
+		} catch (Exception error) {
+			label_erro.setText("Nenhum usuário selecionado");
+		}
+	}
+
+	@FXML
+	void salvarEdicaoUsuario(ActionEvent event) {
+		label_erro.setText("");
+		Usuario usuario = tabela_usuarios.getSelectionModel().getSelectedItem();
+		String CPF = ValidacaoCPFInterface.validacaoNormal(campo_cpf.getText());
+		if (CPF != null) {
+			CPF = ValidacaoCPFInterface.validacaoEdicao(CPF, usuario);
+			if (CPF != null) {
+				String nome = campo_nome.getText();
+				String senha = campo_senha.getText();
+				Boolean proprietario = campo_proprietario.isSelected();
+
+				if (!nome.isEmpty() && !senha.isEmpty()) {
+					usuario.setNome(nome);
+					usuario.setCPF(CPF);
+					usuario.setSenha(senha);
+					usuario.setProprietario(proprietario);
+					tabela_usuarios.refresh();
+					ConfigArquivoUsuarios.atualizaUsuarios();
+					limparCampos();
+				} else {
+					label_erro.setText("Preencha todos os campos");
+				}
+			} else {
+				label_erro.setText("CPF já está em uso");
+			}
+
+		} else {
+			label_erro.setText("CPF inválido");
+		}
 	}
 
 	@FXML

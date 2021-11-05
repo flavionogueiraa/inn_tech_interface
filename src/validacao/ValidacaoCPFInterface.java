@@ -96,4 +96,23 @@ public class ValidacaoCPFInterface {
 
 		return true;
 	}
+
+	public static String validacaoCadastro(String CPF) {
+		if (CPFunico(CPF)) {
+			return CPF;
+		}
+		return null;
+	}
+
+	public static String validacaoEdicao(String CPF, Usuario usuario) {
+		if (!CPFunico(CPF)) {
+			if (CPF.equals(usuario.getCPF())) {
+				return CPF;
+			} else {
+				return null;
+			}
+		} else {
+			return CPF;
+		}
+	}
 }
