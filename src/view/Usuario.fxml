@@ -36,9 +36,7 @@
                </items></Menu>
             <Menu mnemonicParsing="false" text="Reservas">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#reservaCadastrar" text="Cadastrar" />
-                  <MenuItem mnemonicParsing="false" onAction="#reservaListar" text="Listar" />
-                  <MenuItem mnemonicParsing="false" onAction="#reservaExcluir" text="Excluir" />
+                  <MenuItem mnemonicParsing="false" onAction="#reserva" text="Todas as reservas" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Caixa">
@@ -148,7 +146,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="botao_cadastrar" mnemonicParsing="false" onAction="#cadastrarUsuario" prefWidth="70.0" text="Cadastrar" />
+                              <Button mnemonicParsing="false" onAction="#cadastrarUsuario" prefWidth="70.0" text="Cadastrar" />
                               <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#excluirUsuario" prefWidth="70.0" text="Excluir" GridPane.columnIndex="2" />
                               <Button layoutX="160.0" layoutY="41.0" mnemonicParsing="false" onAction="#editarUsuario" prefWidth="70.0" text="Editar" GridPane.columnIndex="1" />
                            </children>

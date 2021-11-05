@@ -20,6 +20,11 @@ public class MenuControler {
 	}
 
 	@FXML
+	void reserva(ActionEvent event) {
+		MainInterface.trocaTela("reserva");
+	}
+
+	@FXML
 	void reservaCadastrar(ActionEvent event) {
 		MainInterface.trocaTela("reservaCadastrar");
 	}

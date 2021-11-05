@@ -151,9 +151,17 @@ public class Reserva {
 		reservas.add(this);
 	}
 
-	public static void cadastraReservaInterface(String hospede, Double valor, Date dataChegada, Date dataSaida,
+	public static Reserva cadastraReservaInterface(String hospede, Double valor, Date dataChegada, Date dataSaida,
 			String observacoes, boolean pago, Quarto quarto) {
-		new Reserva(hospede, valor, dataChegada, null, observacoes, pago, quarto);
+		Reserva nova_reserva = new Reserva(hospede, valor, dataChegada, null, observacoes, pago, quarto);
+		ConfigArquivoReservas.atualizaReservas();
+		
+		nova_reserva.quarto.setOcupado(true);
+		return nova_reserva;
+	}
+	
+	public void deletaReserva() {
+		Reserva.reservas.remove(this);
 		ConfigArquivoReservas.atualizaReservas();
 	}
 
