@@ -38,6 +38,11 @@ public class MenuControler {
 	void reservaListar(ActionEvent event) {
 		MainInterface.trocaTela("reservaListar");
 	}
+	
+	@FXML
+    void saida(ActionEvent event) {
+		MainInterface.trocaTela("saida");
+    }
 
 	@FXML
 	void saidaCadastrar(ActionEvent event) {

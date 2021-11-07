@@ -17,6 +17,8 @@ public class MainInterface extends Application {
 	private static Scene cenaUsuario;
 
 	private static Scene cenaReserva;
+	
+	private static Scene cenaSaida;
 
 	private static Scene cenaCaixaVisualizar;
 
@@ -67,6 +69,10 @@ public class MainInterface extends Application {
 
 		case "reserva":
 			stage.setScene(cenaReserva);
+			break;
+			
+		case "saida":
+			stage.setScene(cenaSaida);
 			break;
 
 		case "caixaVisualizar":
@@ -140,5 +146,8 @@ public class MainInterface extends Application {
 
 		Parent FXMLSaidaExclusao = FXMLLoader.load(getClass().getResource("/view/SaidaExclusao.fxml"));
 		cenaSaidaExclusao = new Scene(FXMLSaidaExclusao);
+		
+		Parent FXMLSaida = FXMLLoader.load(getClass().getResource("/view/Saida.fxml"));
+		cenaSaida = new Scene(FXMLSaida);
 	}
 }

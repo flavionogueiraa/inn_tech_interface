@@ -1,5 +1,5 @@
 Julia	843.801.170-57	Julia321	false
-Flavio	375.457.440-04	FlavioFlavio123	false
+Flavio	375.457.440-04	Flavio	false
 Naty	955.407.130-28	NatyLinda	false
 Dimona	742.933.030-49	Dimona321	false
 Vinicius	191.505.990-97	Vinicius123	false
