@@ -23,41 +23,11 @@ public class MenuControler {
 	void reserva(ActionEvent event) {
 		MainInterface.trocaTela("reserva");
 	}
-
-	@FXML
-	void reservaCadastrar(ActionEvent event) {
-		MainInterface.trocaTela("reservaCadastrar");
-	}
-
-	@FXML
-	void reservaExcluir(ActionEvent event) {
-		MainInterface.trocaTela("reservaExcluir");
-	}
-
-	@FXML
-	void reservaListar(ActionEvent event) {
-		MainInterface.trocaTela("reservaListar");
-	}
 	
 	@FXML
     void saida(ActionEvent event) {
 		MainInterface.trocaTela("saida");
     }
-
-	@FXML
-	void saidaCadastrar(ActionEvent event) {
-		MainInterface.trocaTela("saidaCadastrar");
-	}
-
-	@FXML
-	void saidaExcluir(ActionEvent event) {
-		MainInterface.trocaTela("saidaExcluir");
-	}
-
-	@FXML
-	void saidaListar(ActionEvent event) {
-		MainInterface.trocaTela("saidaListar");
-	}
 
 	@FXML
 	void usuario(ActionEvent event) {
