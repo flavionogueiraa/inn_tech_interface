@@ -36,6 +36,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#saidaCadastrar" text="Cadastrar" />
                   <MenuItem mnemonicParsing="false" onAction="#saidaListar" text="Listar" />
                   <MenuItem mnemonicParsing="false" onAction="#saidaExcluir" text="Excluir" />
+                  <MenuItem mnemonicParsing="false" onAction="#saida" text="Todas as saídas" />
                </items>
             </Menu>
         </menus>

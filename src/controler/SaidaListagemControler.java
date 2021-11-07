@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import reserva.Reserva;
 
 public class SaidaListagemControler extends MenuControler implements Initializable{
     @FXML
@@ -29,7 +28,7 @@ public class SaidaListagemControler extends MenuControler implements Initializab
     @FXML
     private TableColumn<Saida, String> saida_observacoes;
     
-    ObservableList<Reserva> lista = FXCollections.observableArrayList();
+    ObservableList<Saida> lista = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

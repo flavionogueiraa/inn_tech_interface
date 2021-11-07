@@ -94,8 +94,15 @@ public class Saida {
 		Saida.totalSaidas += this.valor;
 	}
 
-	public static void cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes) {
-		new Saida(valor, dataCriacao, motivo, observacoes);
+	public static Saida cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes) {
+		Saida nova_saida = new Saida(valor, dataCriacao, motivo, observacoes);
+		ConfigArquivoSaidas.atualizaSaida();
+		
+		return nova_saida;
+	}
+	
+	public void deletaSaida() {
+		Saida.saidas.remove(this);
 		ConfigArquivoSaidas.atualizaSaida();
 	}
 
