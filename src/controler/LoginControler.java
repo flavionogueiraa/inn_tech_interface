@@ -27,7 +27,7 @@ public class LoginControler {
 
 			mensagem_erro.setText("");
 
-			MainInterface.trocaTela("menu");
+			MainInterface.trocaTela("home");
 		} else {
 			mensagem_erro.setText("Informações incorretas!");
 		}

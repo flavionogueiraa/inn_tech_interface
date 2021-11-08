@@ -3,6 +3,7 @@ package financeiro;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 import arquivo.ConfigArquivoEntradas;
@@ -100,5 +101,18 @@ public class Entrada {
 		} else {
 			System.out.println("ID inválido");
 		}
+	}
+	
+	public static Hashtable<String, Double> entradasMes() {
+		Hashtable<String, Double> entradasMes = new Hashtable<String, Double>();
+
+		entradasMes.put("05/21", 503.0);
+		entradasMes.put("06/21", 270.0);
+		entradasMes.put("07/21", 400.0);
+		entradasMes.put("08/21", 750.0);
+		entradasMes.put("09/21", 680.0);
+		entradasMes.put("10/21", 720.0);
+		
+		return entradasMes;
 	}
 }

@@ -35,6 +35,11 @@ public class MenuControler {
 	}
 
 	@FXML
+	void home(ActionEvent event) {
+		MainInterface.trocaTela("home");
+	}
+
+	@FXML
 	void sair(ActionEvent event) {
 		MainInterface.trocaTela("login");
 	}

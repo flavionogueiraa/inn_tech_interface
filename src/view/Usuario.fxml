@@ -30,6 +30,11 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
+            <Menu mnemonicParsing="false" text="Início">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#home" text="Tela inicial" />
+               </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Usuários">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#usuario" text="Todos os usuários" />

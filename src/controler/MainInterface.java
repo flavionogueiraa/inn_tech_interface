@@ -12,7 +12,7 @@ public class MainInterface extends Application {
 	private static Stage stage;
 
 	private static Scene cenaLogin;
-	private static Scene cenaMenu;
+	private static Scene cenaHome;
 
 	private static Scene cenaUsuario;
 
@@ -55,8 +55,8 @@ public class MainInterface extends Application {
 			stage.setScene(cenaLogin);
 			break;
 
-		case "menu":
-			stage.setScene(cenaMenu);
+		case "home":
+			stage.setScene(cenaHome);
 			break;
 
 		case "usuario":
@@ -94,8 +94,8 @@ public class MainInterface extends Application {
 	}
 
 	private void carregaTelasMenu() throws Exception {
-		Parent FXMLMenu = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
-		cenaMenu = new Scene(FXMLMenu);
+		Parent FXMLHome = FXMLLoader.load(getClass().getResource("/view/Home.fxml"));
+		cenaHome = new Scene(FXMLHome);
 	}
 
 	private void carregaTelasUsuario() throws Exception {
