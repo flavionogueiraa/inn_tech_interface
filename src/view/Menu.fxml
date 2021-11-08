@@ -7,10 +7,15 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MenuControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.HomeControler">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
+            <Menu mnemonicParsing="false" text="Início">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#home" text="Tela inicial" />
+               </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Usuários">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#usuario" text="Todos os usuários" />
