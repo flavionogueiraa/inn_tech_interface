@@ -17,6 +17,8 @@ public class MainInterface extends Application {
 	private static Scene cenaUsuario;
 
 	private static Scene cenaReserva;
+
+	private static Scene cenaQuarto;
 	
 	private static Scene cenaSaida;
 
@@ -35,6 +37,7 @@ public class MainInterface extends Application {
 		carregaTelasMenu();
 		carregaTelasUsuario();
 		carregaTelasReserva();
+		carregaTelasQuarto();
 		carregaTelasCaixa();
 		carregaTelasRelatorio();
 		carregaTelasSaida();
@@ -65,6 +68,10 @@ public class MainInterface extends Application {
 
 		case "reserva":
 			stage.setScene(cenaReserva);
+			break;
+
+		case "quarto":
+			stage.setScene(cenaQuarto);
 			break;
 			
 		case "saida":
@@ -106,6 +113,11 @@ public class MainInterface extends Application {
 	private void carregaTelasReserva() throws Exception {
 		Parent FXMLReserva = FXMLLoader.load(getClass().getResource("/view/Reserva.fxml"));
 		cenaReserva = new Scene(FXMLReserva);
+	}
+
+	private void carregaTelasQuarto() throws Exception {
+		Parent FXMLQuarto = FXMLLoader.load(getClass().getResource("/view/Quarto.fxml"));
+		cenaQuarto = new Scene(FXMLQuarto);
 	}
 
 	private void carregaTelasCaixa() throws Exception {

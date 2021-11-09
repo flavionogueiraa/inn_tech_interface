@@ -40,6 +40,11 @@ public class MenuControler {
 	}
 
 	@FXML
+	void quarto(ActionEvent event) {
+		MainInterface.trocaTela("quarto");
+	}
+
+	@FXML
 	void sair(ActionEvent event) {
 		MainInterface.trocaTela("login");
 	}
