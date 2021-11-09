@@ -19,75 +19,83 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class SaidaControler extends MenuControler implements Initializable{
+public class SaidaControler extends MenuControler implements Initializable {
 	@FXML
-    private TableView<Saida> tabela_saidas;
+	private TableView<Saida> tabela_saidas;
 
-    @FXML
-    private TableColumn<Saida, String> saida_motivo;
-
-    @FXML
-    private TableColumn<Saida, String> saida_valor;
-    
 	@FXML
-    private TableColumn<Saida, String> saida_data_hora;
+	private TableColumn<Saida, String> saida_motivo;
 
-    @FXML
-    private TableColumn<Saida, String> saida_observacoes;
-
-    @FXML
-    private TextField campo_motivo;
-
-    @FXML
-    private TextField campo_valor;
-	
 	@FXML
-    private TextField campo_data_hora_criacao;
+	private TableColumn<Saida, String> saida_valor;
 
-    @FXML
-    private TextArea campo_observacoes;
+	@FXML
+	private TableColumn<Saida, String> saida_data_hora;
 
-    @FXML
-    private Label label_erro;
-    
-    ObservableList<Saida> lista = FXCollections.observableArrayList();
-    
-    private void limparCampos() {
-    	campo_motivo.clear();
+	@FXML
+	private TableColumn<Saida, String> saida_observacoes;
+
+	@FXML
+	private TextField campo_motivo;
+
+	@FXML
+	private TextField campo_valor;
+
+	@FXML
+	private TextField campo_data_hora_criacao;
+
+	@FXML
+	private TextArea campo_observacoes;
+
+	@FXML
+	private Label label_erro;
+
+	ObservableList<Saida> lista = FXCollections.observableArrayList();
+
+	private void limparCampos() {
+		campo_motivo.clear();
 		campo_valor.clear();
 		campo_data_hora_criacao.clear();
 		campo_observacoes.clear();
 	}
-    
-//    private boolean validarCampos(String motivo, String valor, String dataCriacao) {
-//		if (motivo.isEmpty() || valor.isEmpty() || dataCriacao.isEmpty()) {
-//			return false;
-//		}
-//		return true;
-//	}
-    
-    @FXML
-    void cadastrarSaida(ActionEvent event) {
-    	label_erro.setText("");
-    	Date dataCriacao = null;
-    	try {
+
+	private boolean validarCampos(String motivo, String valor) {
+		if (motivo.isEmpty() || valor.isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+
+	@FXML
+	void cadastrarSaida(ActionEvent event) {
+		label_erro.setText("");
+		Date dataCriacao = null;
+		try {
 			dataCriacao = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_criacao.getText());
 		} catch (ParseException e) {
-			
+			label_erro.setText("Data e hora inválidas!");
 			System.err.println("Data e hora inválidas!");
 		}
-    	
-    	Double valor = Double.parseDouble(campo_valor.getText());
-    	String motivo = campo_motivo.getText();
-    	String observacoes = campo_observacoes.getText();
-    	Saida.cadastraSaidaInterface(valor, dataCriacao, motivo, observacoes);
-    	
-    	Saida nova_saida = Saida.cadastraSaidaInterface(valor, dataCriacao, motivo, observacoes);
-		tabela_saidas.getItems().add(nova_saida);
-		limparCampos();
-    }
-    
-    @FXML
+
+		if (dataCriacao != null) {
+			String motivo = campo_motivo.getText();
+			String valor = campo_valor.getText();
+			String observacoes = campo_observacoes.getText();
+			if (observacoes.isEmpty()) {
+				observacoes = "-";
+			}
+
+			if (validarCampos(motivo, valor)) {
+				Saida nova_saida = Saida.cadastraSaidaInterface(Double.parseDouble(valor), dataCriacao, motivo, observacoes);
+				tabela_saidas.getItems().add(nova_saida);
+				limparCampos();
+			} else {
+				label_erro.setText("Preencha todos os campos que contém um '*'");
+			}
+		}
+	}
+
+	@FXML
 	void editarSaida(ActionEvent event) {
 		label_erro.setText("");
 		try {
@@ -97,11 +105,11 @@ public class SaidaControler extends MenuControler implements Initializable{
 			campo_data_hora_criacao.setText(saida.getDataCriacaoFormatada());
 			campo_observacoes.setText(saida.getObservacoes());
 		} catch (Exception error) {
-			label_erro.setText("Nenhuma reserva selecionada");
+			label_erro.setText("Nenhuma saída selecionada");
 		}
 	}
-    
-    @FXML
+
+	@FXML
 	void salvarEdicaoSaida(ActionEvent event) {
 		Saida saida = tabela_saidas.getSelectionModel().getSelectedItem();
 		Date dataCriacao = null;
@@ -111,8 +119,8 @@ public class SaidaControler extends MenuControler implements Initializable{
 			System.err.println("Data e hora de chegada inválidas!");
 		}
 		Double valor = Double.parseDouble(campo_valor.getText());
-    	String motivo = campo_motivo.getText();
-    	String observacoes = campo_observacoes.getText();
+		String motivo = campo_motivo.getText();
+		String observacoes = campo_observacoes.getText();
 
 		saida.setMotivo(motivo);
 		saida.setValor(valor);
@@ -122,12 +130,17 @@ public class SaidaControler extends MenuControler implements Initializable{
 		tabela_saidas.refresh();
 		limparCampos();
 	}
-    
-    @FXML
+
+	@FXML
 	void excluirSaida(ActionEvent event) {
-    	Saida saida = tabela_saidas.getSelectionModel().getSelectedItem();
-		tabela_saidas.getItems().remove(saida);
-		saida.deletaSaida();
+		label_erro.setText("");
+		try {
+			Saida saida = tabela_saidas.getSelectionModel().getSelectedItem();
+			tabela_saidas.getItems().remove(saida);
+			saida.deletaSaida();
+		} catch (Exception error) {
+			label_erro.setText("Nenhuma saída selecionada");
+		}
 	}
 
 	@Override
@@ -138,7 +151,7 @@ public class SaidaControler extends MenuControler implements Initializable{
 		saida_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
 
 		tabela_saidas.getItems().addAll(Saida.saidas);
-		
+
 	}
-    
+
 }
