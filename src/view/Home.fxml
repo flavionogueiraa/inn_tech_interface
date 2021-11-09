@@ -8,7 +8,9 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -67,16 +69,15 @@
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="598.0000305175781" minWidth="10.0" prefWidth="590.0000305175781" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.20001220703125" minWidth="10.0" prefWidth="309.9999694824219" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="190.59998168945313" minHeight="10.0" prefHeight="72.60000762939453" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="278.1999923706054" minHeight="10.0" prefHeight="216.79999389648435" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="296.80002441406253" minHeight="10.0" prefHeight="296.00000610351566" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <BarChart fx:id="grafico_entradas_saidas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <BarChart fx:id="grafico_entradas_saidas" prefHeight="295.0" prefWidth="900.0" GridPane.rowIndex="2">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -84,28 +85,25 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Últimas entradas">
-                     <GridPane.margin>
-                        <Insets top="10.0" />
-                     </GridPane.margin>
-                  </Text>
-                  <Text layoutX="43.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Últimas saídas" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets top="10.0" />
-                     </GridPane.margin>
-                  </Text>
-               </children>
-            </GridPane>
+            <SplitPane dividerPositions="0.5033392698130008" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="1">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Text layoutX="187.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor do caixa" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Text layoutX="169.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Receitas e despesas" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo a Inn Tech" />
          </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
       </GridPane>
    </center>
 </BorderPane>
