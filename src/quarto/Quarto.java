@@ -30,7 +30,7 @@ public class Quarto {
 		this.ocupado = ocupado;
 	}
 
-	public int getCapacidade() {
+	public Integer getCapacidade() {
 		return capacidade;
 	}
 
