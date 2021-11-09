@@ -39,15 +39,15 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#usuario" text="Todos os usuários" />
                </items></Menu>
-            <Menu mnemonicParsing="false" text="Quartos">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#quarto" text="Todos os quartos" />
-              </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="Reservas">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#reserva" text="Todas as reservas" />
                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Quartos">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#quarto" text="Todos os quartos" />
+              </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Caixa">
                <items>
