@@ -76,7 +76,7 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionalidades das reservas">
                <font>
-                  <Font size="26.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <GridPane.margin>
                   <Insets left="10.0" />
