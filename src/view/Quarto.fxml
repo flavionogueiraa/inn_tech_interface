@@ -91,8 +91,8 @@
                <columns>
                   <TableColumn fx:id="quarto_numero" minWidth="100.0" prefWidth="184.8000122308731" text="Número" />
                   <TableColumn fx:id="quarto_capacidade" minWidth="77.60000610351562" prefWidth="116.79998779296875" text="Capacidade" />
-                  <TableColumn fx:id="quarto_descricao" prefWidth="144.79998779296875" text="Descrição" />
-                  <TableColumn fx:id="quarto_ocupado" minWidth="61.60003662109375" prefWidth="194.40005493164062" text="Ocupado" />
+                  <TableColumn fx:id="quarto_descricao" prefWidth="239.20004272460938" text="Descrição" />
+                  <TableColumn fx:id="quarto_ocupado" minWidth="61.60003662109375" prefWidth="129.5999755859375" text="Ocupado" />
                </columns>
             </TableView>
             <GridPane GridPane.rowIndex="2">
@@ -102,9 +102,9 @@
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="442.79998779296875" minWidth="10.0" prefWidth="172.39997558593745" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="133.20001831054688" minHeight="10.0" prefHeight="60.2" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="133.20001831054688" minHeight="10.0" prefHeight="60.2" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="93.99998321533204" minHeight="10.0" prefHeight="39.400000000000006" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -124,12 +124,12 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextArea fx:id="campo_descricao" prefHeight="200.0" prefWidth="200.0" promptText="Descrição*" GridPane.rowIndex="1">
+                  <TextArea fx:id="campo_descricao" promptText="Descrição*" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="10.0" right="70.0" />
+                        <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextArea>
                   <Button mnemonicParsing="false" onAction="#cadastrarQuarto" prefWidth="70.0" text="Cadastrar" GridPane.columnIndex="2" />
