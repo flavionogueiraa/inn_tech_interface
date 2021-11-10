@@ -30,11 +30,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#quarto" text="Todos os quartos" />
                </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="Caixa">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#caixaVisualizar" text="Visualizar" />
-            </items>
-          </Menu>
             <Menu mnemonicParsing="false" text="Relatórios">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#relatorioEntradas" text="Entradas" />
