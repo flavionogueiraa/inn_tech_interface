@@ -1,6 +1,3 @@
-Flávio	300.0	20/11/2021 13:04	null	NenhumaDenovo	true	2
-Novo hóspede	150.0	10/10/2021 12:45	null	Nenhuma observação	false	2
-Teste	500.0	20/12/2021 12:14	null		false	2
 Testando de novo	150.0	01/10/2021 19:50	null		false	2
 Flávio teste	150.0	12/12/2021 12:12	null		false	17
 Irirneu	150.0	14/12/2021 15:00	null	Testando validação	false	5
