@@ -46,7 +46,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 	private TableColumn<Reserva, String> reserva_quarto;
 
 	@FXML
-	private TableColumn<Reserva, Boolean> reserva_pago;
+	private TableColumn<Reserva, String> reserva_pago;
 
 	@FXML
 	private TextField campo_nome_hospede;
@@ -226,7 +226,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		reserva_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
 		reserva_quarto.setCellValueFactory(
 				data -> new SimpleStringProperty(data.getValue().getQuarto().getNumero().toString()));
-		reserva_pago.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isPago()));
+		reserva_pago.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isPagoSimNao()));
 
 		setaQuartosDisponiveis();
 
