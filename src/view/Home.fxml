@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -92,14 +91,6 @@
                   <Insets left="30.0" />
                </GridPane.margin>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Caixa" textAlignment="CENTER" wrappingWidth="220.89453125" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets left="100.0" right="200.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold Italic" size="50.0" />
-               </font>
-            </Text>
             <Text fill="#0534b5" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo!" wrappingWidth="284.52471923828125" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <font>
                   <Font name="Consolas Bold Italic" size="50.0" />
@@ -108,22 +99,49 @@
                   <Insets left="300.0" top="100.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="#0534b5" nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" text="Inn Tech Pousada Digital" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Text fill="#0534b5" nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" text="Inn Tech" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="100.0" right="50.0" top="170.0" />
+                  <Insets bottom="100.0" right="220.0" top="170.0" />
                </GridPane.margin>
                <font>
                   <Font name="Consolas Italic" size="36.0" />
                </font>
             </Text>
-            <TextField prefHeight="83.0" prefWidth="812.0" text="R$: " GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="350.0" right="50.0" />
-               </GridPane.margin>
+            <Text fill="#0534b5" strokeType="OUTSIDE" strokeWidth="0.0" text="Sua Pousada Digital" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
-                  <Font size="40.0" />
+                  <Font name="Consolas Italic" size="36.0" />
                </font>
-            </TextField>
+               <GridPane.margin>
+                  <Insets left="270.0" top="200.0" />
+               </GridPane.margin>
+            </Text>
+            <GridPane GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.199951171875" minWidth="10.0" prefWidth="400.6000244140625" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="564.0" minWidth="10.0" prefWidth="478.19997558593747" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Caixa:" textAlignment="CENTER" wrappingWidth="150.4945673942566" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="50.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="valor_caixa" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="259.2944885492325" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold Italic" size="50.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+               </children>
+            </GridPane>
          </children>
          <padding>
             <Insets left="10.0" right="10.0" />
