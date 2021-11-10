@@ -42,7 +42,7 @@ public class QuartoControler extends MenuControler implements Initializable {
 	private TableColumn<Quarto, String> quarto_descricao;
 
 	@FXML
-	private TableColumn<Quarto, Boolean> quarto_ocupado;
+	private TableColumn<Quarto, String> quarto_ocupado;
 	
 	private void limparCampos() {
 		campo_numero.clear();
@@ -144,7 +144,7 @@ public class QuartoControler extends MenuControler implements Initializable {
 		quarto_numero.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNumero().toString()));
 		quarto_capacidade.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCapacidade().toString()));
 		quarto_descricao.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDescricao()));
-		quarto_ocupado.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isOcupado()));
+		quarto_ocupado.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isOcupadoSimNao()));
 
 		tabela_quartos.getItems().addAll(Quarto.quartos);
 	}
