@@ -54,6 +54,19 @@ public class QuartoControler extends MenuControler implements Initializable {
 		if (numero.isEmpty() || capacidade.isEmpty() || descricao.isEmpty()) {
 			return false;
 		}
+		
+		try {
+			Integer.parseInt(numero);
+		} catch (Exception error) {
+			return false;
+		}
+
+		try {
+			Integer.parseInt(capacidade);
+		} catch (Exception error) {
+			return false;
+		}
+		
 		return true;
 	}
 
@@ -73,7 +86,7 @@ public class QuartoControler extends MenuControler implements Initializable {
 				label_erro.setText("Quarto já existente!");
 			}
 		} else {
-			label_erro.setText("Preencha todos os campos!");
+			label_erro.setText("Campos inválidos!");
 		}
 	}
 
