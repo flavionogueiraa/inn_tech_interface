@@ -30,7 +30,7 @@ public class Quarto {
 		this.ocupado = ocupado;
 	}
 
-	public int getCapacidade() {
+	public Integer getCapacidade() {
 		return capacidade;
 	}
 
@@ -63,6 +63,13 @@ public class Quarto {
 		this.descricao = descricao;
 		this.ocupado = ocupado;
 		quartos.add(this);
+	}
+	
+	public static Quarto cadastraQuartoInterface(int numero, int capacidade, String descricao) {
+		Quarto novo_quarto = new Quarto(numero, capacidade, descricao, false);
+		ConfigArquivoQuartos.atualizaQuartos();
+		
+		return novo_quarto;
 	}
 
 	public static void listaQuartos() {
@@ -155,5 +162,10 @@ public class Quarto {
 			quartosDisponiveis = "Nenhum";
 		}
 		return quartosDisponiveis;
+	}
+	
+	public void deletaQuarto() {
+		Quarto.quartos.remove(this);
+		ConfigArquivoQuartos.atualizaQuartos();
 	}
 }
