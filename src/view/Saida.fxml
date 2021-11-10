@@ -75,13 +75,13 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionalidades de saídas">
                <font>
-                  <Font size="26.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <TableView fx:id="tabela_saidas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TableView fx:id="tabela_saidas" prefHeight="356.0" prefWidth="900.0" GridPane.rowIndex="1">
                <columns>
                   <TableColumn fx:id="saida_motivo" minWidth="100.0" prefWidth="184.8000122308731" text="Motivo" />
                   <TableColumn fx:id="saida_valor" minWidth="77.60000610351562" prefWidth="116.79998779296875" text="Valor" />
@@ -96,9 +96,9 @@
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="442.79998779296875" minWidth="10.0" prefWidth="172.39997558593745" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="133.20001831054688" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="133.20001831054688" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="93.99998321533204" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="133.20001831054688" minHeight="10.0" prefHeight="51.79998779296875" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="133.20001831054688" minHeight="10.0" prefHeight="69.40001220703125" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="93.99998321533204" minHeight="10.0" prefHeight="29.199981689453125" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
