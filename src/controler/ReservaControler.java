@@ -91,7 +91,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		}
 		return true;
 	}
-	
+
 	private void setaQuartosDisponiveis() {
 		label_quartos_disponiveis.setText("Quartos disponíveis: " + Quarto.quartosDisponiveis());
 	}
@@ -112,12 +112,16 @@ public class ReservaControler extends MenuControler implements Initializable {
 					String hospede = campo_nome_hospede.getText();
 					String observacoes = campo_observacoes.getText();
 					Boolean pago = campo_pago.isSelected();
-					Double valor = Double.parseDouble(campo_valor.getText());
-
-					Reserva nova_reserva = Reserva.cadastraReservaInterface(hospede, valor, dataChegada, null, observacoes, pago, quarto);
-					tabela_reservas.getItems().add(nova_reserva);
-					limparCampos();
-					setaQuartosDisponiveis();
+					try {
+						Double valor = Double.parseDouble(campo_valor.getText());
+						Reserva nova_reserva = Reserva.cadastraReservaInterface(hospede, valor, dataChegada, null,
+								observacoes, pago, quarto);
+						tabela_reservas.getItems().add(nova_reserva);
+						limparCampos();
+						setaQuartosDisponiveis();
+					} catch (Exception error) {
+						label_erro.setText("Campo Invalido, digite o valor novamente!");
+					}
 				} else {
 					label_erro.setText("Informe um quarto válido");
 				}
@@ -190,12 +194,15 @@ public class ReservaControler extends MenuControler implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		reserva_hospede.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getHospede()));
 		reserva_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
-		reserva_data_hora_chegada.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataChegadaFormatada()));
-		reserva_data_hora_saida.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataSaidaFormatada()));
+		reserva_data_hora_chegada
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataChegadaFormatada()));
+		reserva_data_hora_saida
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataSaidaFormatada()));
 		reserva_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
-		reserva_quarto.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getQuarto().getNumero().toString()));
+		reserva_quarto.setCellValueFactory(
+				data -> new SimpleStringProperty(data.getValue().getQuarto().getNumero().toString()));
 		reserva_pago.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isPago()));
-		
+
 		setaQuartosDisponiveis();
 
 		tabela_reservas.getItems().addAll(Reserva.reservas);

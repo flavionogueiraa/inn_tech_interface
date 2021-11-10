@@ -11,7 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
-import javafx.scene.chart.XYChart.Series;
+//import javafx.scene.chart.XYChart.Series;
 
 public class HomeControler extends MenuControler implements Initializable {
 	@FXML
@@ -31,17 +31,17 @@ public class HomeControler extends MenuControler implements Initializable {
 
 		}
 		
-		XYChart.Series<String, Double> saidas = new Series<String, Double>();
-		saidas.setName("Saídas");
-		saidas.getData().add(new Data<String, Double>("05/21", 200.0));
-		saidas.getData().add(new Data<String, Double>("06/21", 350.0));
-		saidas.getData().add(new Data<String, Double>("07/21", 360.0));
-		saidas.getData().add(new Data<String, Double>("07/21", 400.0));
-		saidas.getData().add(new Data<String, Double>("08/21", 690.0));
-		saidas.getData().add(new Data<String, Double>("09/21", 600.0));
-		saidas.getData().add(new Data<String, Double>("10/21", 580.0));
-		
-		grafico_entradas_saidas.getData().add(entradas);
-		grafico_entradas_saidas.getData().add(saidas);
+//		XYChart.Series<String, Double> saidas = new Series<String, Double>();
+//		saidas.setName("Saídas");
+//		saidas.getData().add(new Data<String, Double>("05/21", 200.0));
+//		saidas.getData().add(new Data<String, Double>("06/21", 350.0));
+//		saidas.getData().add(new Data<String, Double>("07/21", 360.0));
+//		saidas.getData().add(new Data<String, Double>("07/21", 400.0));
+//		saidas.getData().add(new Data<String, Double>("08/21", 690.0));
+//		saidas.getData().add(new Data<String, Double>("09/21", 600.0));
+//		saidas.getData().add(new Data<String, Double>("10/21", 580.0));
+//		
+//		grafico_entradas_saidas.getData().add(entradas);
+//		grafico_entradas_saidas.getData().add(saidas);
 	}
 }
