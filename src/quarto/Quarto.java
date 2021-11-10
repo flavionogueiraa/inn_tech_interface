@@ -25,10 +25,18 @@ public class Quarto {
 	public boolean isOcupado() {
 		return ocupado;
 	}
+	public String isOcupadoSimNao() {
+		if(this.isOcupado()) {
+			return "Sim";
+		}else {
+			return "Não";
+		}
+	}
 
 	public void setOcupado(boolean ocupado) {
 		this.ocupado = ocupado;
 	}
+	
 
 	public Integer getCapacidade() {
 		return capacidade;
