@@ -47,7 +47,14 @@ public class Usuario {
 	public void setProprietario(boolean proprietario) {
 		this.proprietario = proprietario;
 	}
-
+	
+	public String isProprietarioSimNao() {
+		if(isProprietario()){
+			return "Sim";
+		}else {
+			return "Não";
+		}
+	}
 	public Usuario(Scanner sc) {
 		super();
 		System.out.println("Nome:");
