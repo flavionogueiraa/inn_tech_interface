@@ -3,7 +3,7 @@ package controler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.SimpleBooleanProperty;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
