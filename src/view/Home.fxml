@@ -22,7 +22,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.HomeControler">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar pickOnBounds="false">
         <menus>
             <Menu mnemonicParsing="false" text="Início">
                <items>
@@ -60,6 +60,12 @@
                </items>
             </Menu>
         </menus>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="6.0" top="6.0" />
+         </padding>
       </MenuBar>
    </top>
    <bottom>
