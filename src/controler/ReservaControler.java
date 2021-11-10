@@ -80,13 +80,26 @@ public class ReservaControler extends MenuControler implements Initializable {
 		campo_nome_hospede.clear();
 		campo_valor.clear();
 		campo_data_hora_chegada.clear();
+		campo_data_hora_saida.clear();
 		campo_quarto.clear();
 		campo_observacoes.clear();
 		campo_pago.setSelected(false);
 	}
 
-	private boolean validarCampos(String hospede, String valor, String quarto) {
-		if (hospede.isEmpty() || valor.isEmpty() || quarto.isEmpty()) {
+	private boolean validarCampos(String hospede, String quarto, String valor) {
+		if (hospede.isEmpty() || quarto.isEmpty() || valor.isEmpty()) {
+			return false;
+		}
+
+		try {
+			Integer.parseInt(quarto);
+		} catch (Exception error) {
+			return false;
+		}
+
+		try {
+			Double.parseDouble(valor);
+		} catch (Exception error) {
 			return false;
 		}
 		return true;
@@ -110,23 +123,23 @@ public class ReservaControler extends MenuControler implements Initializable {
 				Quarto quarto = Quarto.getQuartoDisponivel(Integer.parseInt(campo_quarto.getText()));
 				if (quarto != null) {
 					String hospede = campo_nome_hospede.getText();
-					String observacoes = campo_observacoes.getText();
 					Boolean pago = campo_pago.isSelected();
-					try {
-						Double valor = Double.parseDouble(campo_valor.getText());
-						Reserva nova_reserva = Reserva.cadastraReservaInterface(hospede, valor, dataChegada, null,
-								observacoes, pago, quarto);
-						tabela_reservas.getItems().add(nova_reserva);
-						limparCampos();
-						setaQuartosDisponiveis();
-					} catch (Exception error) {
-						label_erro.setText("Campo Invalido, digite o valor novamente!");
+					Double valor = Double.parseDouble(campo_valor.getText());
+					String observacoes = campo_observacoes.getText();
+					if (observacoes.isEmpty()) {
+						observacoes = "-";
 					}
+
+					Reserva nova_reserva = Reserva.cadastraReservaInterface(hospede, valor, dataChegada, null,
+							observacoes, pago, quarto);
+					tabela_reservas.getItems().add(nova_reserva);
+					limparCampos();
+					setaQuartosDisponiveis();
 				} else {
 					label_erro.setText("Informe um quarto válido");
 				}
 			} else {
-				label_erro.setText("Preencha todos os campos que contém um '*'");
+				label_erro.setText("Campos inválidos!");
 			}
 		} else {
 			label_erro.setText("Data e hora de chegada inválidas!");
@@ -153,34 +166,38 @@ public class ReservaControler extends MenuControler implements Initializable {
 	@FXML
 	void salvarEdicaoReserva(ActionEvent event) {
 		Reserva reserva = tabela_reservas.getSelectionModel().getSelectedItem();
-		Date dataChegada = null;
-		try {
-			dataChegada = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
-		} catch (ParseException e) {
-			System.err.println("Data e hora de chegada inválidas!");
-		}
-		Date dataSaida = null;
-		try {
-			dataSaida = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_saida.getText());
-		} catch (ParseException e) {
-			System.err.println("Data e hora de saída inválidas!");
-		}
-		String nomeHospede = campo_nome_hospede.getText();
-		String observacoes = campo_observacoes.getText();
-		Boolean pago = campo_pago.isSelected();
-		Quarto quarto = Quarto.getQuarto(Integer.parseInt(campo_quarto.getText()));
-		Double valor = Double.parseDouble(campo_valor.getText());
+		if (reserva != null) {
+			Date dataChegada = null;
+			try {
+				dataChegada = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
+			} catch (ParseException e) {
+				System.err.println("Data e hora de chegada inválidas!");
+			}
+			Date dataSaida = null;
+			try {
+				dataSaida = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_saida.getText());
+			} catch (ParseException e) {
+				System.err.println("Data e hora de saída inválidas!");
+			}
+			String nomeHospede = campo_nome_hospede.getText();
+			String observacoes = campo_observacoes.getText();
+			Boolean pago = campo_pago.isSelected();
+			Quarto quarto = Quarto.getQuarto(Integer.parseInt(campo_quarto.getText()));
+			Double valor = Double.parseDouble(campo_valor.getText());
 
-		reserva.setHospede(nomeHospede);
-		reserva.setValor(valor);
-		reserva.setDataChegada(dataChegada);
-		reserva.setDataSaida(dataSaida);
-		reserva.setObservacoes(observacoes);
-		reserva.setQuarto(quarto);
-		reserva.setPago(pago);
+			reserva.setHospede(nomeHospede);
+			reserva.setValor(valor);
+			reserva.setDataChegada(dataChegada);
+			reserva.setDataSaida(dataSaida);
+			reserva.setObservacoes(observacoes);
+			reserva.setQuarto(quarto);
+			reserva.setPago(pago);
 
-		tabela_reservas.refresh();
-		limparCampos();
+			tabela_reservas.refresh();
+			limparCampos();
+		} else {
+			label_erro.setText("Nenhuma reserva selecionada");
+		}
 	}
 
 	@FXML
