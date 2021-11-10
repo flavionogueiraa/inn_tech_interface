@@ -3,6 +3,7 @@ package financeiro;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import arquivo.ConfigArquivoSaidas;
@@ -97,10 +98,10 @@ public class Saida {
 	public static Saida cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes) {
 		Saida nova_saida = new Saida(valor, dataCriacao, motivo, observacoes);
 		ConfigArquivoSaidas.atualizaSaida();
-		
+
 		return nova_saida;
 	}
-	
+
 	public void deletaSaida() {
 		Saida.saidas.remove(this);
 		ConfigArquivoSaidas.atualizaSaida();
@@ -175,5 +176,30 @@ public class Saida {
 		} else {
 			System.out.println("ID inválido");
 		}
+	}
+
+	public static double totalSaidaMes(int mes) {
+		double totalSaidaMes = 0;
+		for (Saida saida : Saida.saidas) {
+			String[] data = saida.getDataCriacaoFormatada().split("/");
+			int mesEntrada = Integer.parseInt(data[1]);
+			if (mesEntrada == mes) {
+				totalSaidaMes += saida.getValor();
+			}
+		}
+
+		return totalSaidaMes;
+	}
+
+	@SuppressWarnings("deprecation")
+	public static LinkedHashMap<String, Double> saidasMes() {
+		LinkedHashMap<String, Double> saidasMes = new LinkedHashMap<String, Double>();
+		int mes = new Date().getMonth() + 1;
+
+		for (int i = mes - 10; i <= mes; i++) {
+			double totalMes = Saida.totalSaidaMes(i);
+			saidasMes.put((i + "/21"), totalMes);
+		}
+		return saidasMes;
 	}
 }

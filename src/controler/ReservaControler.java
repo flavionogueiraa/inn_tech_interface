@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import financeiro.Entrada;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -191,7 +192,14 @@ public class ReservaControler extends MenuControler implements Initializable {
 			reserva.setDataSaida(dataSaida);
 			reserva.setObservacoes(observacoes);
 			reserva.setQuarto(quarto);
-			reserva.setPago(pago);
+			if (!reserva.isPago()) {
+				reserva.setPago(pago);
+				if (reserva.isPago()) {
+					new Entrada(valor, dataChegada, "Reserva do quarto " + quarto.getNumero(), true);
+				}
+			} else {
+				label_erro.setText("A reserva já foi paga!");
+			}
 
 			tabela_reservas.refresh();
 			limparCampos();

@@ -155,11 +155,14 @@ public class Reserva {
 			String observacoes, boolean pago, Quarto quarto) {
 		Reserva nova_reserva = new Reserva(hospede, valor, dataChegada, null, observacoes, pago, quarto);
 		ConfigArquivoReservas.atualizaReservas();
-		
+
 		nova_reserva.quarto.setOcupado(true);
+		if (nova_reserva.isPago()) {
+			new Entrada(valor, dataChegada, "Reserva do quarto " + quarto.getNumero(), true);
+		}
 		return nova_reserva;
 	}
-	
+
 	public void deletaReserva() {
 		Reserva.reservas.remove(this);
 		ConfigArquivoReservas.atualizaReservas();

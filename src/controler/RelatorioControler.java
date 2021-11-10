@@ -1,7 +1,7 @@
 package controler;
 
 import java.net.URL;
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -56,36 +56,33 @@ public class RelatorioControler extends MenuControler implements Initializable {
 		entrada_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		entrada_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
 		entrada_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
-
 		tabela_entradas.getItems().addAll(Entrada.entradas);
 
 		relatorio_saida_motivo.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMotivo()));
 		relatorio_saida_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		relatorio_saida_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
-
 		tabela_relatorio_saidas.getItems().addAll(Saida.saidas);
 
 		XYChart.Series<String, Double> entradas = new XYChart.Series<String, Double>();
 		entradas.setName("Entradas");
 
-		Hashtable<String, Double> entradasDicionario = Entrada.entradasMes();
-		Set<String> chaves = entradasDicionario.keySet();
-		for (String chave : chaves) {
+		LinkedHashMap<String, Double> entradasDicionario = Entrada.entradasMes();
+		Set<String> chavesEntradas = entradasDicionario.keySet();
+		for (String chave : chavesEntradas) {
 			if (chave != null) {
 				entradas.getData().add(new Data<String, Double>(chave, entradasDicionario.get(chave)));
 			}
-
 		}
-
 		XYChart.Series<String, Double> saidas = new Series<String, Double>();
 		saidas.setName("Saídas");
-		saidas.getData().add(new Data<String, Double>("05/21", 200.0));
-		saidas.getData().add(new Data<String, Double>("06/21", 350.0));
-		saidas.getData().add(new Data<String, Double>("07/21", 360.0));
-		saidas.getData().add(new Data<String, Double>("07/21", 400.0));
-		saidas.getData().add(new Data<String, Double>("08/21", 690.0));
-		saidas.getData().add(new Data<String, Double>("09/21", 600.0));
-		saidas.getData().add(new Data<String, Double>("10/21", 580.0));
+
+		LinkedHashMap<String, Double> saidasDicionario = Saida.saidasMes();
+		Set<String> chavesSaidas = saidasDicionario.keySet();
+		for (String chave : chavesSaidas) {
+			if (chave != null) {
+				saidas.getData().add(new Data<String, Double>(chave, saidasDicionario.get(chave)));
+			}
+		}
 
 		grafico_relatorio.getData().add(entradas);
 		grafico_relatorio.getData().add(saidas);
