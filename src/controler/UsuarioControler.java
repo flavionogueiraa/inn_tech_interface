@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import arquivo.ConfigArquivoUsuarios;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,7 +44,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 	private TableColumn<Usuario, String> senha_usuario;
 
 	@FXML
-	private TableColumn<Usuario, Boolean> proprietario_usuario;
+	private TableColumn<Usuario, String> proprietario_usuario;
 
 	@FXML
 	private Label label_erro;
@@ -150,7 +149,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		nome_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNome()));
 		cpf_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCPF()));
 		senha_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSenha()));
-		proprietario_usuario.setCellValueFactory(data -> new SimpleBooleanProperty(data.getValue().isProprietario()));
+		proprietario_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isProprietarioSimNao()));
 
 		tabela_usuarios.getItems().addAll(Usuario.usuarios);
 	}
