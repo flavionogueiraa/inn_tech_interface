@@ -3,7 +3,7 @@ package financeiro;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import arquivo.ConfigArquivoEntradas;
@@ -37,7 +37,7 @@ public class Entrada {
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
-	
+
 	public String getDataCriacaoFormatada() {
 		if (this.dataCriacao != null) {
 			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -102,17 +102,29 @@ public class Entrada {
 			System.out.println("ID inválido");
 		}
 	}
-	
-	public static Hashtable<String, Double> entradasMes() {
-		Hashtable<String, Double> entradasMes = new Hashtable<String, Double>();
 
-		entradasMes.put("05/21", 503.0);
-		entradasMes.put("06/21", 270.0);
-		entradasMes.put("07/21", 400.0);
-		entradasMes.put("08/21", 750.0);
-		entradasMes.put("09/21", 680.0);
-		entradasMes.put("10/21", 720.0);
-		
+	public static double totalEntradasMes(int mes) {
+		double totalEntradasMes = 0;
+		for (Entrada entrada : Entrada.entradas) {
+			String[] data = entrada.getDataCriacaoFormatada().split("/");
+			int mesEntrada = Integer.parseInt(data[1]);
+			if (mesEntrada == mes) {
+				totalEntradasMes += entrada.getValor();
+			}
+		}
+
+		return totalEntradasMes;
+	}
+
+	@SuppressWarnings("deprecation")
+	public static LinkedHashMap<String, Double> entradasMes() {
+		LinkedHashMap<String, Double> entradasMes = new LinkedHashMap<String, Double>();
+		int mes = new Date().getMonth() + 1;
+
+		for (int i = mes - 10; i <= mes; i++) {
+			double totalMes = Entrada.totalEntradasMes(i);
+			entradasMes.put((i + "/21"), totalMes);
+		}
 		return entradasMes;
 	}
 }
