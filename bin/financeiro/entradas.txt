@@ -1,11 +1,5 @@
 320	12/04/2025 14:00	Reserva do quarto 5
 120	07/10/2021 19:30	Reserva do quarto 3
 123	14/08/2025 14:58	Reserva do quarto 6
-100.0	10/09/2021 00:00	Reserva do quarto 3
-150.0	14/12/2021 15:00	Reserva do quarto 5
-150.0	14/12/2021 15:00	Reserva do quarto 5
-150.0	14/12/2021 15:00	Reserva do quarto 5
-150.0	14/12/2021 15:00	Reserva do quarto 5
-150.0	14/12/2021 15:00	Reserva do quarto 5
-150.0	14/12/2021 15:00	Reserva do quarto 5
-150.0	14/12/2021 15:00	Reserva do quarto 5
+100.0	10/09/2021 00:00	Reserva do quarto 1
+150.0	14/12/2021 15:00	Reserva do quarto 4
