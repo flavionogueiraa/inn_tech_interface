@@ -20,7 +20,8 @@ public class HomeControler extends MenuControler implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		valor_caixa.setText("R$ " + (Entrada.getTotalEntradas() - Saida.getTotalSaidas()));
+		Double valorCaixa = Entrada.getTotalEntradas() - Saida.getTotalSaidas();
+		valor_caixa.setText("R$ " + (valorCaixa) + "0");
 		
 		
 		XYChart.Series<String, Double> entradas = new XYChart.Series<String, Double>();

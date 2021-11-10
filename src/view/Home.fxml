@@ -118,12 +118,12 @@
                         <Font name="System Bold Italic" size="50.0" />
                      </font>
                   </Text>
-                  <Text fx:id="valor_caixa" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="259.2944885492325" GridPane.valignment="BOTTOM">
+                  <Text fx:id="valor_caixa" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="288.09447634220123" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Bold Italic" size="50.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets right="50.0" />
+                        <Insets right="60.0" />
                      </GridPane.margin>
                   </Text>
                </children>
