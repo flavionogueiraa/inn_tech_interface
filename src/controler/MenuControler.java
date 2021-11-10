@@ -2,41 +2,31 @@ package controler;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import usuario.Usuario;
 
 public class MenuControler {
 	@FXML
-	void caixaVisualizar(ActionEvent event) {
-		MainInterface.trocaTela("caixaVisualizar");
-	}
-
-	@FXML
-	void relatorioEntradas(ActionEvent event) {
-		MainInterface.trocaTela("relatorioEntradas");
-	}
-
-	@FXML
-	void relatorioSaidas(ActionEvent event) {
-		MainInterface.trocaTela("relatorioSaidas");
-	}
-	
-	@FXML
 	void relatorio(ActionEvent event) {
-		MainInterface.trocaTela("relatorio");
+		if (Usuario.usuarioLogado != null && Usuario.usuarioLogado.isProprietario()) {
+			MainInterface.trocaTela("relatorio");
+		}
 	}
 
 	@FXML
 	void reserva(ActionEvent event) {
 		MainInterface.trocaTela("reserva");
 	}
-	
+
 	@FXML
-    void saida(ActionEvent event) {
+	void saida(ActionEvent event) {
 		MainInterface.trocaTela("saida");
-    }
+	}
 
 	@FXML
 	void usuario(ActionEvent event) {
-		MainInterface.trocaTela("usuario");
+		if (Usuario.usuarioLogado != null && Usuario.usuarioLogado.isProprietario()) {
+			MainInterface.trocaTela("usuario");
+		}
 	}
 
 	@FXML
@@ -46,7 +36,9 @@ public class MenuControler {
 
 	@FXML
 	void quarto(ActionEvent event) {
-		MainInterface.trocaTela("quarto");
+		if (Usuario.usuarioLogado != null && Usuario.usuarioLogado.isProprietario()) {
+			MainInterface.trocaTela("quarto");
+		}
 	}
 
 	@FXML
