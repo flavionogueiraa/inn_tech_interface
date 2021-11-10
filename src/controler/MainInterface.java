@@ -22,10 +22,9 @@ public class MainInterface extends Application {
 	
 	private static Scene cenaSaida;
 
-	private static Scene cenaCaixaVisualizar;
-
 	private static Scene cenaRelatorioEntradas;
 	private static Scene cenaRelatorioSaidas;
+	private static Scene cenaRelatorio;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
@@ -38,7 +37,6 @@ public class MainInterface extends Application {
 		carregaTelasUsuario();
 		carregaTelasReserva();
 		carregaTelasQuarto();
-		carregaTelasCaixa();
 		carregaTelasRelatorio();
 		carregaTelasSaida();
 
@@ -78,16 +76,16 @@ public class MainInterface extends Application {
 			stage.setScene(cenaSaida);
 			break;
 
-		case "caixaVisualizar":
-			stage.setScene(cenaCaixaVisualizar);
-			break;
-
 		case "relatorioEntradas":
 			stage.setScene(cenaRelatorioEntradas);
 			break;
 
 		case "relatorioSaidas":
 			stage.setScene(cenaRelatorioSaidas);
+			break;
+
+		case "relatorio":
+			stage.setScene(cenaRelatorio);
 			break;
 
 		default:
@@ -120,17 +118,15 @@ public class MainInterface extends Application {
 		cenaQuarto = new Scene(FXMLQuarto);
 	}
 
-	private void carregaTelasCaixa() throws Exception {
-		Parent FXMLCaixaVisualiza = FXMLLoader.load(getClass().getResource("/view/CaixaVisualizar.fxml"));
-		cenaCaixaVisualizar = new Scene(FXMLCaixaVisualiza);
-	}
-
 	private void carregaTelasRelatorio() throws Exception {
 		Parent FXMLRelatorioEntradas = FXMLLoader.load(getClass().getResource("/view/RelatorioEntradas.fxml"));
 		cenaRelatorioEntradas = new Scene(FXMLRelatorioEntradas);
 
 		Parent FXMLRelatorioSaidas = FXMLLoader.load(getClass().getResource("/view/RelatorioSaidas.fxml"));
 		cenaRelatorioSaidas = new Scene(FXMLRelatorioSaidas);
+
+		Parent FXMLRelatorio = FXMLLoader.load(getClass().getResource("/view/Relatorio.fxml"));
+		cenaRelatorio= new Scene(FXMLRelatorio);
 	}
 
 	private void carregaTelasSaida() throws Exception {

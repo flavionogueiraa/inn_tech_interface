@@ -18,6 +18,11 @@ public class MenuControler {
 	void relatorioSaidas(ActionEvent event) {
 		MainInterface.trocaTela("relatorioSaidas");
 	}
+	
+	@FXML
+	void relatorio(ActionEvent event) {
+		MainInterface.trocaTela("relatorio");
+	}
 
 	@FXML
 	void reserva(ActionEvent event) {

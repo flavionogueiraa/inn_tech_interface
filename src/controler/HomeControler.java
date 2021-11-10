@@ -6,19 +6,24 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 import financeiro.Entrada;
+import financeiro.Saida;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
+import javafx.scene.text.Text;
 //import javafx.scene.chart.XYChart.Series;
 
 public class HomeControler extends MenuControler implements Initializable {
 	@FXML
-    private BarChart<String, Double> grafico_entradas_saidas;
+    private Text valor_caixa;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		Double valorCaixa = Entrada.getTotalEntradas() - Saida.getTotalSaidas();
+		valor_caixa.setText("R$ " + (valorCaixa) + "0");
+		
+		
 		XYChart.Series<String, Double> entradas = new XYChart.Series<String, Double>();
 		entradas.setName("Entradas");
 		
