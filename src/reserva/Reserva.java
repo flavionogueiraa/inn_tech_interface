@@ -93,6 +93,14 @@ public class Reserva {
 		this.pago = pago;
 	}
 
+	public String isPagoSimNao() {
+		if (this.isPago()) {
+			return "Sim";
+		} else {
+			return "Não";
+		}
+	}
+
 	public String getObservacoes() {
 		return observacoes;
 	}
