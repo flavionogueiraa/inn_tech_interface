@@ -5,4 +5,4 @@ No menu superior, acesse help > install new software e cole o seguinte conteúdo
 ``` shell
 https://download.eclipse.org/efxclipse/updates-released/2.1.0/site/
 ```
-Depois aperte enter e siga com a instalação, basta clicar em 'next' várias vezes, concordar com os termos e finalizar.
+Depois aperte enter, marque a opção 'e(fx)clipse - install e siga com a instalação, basta clicar em 'next' várias vezes, concordar com os termos e finalizar.
