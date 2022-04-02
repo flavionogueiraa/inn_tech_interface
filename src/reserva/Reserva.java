@@ -17,8 +17,8 @@ import validacao.ValidacaoDouble;
 import validacao.ValidacaoInt;
 
 public class Reserva {
-	private Date dataChegada;
-	private Date dataSaida;
+	private Date dataEstimadaCheckin;
+	private Date dataEstimadaCheckout;
 	private String hospede;
 	private double valor;
 	private Quarto quarto;
@@ -27,38 +27,38 @@ public class Reserva {
 
 	public static ArrayList<Reserva> reservas = new ArrayList<>();
 
-	public Date getDataChegada() {
-		return dataChegada;
+	public Date getdataEstimadaCheckin() {
+		return dataEstimadaCheckin;
 	}
 
-	public String getDataChegadaFormatada() {
-		if (this.dataChegada != null) {
+	public String getdataEstimadaCheckinFormatada() {
+		if (this.dataEstimadaCheckin != null) {
 			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-			return formatar.format(this.getDataChegada());
+			return formatar.format(this.getdataEstimadaCheckin());
 		} else {
 			return "-";
 		}
 	}
 
-	public void setDataChegada(Date dataChegada) {
-		this.dataChegada = dataChegada;
+	public void setdataEstimadaCheckin(Date dataEstimadaCheckin) {
+		this.dataEstimadaCheckin = dataEstimadaCheckin;
 	}
 
-	public Date getDataSaida() {
-		return dataSaida;
+	public Date getdataEstimadaCheckout() {
+		return dataEstimadaCheckout;
 	}
 
-	public String getDataSaidaFormatada() {
-		if (this.dataSaida != null) {
+	public String getdataEstimadaCheckoutFormatada() {
+		if (this.dataEstimadaCheckout != null) {
 			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-			return formatar.format(this.getDataSaida());
+			return formatar.format(this.getdataEstimadaCheckout());
 		} else {
 			return "-";
 		}
 	}
 
-	public void setDataSaida(Date dataSaida) {
-		this.dataSaida = dataSaida;
+	public void setdataEstimadaCheckout(Date dataEstimadaCheckout) {
+		this.dataEstimadaCheckout = dataEstimadaCheckout;
 	}
 
 	public String getHospede() {
@@ -97,7 +97,7 @@ public class Reserva {
 		if (this.isPago()) {
 			return "Sim";
 		} else {
-			return "Não";
+			return "Nï¿½o";
 		}
 	}
 
@@ -110,7 +110,7 @@ public class Reserva {
 	}
 
 	public Reserva(Scanner sc, Quarto quarto) {
-		System.out.println("Nome do hóspede:");
+		System.out.println("Nome do hï¿½spede:");
 		this.hospede = sc.next();
 
 		setValor(ValidacaoDouble.validacao(sc, "Valor: ", true));
@@ -119,24 +119,24 @@ public class Reserva {
 		sc.nextLine();
 		String dataString = sc.nextLine();
 		try {
-			this.dataChegada = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataString);
+			this.dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataString);
 		} catch (ParseException ex) {
 			Logger.getLogger(Reserva.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
 		this.quarto = quarto;
 
-		System.out.println("Observações:");
+		System.out.println("Observaï¿½ï¿½es:");
 		this.observacoes = sc.nextLine();
 
 		System.out.println("Foi paga?");
 		System.out.println("[1] Sim");
-		System.out.println("[0] Não");
+		System.out.println("[0] Nï¿½o");
 		int pago = sc.nextInt();
 
 		this.pago = pago == 1;
 		if (this.pago) {
-			new Entrada(this.valor, this.dataChegada, "Reserva do quarto " + this.quarto.getNumero(), true);
+			new Entrada(this.valor, this.dataEstimadaCheckin, "Reserva do quarto " + this.quarto.getNumero(), true);
 			System.out.println("Aviso: Uma entrada foi criada!");
 		}
 
@@ -146,12 +146,12 @@ public class Reserva {
 		ConfigArquivoReservas.cadastraReserva(this);
 	}
 
-	public Reserva(String hospede, Double valor, Date dataChegada, Date dataSaida, String observacoes, boolean pago,
+	public Reserva(String hospede, Double valor, Date dataEstimadaCheckin, Date dataEstimadaCheckout, String observacoes, boolean pago,
 			Quarto quarto) {
 		this.hospede = hospede;
 		this.valor = valor;
-		this.dataChegada = dataChegada;
-		this.dataSaida = dataSaida;
+		this.dataEstimadaCheckin = dataEstimadaCheckin;
+		this.dataEstimadaCheckout = dataEstimadaCheckout;
 		this.observacoes = observacoes;
 		this.pago = pago;
 		this.quarto = quarto;
@@ -159,14 +159,14 @@ public class Reserva {
 		reservas.add(this);
 	}
 
-	public static Reserva cadastraReservaInterface(String hospede, Double valor, Date dataChegada, Date dataSaida,
+	public static Reserva cadastraReservaInterface(String hospede, Double valor, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
 			String observacoes, boolean pago, Quarto quarto) {
-		Reserva nova_reserva = new Reserva(hospede, valor, dataChegada, null, observacoes, pago, quarto);
+		Reserva nova_reserva = new Reserva(hospede, valor, dataEstimadaCheckin, null, observacoes, pago, quarto);
 		ConfigArquivoReservas.atualizaReservas();
 
 		nova_reserva.quarto.setOcupado(true);
 		if (nova_reserva.isPago()) {
-			new Entrada(valor, dataChegada, "Reserva do quarto " + quarto.getNumero(), true);
+			new Entrada(valor, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
 		}
 		return nova_reserva;
 	}
@@ -181,10 +181,10 @@ public class Reserva {
 		int i = 1;
 		for (Reserva reserva : reservas) {
 			System.out.println("ID: " + i);
-			System.out.println("Nome do hóspede: " + reserva.getHospede());
+			System.out.println("Nome do hï¿½spede: " + reserva.getHospede());
 			System.out.println("Valor: " + reserva.getValor());
-			System.out.println("Data e hora: " + formatar.format(reserva.getDataChegada()));
-			System.out.println("Observações: " + reserva.getObservacoes());
+			System.out.println("Data e hora: " + formatar.format(reserva.getdataEstimadaCheckin()));
+			System.out.println("Observaï¿½ï¿½es: " + reserva.getObservacoes());
 			System.out.println();
 			i++;
 		}
@@ -201,10 +201,10 @@ public class Reserva {
 	}
 
 	public void finalizaReserva() {
-		this.dataSaida = new Date();
+		this.dataEstimadaCheckout = new Date();
 		this.quarto.setOcupado(false);
 		ConfigArquivoQuartos.atualizaQuartos();
-		new Entrada(this.valor, this.dataSaida, "Reserva do quarto " + this.quarto.getNumero(), true);
+		new Entrada(this.valor, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true);
 	}
 
 	public static void editaReserva(Scanner sc) {
@@ -219,24 +219,24 @@ public class Reserva {
 		}
 
 		if (reserva != null) {
-			System.out.println("Nome do hópede atual: " + reserva.hospede);
-			System.out.println("Novo nome do hóspede:");
+			System.out.println("Nome do hï¿½pede atual: " + reserva.hospede);
+			System.out.println("Novo nome do hï¿½spede:");
 			reserva.setHospede(sc.nextLine());
 
 			System.out.println("Valor atual: " + reserva.valor);
 			reserva.setValor(ValidacaoDouble.validacao(sc, "Novo valor:", false));
 
 			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-			System.out.println("Data atual: " + formatar.format(reserva.dataChegada));
-			reserva.dataChegada = ValidacaoData.validacao(sc, "Informe a data e a hora:", false);
+			System.out.println("Data atual: " + formatar.format(reserva.dataEstimadaCheckin));
+			reserva.dataEstimadaCheckin = ValidacaoData.validacao(sc, "Informe a data e a hora:", false);
 
 			System.out.println("Observacoes atuais: " + reserva.observacoes);
-			System.out.print("Novas observações: ");
+			System.out.print("Novas observaï¿½ï¿½es: ");
 			reserva.setObservacoes(sc.nextLine());
 
 			ConfigArquivoReservas.atualizaReservas();
 		} else {
-			System.out.println("ID inválido");
+			System.out.println("ID invï¿½lido");
 		}
 	}
 
@@ -256,7 +256,7 @@ public class Reserva {
 			reserva = null;
 			ConfigArquivoReservas.atualizaReservas();
 		} else {
-			System.out.println("ID inválido");
+			System.out.println("ID invï¿½lido");
 		}
 	}
 }

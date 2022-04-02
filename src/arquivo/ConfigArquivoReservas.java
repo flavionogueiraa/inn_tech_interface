@@ -58,7 +58,7 @@ public class ConfigArquivoReservas {
 				System.out.println("Erro na linha");
 			}
 		} catch (FileNotFoundException ex) {
-			System.out.println("Erro: Arquivo não encontrado!");
+			System.out.println("Erro: Arquivo nï¿½o encontrado!");
 		}
 	}
 
@@ -68,15 +68,15 @@ public class ConfigArquivoReservas {
 		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
 		for (Reserva reserva : Reserva.reservas) {
-			if (reserva.getDataSaida() != null) {
+			if (reserva.getdataEstimadaCheckout() != null) {
 				texto += "" + reserva.getHospede() + "\t" + reserva.getValor() + "\t";
-				texto += formatar.format(reserva.getDataChegada()) + "\t" + formatar.format(reserva.getDataSaida())
+				texto += formatar.format(reserva.getdataEstimadaCheckin()) + "\t" + formatar.format(reserva.getdataEstimadaCheckout())
 						+ "\t";
 				texto += reserva.getObservacoes() + "\t" + reserva.isPago() + "\t" + reserva.getQuarto().getNumero()
 						+ "\n";
 			} else {
 				texto += "" + reserva.getHospede() + "\t" + reserva.getValor() + "\t";
-				texto += formatar.format(reserva.getDataChegada()) + "\t" + "null" + "\t";
+				texto += formatar.format(reserva.getdataEstimadaCheckin()) + "\t" + "null" + "\t";
 				texto += reserva.getObservacoes() + "\t" + reserva.isPago() + "\t" + reserva.getQuarto().getNumero()
 						+ "\n";
 			}
@@ -94,7 +94,7 @@ public class ConfigArquivoReservas {
 		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
 		String texto = "" + reserva.getHospede() + "\t" + reserva.getValor() + "\t";
-		texto += formatar.format(reserva.getDataChegada()) + "\t" + "null" + "\t";
+		texto += formatar.format(reserva.getdataEstimadaCheckin()) + "\t" + "null" + "\t";
 		texto += reserva.getObservacoes() + "\t" + reserva.isPago() + "\t" + reserva.getQuarto().getNumero() + "\n";
 
 		String textoArquivo = Arquivo.Read(arquivo);

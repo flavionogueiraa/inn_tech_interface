@@ -107,19 +107,19 @@ public class ReservaControler extends MenuControler implements Initializable {
 	}
 
 	private void setaQuartosDisponiveis() {
-		label_quartos_disponiveis.setText("Quartos disponíveis: " + Quarto.quartosDisponiveis());
+		label_quartos_disponiveis.setText("Quartos disponï¿½veis: " + Quarto.quartosDisponiveis());
 	}
 
 	@FXML
 	void cadastrarReserva(ActionEvent event) {
 		label_erro.setText("");
-		Date dataChegada = null;
+		Date dataEstimadaCheckin = null;
 		try {
-			dataChegada = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
+			dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
 		} catch (ParseException e) {
-			System.err.println("Data e hora de chegada inválidas!");
+			System.err.println("Data e hora de chegada invï¿½lidas!");
 		}
-		if (dataChegada != null) {
+		if (dataEstimadaCheckin != null) {
 			if (validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor.getText())) {
 				Quarto quarto = Quarto.getQuartoDisponivel(Integer.parseInt(campo_quarto.getText()));
 				if (quarto != null) {
@@ -131,19 +131,19 @@ public class ReservaControler extends MenuControler implements Initializable {
 						observacoes = "-";
 					}
 
-					Reserva nova_reserva = Reserva.cadastraReservaInterface(hospede, valor, dataChegada, null,
+					Reserva nova_reserva = Reserva.cadastraReservaInterface(hospede, valor, dataEstimadaCheckin, null,
 							observacoes, pago, quarto);
 					tabela_reservas.getItems().add(nova_reserva);
 					limparCampos();
 					setaQuartosDisponiveis();
 				} else {
-					label_erro.setText("Informe um quarto válido");
+					label_erro.setText("Informe um quarto vï¿½lido");
 				}
 			} else {
-				label_erro.setText("Campos inválidos!");
+				label_erro.setText("Campos invï¿½lidos!");
 			}
 		} else {
-			label_erro.setText("Data e hora de chegada inválidas!");
+			label_erro.setText("Data e hora de chegada invï¿½lidas!");
 		}
 	}
 
@@ -154,8 +154,8 @@ public class ReservaControler extends MenuControler implements Initializable {
 			Reserva reserva = tabela_reservas.getSelectionModel().getSelectedItem();
 			campo_nome_hospede.setText(reserva.getHospede());
 			campo_valor.setText(reserva.getValor().toString());
-			campo_data_hora_chegada.setText(reserva.getDataChegadaFormatada());
-			campo_data_hora_saida.setText(reserva.getDataSaidaFormatada());
+			campo_data_hora_chegada.setText(reserva.getdataEstimadaCheckinFormatada());
+			campo_data_hora_saida.setText(reserva.getdataEstimadaCheckoutFormatada());
 			campo_observacoes.setText(reserva.getObservacoes());
 			campo_quarto.setText(reserva.getQuarto().getNumero().toString());
 			campo_pago.setSelected(reserva.isPago());
@@ -168,17 +168,17 @@ public class ReservaControler extends MenuControler implements Initializable {
 	void salvarEdicaoReserva(ActionEvent event) {
 		Reserva reserva = tabela_reservas.getSelectionModel().getSelectedItem();
 		if (reserva != null) {
-			Date dataChegada = null;
+			Date dataEstimadaCheckin = null;
 			try {
-				dataChegada = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
+				dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
 			} catch (ParseException e) {
-				System.err.println("Data e hora de chegada inválidas!");
+				System.err.println("Data e hora de chegada invï¿½lidas!");
 			}
-			Date dataSaida = null;
+			Date dataEstimadaCheckout = null;
 			try {
-				dataSaida = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_saida.getText());
+				dataEstimadaCheckout = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_saida.getText());
 			} catch (ParseException e) {
-				System.err.println("Data e hora de saída inválidas!");
+				System.err.println("Data e hora de saï¿½da invï¿½lidas!");
 			}
 			String nomeHospede = campo_nome_hospede.getText();
 			String observacoes = campo_observacoes.getText();
@@ -188,17 +188,17 @@ public class ReservaControler extends MenuControler implements Initializable {
 
 			reserva.setHospede(nomeHospede);
 			reserva.setValor(valor);
-			reserva.setDataChegada(dataChegada);
-			reserva.setDataSaida(dataSaida);
+			reserva.setdataEstimadaCheckin(dataEstimadaCheckin);
+			reserva.setdataEstimadaCheckout(dataEstimadaCheckout);
 			reserva.setObservacoes(observacoes);
 			reserva.setQuarto(quarto);
 			if (!reserva.isPago()) {
 				reserva.setPago(pago);
 				if (reserva.isPago()) {
-					new Entrada(valor, dataChegada, "Reserva do quarto " + quarto.getNumero(), true);
+					new Entrada(valor, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
 				}
 			} else {
-				label_erro.setText("A reserva já foi paga!");
+				label_erro.setText("A reserva jï¿½ foi paga!");
 			}
 
 			tabela_reservas.refresh();
@@ -220,9 +220,9 @@ public class ReservaControler extends MenuControler implements Initializable {
 		reserva_hospede.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getHospede()));
 		reserva_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		reserva_data_hora_chegada
-				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataChegadaFormatada()));
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getdataEstimadaCheckinFormatada()));
 		reserva_data_hora_saida
-				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataSaidaFormatada()));
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getdataEstimadaCheckoutFormatada()));
 		reserva_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
 		reserva_quarto.setCellValueFactory(
 				data -> new SimpleStringProperty(data.getValue().getQuarto().getNumero().toString()));
