@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import financeiro.Entrada;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

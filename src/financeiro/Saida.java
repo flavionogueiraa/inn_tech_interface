@@ -194,12 +194,28 @@ public class Saida {
 	@SuppressWarnings("deprecation")
 	public static LinkedHashMap<String, Double> saidasMes() {
 		LinkedHashMap<String, Double> saidasMes = new LinkedHashMap<String, Double>();
-		int mes = new Date().getMonth() + 1;
-
-		for (int i = mes - 10; i <= mes; i++) {
-			double totalMes = Saida.totalSaidaMes(i);
-			saidasMes.put((i + "/21"), totalMes);
+		int mesAtual = new Date().getMonth() + 1;
+		int mesInicial = mesAtual - 11;
+		
+		int anoAtual = new Date().getYear() + 1900;
+		int anoPassado = anoAtual - 1;
+		
+		if (mesInicial <= 0) {
+			for (int i = mesAtual; i <= 12; i++) {
+				double totalMes = Saida.totalSaidaMes(i);
+				saidasMes.put((i + "/" + Integer.toString(anoPassado)), totalMes);
+			}
+			for (int i = 1; i <= mesAtual; i++) {
+				double totalMes = Saida.totalSaidaMes(i);
+				saidasMes.put((i + "/" + Integer.toString(anoAtual)), totalMes);
+			}
+		} else {
+			for (int i = mesInicial; i <= mesAtual; i++) {
+				double totalMes = Saida.totalSaidaMes(i);
+				saidasMes.put((i + Integer.toString(anoAtual)), totalMes);
+			}
 		}
+		
 		return saidasMes;
 	}
 }
