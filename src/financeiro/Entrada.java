@@ -4,10 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.Scanner;
 
 import arquivo.ConfigArquivoEntradas;
-import validacao.ValidacaoInt;
 
 public class Entrada {
 	static double totalEntradas = 0;
@@ -71,38 +69,6 @@ public class Entrada {
 
 	}
 
-	public static void listaEntradas() {
-		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		int i = 1;
-		for (Entrada entrada : entradas) {
-			System.out.println("ID: " + i);
-			System.out.println("Valor " + entrada.valor);
-			System.out.println("Data e Horário: " + formatar.format(entrada.dataCriacao));
-			System.out.println("Observações " + entrada.observacoes);
-			i++;
-		}
-	}
-
-	public static void excluiEntrada(Scanner sc) {
-		Entrada.listaEntradas();
-
-		int id = ValidacaoInt.validacao(sc, "Digite o ID da entrada que deseja deletar:", false);
-		Entrada entrada;
-		try {
-			entrada = Entrada.entradas.get(id - 1);
-		} catch (Exception e) {
-			entrada = null;
-		}
-
-		if (entrada != null) {
-			Entrada.entradas.remove(entrada);
-			entrada = null;
-			ConfigArquivoEntradas.atualizaEntradas();
-		} else {
-			System.out.println("ID inválido");
-		}
-	}
-
 	public static double totalEntradasMes(int mes) {
 		double totalEntradasMes = 0;
 		for (Entrada entrada : Entrada.entradas) {
@@ -121,10 +87,10 @@ public class Entrada {
 		LinkedHashMap<String, Double> entradasMes = new LinkedHashMap<String, Double>();
 		int mesAtual = new Date().getMonth() + 1;
 		int mesInicial = mesAtual - 11;
-		
+
 		int anoAtual = new Date().getYear() + 1900;
 		int anoPassado = anoAtual - 1;
-		
+
 		if (mesInicial <= 0) {
 			for (int i = mesAtual; i <= 12; i++) {
 				double totalMes = Entrada.totalEntradasMes(i);
@@ -140,7 +106,7 @@ public class Entrada {
 				entradasMes.put((i + Integer.toString(anoAtual)), totalMes);
 			}
 		}
-		
+
 		return entradasMes;
 	}
 }
