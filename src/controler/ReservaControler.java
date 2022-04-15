@@ -30,7 +30,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 	private TableColumn<Reserva, String> reserva_hospede;
 
 	@FXML
-	private TableColumn<Reserva, String> reserva_valor;
+	private TableColumn<Reserva, String> reserva_valor_diaria;
 
 	@FXML
 	private TableColumn<Reserva, String> reserva_data_hora_chegada;
@@ -51,7 +51,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 	private TextField campo_nome_hospede;
 
 	@FXML
-	private TextField campo_valor;
+	private TextField campo_valor_diaria;
 
 	@FXML
 	private TextField campo_data_hora_chegada;
@@ -78,7 +78,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 
 	private void limparCampos() {
 		campo_nome_hospede.clear();
-		campo_valor.clear();
+		campo_valor_diaria.clear();
 		campo_data_hora_chegada.clear();
 		campo_data_hora_saida.clear();
 		campo_quarto.clear();
@@ -86,8 +86,8 @@ public class ReservaControler extends MenuControler implements Initializable {
 		campo_pago.setSelected(false);
 	}
 
-	private boolean validarCampos(String hospede, String quarto, String valor) {
-		if (hospede.isEmpty() || quarto.isEmpty() || valor.isEmpty()) {
+	private boolean validarCampos(String nomeHospede, String quarto, String valorDiaria) {
+		if (nomeHospede.isEmpty() || quarto.isEmpty() || valorDiaria.isEmpty()) {
 			return false;
 		}
 
@@ -98,7 +98,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		}
 
 		try {
-			Double.parseDouble(valor);
+			Double.parseDouble(valorDiaria);
 		} catch (Exception error) {
 			return false;
 		}
@@ -119,18 +119,18 @@ public class ReservaControler extends MenuControler implements Initializable {
 			System.err.println("Data e hora de chegada invalidas!");
 		}
 		if (dataEstimadaCheckin != null) {
-			if (validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor.getText())) {
+			if (validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor_diaria.getText())) {
 				Quarto quarto = Quarto.getQuartoDisponivel(Integer.parseInt(campo_quarto.getText()));
 				if (quarto != null) {
-					String hospede = campo_nome_hospede.getText();
+					String nomeHospede = campo_nome_hospede.getText();
 					Boolean pago = campo_pago.isSelected();
-					Double valor = Double.parseDouble(campo_valor.getText());
+					Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
 					String observacoes = campo_observacoes.getText();
 					if (observacoes.isEmpty()) {
 						observacoes = "-";
 					}
 
-					Reserva nova_reserva = Reserva.cadastraReservaInterface(hospede, valor, dataEstimadaCheckin, null,
+					Reserva nova_reserva = Reserva.cadastraReservaInterface(nomeHospede, valorDiaria, dataEstimadaCheckin, null,
 							observacoes, pago, quarto);
 					tabela_reservas.getItems().add(nova_reserva);
 					limparCampos();
@@ -152,7 +152,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		try {
 			Reserva reserva = tabela_reservas.getSelectionModel().getSelectedItem();
 			campo_nome_hospede.setText(reserva.getHospede());
-			campo_valor.setText(reserva.getValor().toString());
+			campo_valor_diaria.setText(reserva.getValor().toString());
 			campo_data_hora_chegada.setText(reserva.getdataEstimadaCheckinFormatada());
 			campo_data_hora_saida.setText(reserva.getdataEstimadaCheckoutFormatada());
 			campo_observacoes.setText(reserva.getObservacoes());
@@ -183,10 +183,10 @@ public class ReservaControler extends MenuControler implements Initializable {
 			String observacoes = campo_observacoes.getText();
 			Boolean pago = campo_pago.isSelected();
 			Quarto quarto = Quarto.getQuarto(Integer.parseInt(campo_quarto.getText()));
-			Double valor = Double.parseDouble(campo_valor.getText());
+			Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
 
 			reserva.setHospede(nomeHospede);
-			reserva.setValor(valor);
+			reserva.setValor(valorDiaria);
 			reserva.setdataEstimadaCheckin(dataEstimadaCheckin);
 			reserva.setdataEstimadaCheckout(dataEstimadaCheckout);
 			reserva.setObservacoes(observacoes);
@@ -194,7 +194,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			if (!reserva.isPago()) {
 				reserva.setPago(pago);
 				if (reserva.isPago()) {
-					new Entrada(valor, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
+					new Entrada(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
 				}
 			} else {
 				label_erro.setText("A reserva ja foi paga!");
@@ -217,7 +217,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		reserva_hospede.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getHospede()));
-		reserva_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
+		reserva_valor_diaria.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		reserva_data_hora_chegada
 				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getdataEstimadaCheckinFormatada()));
 		reserva_data_hora_saida

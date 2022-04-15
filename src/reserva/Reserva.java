@@ -13,8 +13,8 @@ public class Reserva {
 	private int id;
 	private Date dataEstimadaCheckin;
 	private Date dataEstimadaCheckout;
-	private String hospede;
-	private double valor;
+	private String nomeHospede;
+	private double valorDiaria;
 	private Quarto quarto;
 	private boolean pago;
 	private String observacoes;
@@ -66,19 +66,19 @@ public class Reserva {
 	}
 
 	public String getHospede() {
-		return hospede;
+		return nomeHospede;
 	}
 
-	public void setHospede(String hospede) {
-		this.hospede = hospede;
+	public void setHospede(String nomeHospede) {
+		this.nomeHospede = nomeHospede;
 	}
 
 	public Double getValor() {
-		return valor;
+		return valorDiaria;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setValor(double valorDiaria) {
+		this.valorDiaria = valorDiaria;
 	}
 
 	public Quarto getQuarto() {
@@ -113,10 +113,10 @@ public class Reserva {
 		this.observacoes = observacoes;
 	}
 
-	public Reserva(String hospede, Double valor, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
+	public Reserva(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
 			String observacoes, boolean pago, Quarto quarto) {
-		this.hospede = hospede;
-		this.valor = valor;
+		this.nomeHospede = nomeHospede;
+		this.valorDiaria = valorDiaria;
 		this.dataEstimadaCheckin = dataEstimadaCheckin;
 		this.dataEstimadaCheckout = dataEstimadaCheckout;
 		this.observacoes = observacoes;
@@ -127,14 +127,14 @@ public class Reserva {
 		reservas.add(this);
 	}
 
-	public static Reserva cadastraReservaInterface(String hospede, Double valor, Date dataEstimadaCheckin,
+	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
 			Date dataEstimadaCheckout, String observacoes, boolean pago, Quarto quarto) {
-		Reserva nova_reserva = new Reserva(hospede, valor, dataEstimadaCheckin, null, observacoes, pago, quarto);
+		Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria, dataEstimadaCheckin, null, observacoes, pago, quarto);
 		ConfigArquivoReservas.atualizaReservas();
 
 		nova_reserva.quarto.setOcupado(true);
 		if (nova_reserva.isPago()) {
-			new Entrada(valor, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
+			new Entrada(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
 		}
 		return nova_reserva;
 	}
@@ -158,6 +158,6 @@ public class Reserva {
 		this.dataEstimadaCheckout = new Date();
 		this.quarto.setOcupado(false);
 		ConfigArquivoQuartos.atualizaQuartos();
-		new Entrada(this.valor, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true);
+		new Entrada(this.valorDiaria, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true);
 	}
 }

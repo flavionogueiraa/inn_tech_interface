@@ -85,7 +85,7 @@
             <TableView fx:id="tabela_reservas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="reserva_hospede" minWidth="100.0" prefWidth="181.0" text="Nome" />
-                <TableColumn fx:id="reserva_valor" prefWidth="75.0" text="Valor" />
+                <TableColumn fx:id="reserva_valor_diaria" prefWidth="75.0" text="Valor" />
                   <TableColumn fx:id="reserva_data_hora_chegada" prefWidth="125.0" text="Data e hora chegada" />
                   <TableColumn fx:id="reserva_data_hora_saida" prefWidth="125.0" text="Data e hora saída" />
                   <TableColumn fx:id="reserva_observacoes" prefWidth="185.0" text="Observações" />
@@ -114,7 +114,7 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="campo_valor" layoutX="20.0" layoutY="18.0" promptText="Valor*" GridPane.columnIndex="1">
+                  <TextField fx:id="campo_valor_diaria" layoutX="20.0" layoutY="18.0" promptText="Valor*" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
