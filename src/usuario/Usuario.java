@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import arquivo.ConfigArquivoUsuarios;
 
 public class Usuario {
+	private int id;
 	private String nome;
 	private String CPF;
 	private String Senha;
@@ -12,6 +13,16 @@ public class Usuario {
 
 	public static ArrayList<Usuario> usuarios = new ArrayList<>();
 	public static Usuario usuarioLogado;
+	private static int idCont = 0;
+	
+	public int getId() {
+		return id;
+	}
+
+	private void setId() {
+		Usuario.idCont++;
+		this.id = idCont;
+	}
 
 	public String getCPF() {
 		return CPF;
@@ -59,6 +70,8 @@ public class Usuario {
 		this.CPF = CPF;
 		this.Senha = senha;
 		this.proprietario = proprietario;
+		this.setId();
+		
 		usuarios.add(this);
 	}
 
