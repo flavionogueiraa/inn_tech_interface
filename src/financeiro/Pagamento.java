@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
-import arquivo.ConfigArquivoEntradas;
+import arquivo.ConfigArquivoPagamentos;
 
-public class Entrada {
-	static double totalEntradas = 0;
+public class Pagamento {
+	static double totalPagamentos = 0;
 
 	private int id;
 	private double valor;
 	private Date dataCriacao;
 	private String observacoes;
 
-	public static ArrayList<Entrada> entradas = new ArrayList<>();
+	public static ArrayList<Pagamento> pagamentos = new ArrayList<>();
 	private static int idCont = 0;
 
 	public int getId() {
@@ -23,16 +23,16 @@ public class Entrada {
 	}
 
 	private void setId() {
-		Entrada.idCont++;
+		Pagamento.idCont++;
 		this.id = idCont;
 	}
 
-	public static double getTotalEntradas() {
-		return totalEntradas;
+	public static double getTotalPagamentos() {
+		return totalPagamentos;
 	}
 
-	public static void setTotalEntradas(double totalEntradas) {
-		Entrada.totalEntradas = totalEntradas;
+	public static void setTotalPagamentos(double totalPagamentos) {
+		Pagamento.totalPagamentos = totalPagamentos;
 	}
 
 	public Double getValor() {
@@ -68,35 +68,35 @@ public class Entrada {
 		this.observacoes = observacoes;
 	}
 
-	public Entrada(double valor, Date dataCriacao, String observacoes, boolean Arq) {
+	public Pagamento(double valor, Date dataCriacao, String observacoes, boolean Arq) {
 		this.valor = valor;
 		this.dataCriacao = dataCriacao;
 		this.observacoes = observacoes;
 		this.setId();
 
-		Entrada.totalEntradas += valor;
-		entradas.add(this);
+		Pagamento.totalPagamentos += valor;
+		pagamentos.add(this);
 		if (Arq) {
-			ConfigArquivoEntradas.cadastraEntrada(this);
+			ConfigArquivoPagamentos.cadastraPagamento(this);
 		}
 	}
 
-	public static double totalEntradasMes(int mes) {
-		double totalEntradasMes = 0;
-		for (Entrada entrada : Entrada.entradas) {
-			String[] data = entrada.getDataCriacaoFormatada().split("/");
-			int mesEntrada = Integer.parseInt(data[1]);
-			if (mesEntrada == mes) {
-				totalEntradasMes += entrada.getValor();
+	public static double totalPagamentosMes(int mes) {
+		double totalPagamentosMes = 0;
+		for (Pagamento pagamento : Pagamento.pagamentos) {
+			String[] data = pagamento.getDataCriacaoFormatada().split("/");
+			int mesPagamento = Integer.parseInt(data[1]);
+			if (mesPagamento == mes) {
+				totalPagamentosMes += pagamento.getValor();
 			}
 		}
 
-		return totalEntradasMes;
+		return totalPagamentosMes;
 	}
 
 	@SuppressWarnings("deprecation")
-	public static LinkedHashMap<String, Double> entradasMes() {
-		LinkedHashMap<String, Double> entradasMes = new LinkedHashMap<String, Double>();
+	public static LinkedHashMap<String, Double> pagamentosMes() {
+		LinkedHashMap<String, Double> pagamentosMes = new LinkedHashMap<String, Double>();
 		int mesAtual = new Date().getMonth() + 1;
 		int mesInicial = mesAtual - 11;
 
@@ -105,20 +105,20 @@ public class Entrada {
 
 		if (mesInicial <= 0) {
 			for (int i = mesAtual; i <= 12; i++) {
-				double totalMes = Entrada.totalEntradasMes(i);
-				entradasMes.put((i + "/" + Integer.toString(anoPassado)), totalMes);
+				double totalMes = Pagamento.totalPagamentosMes(i);
+				pagamentosMes.put((i + "/" + Integer.toString(anoPassado)), totalMes);
 			}
 			for (int i = 1; i <= mesAtual; i++) {
-				double totalMes = Entrada.totalEntradasMes(i);
-				entradasMes.put((i + "/" + Integer.toString(anoAtual)), totalMes);
+				double totalMes = Pagamento.totalPagamentosMes(i);
+				pagamentosMes.put((i + "/" + Integer.toString(anoAtual)), totalMes);
 			}
 		} else {
 			for (int i = mesInicial; i <= mesAtual; i++) {
-				double totalMes = Entrada.totalEntradasMes(i);
-				entradasMes.put((i + Integer.toString(anoAtual)), totalMes);
+				double totalMes = Pagamento.totalPagamentosMes(i);
+				pagamentosMes.put((i + Integer.toString(anoAtual)), totalMes);
 			}
 		}
 
-		return entradasMes;
+		return pagamentosMes;
 	}
 }

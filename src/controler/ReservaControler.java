@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import financeiro.Entrada;
+import financeiro.Pagamento;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -194,7 +194,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			if (!reserva.isPago()) {
 				reserva.setPago(pagamentoConfirmado);
 				if (reserva.isPago()) {
-					new Entrada(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
+					new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
 				}
 			} else {
 				label_erro.setText("A reserva ja foi paga!");

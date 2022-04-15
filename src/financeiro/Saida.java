@@ -104,8 +104,8 @@ public class Saida {
 		double totalSaidaMes = 0;
 		for (Saida saida : Saida.saidas) {
 			String[] data = saida.getDataCriacaoFormatada().split("/");
-			int mesEntrada = Integer.parseInt(data[1]);
-			if (mesEntrada == mes) {
+			int mesPagamento = Integer.parseInt(data[1]);
+			if (mesPagamento == mes) {
 				totalSaidaMes += saida.getValor();
 			}
 		}

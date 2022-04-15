@@ -49,7 +49,7 @@ public class Arquivo {
 		ConfigArquivoUsuarios.inicializaUsuarios("src/usuario/usuarios.txt");
 		ConfigArquivoReservas.inicializaReservas("src/reserva/reservas.txt");
 		ConfigArquivoSaidas.inicializaSaidas("src/financeiro/saidas.txt");
-		ConfigArquivoEntradas.inicializaEntradas("src/financeiro/entradas.txt");
+		ConfigArquivoPagamentos.inicializaPagamentos("src/financeiro/pagamentos.txt");
 	}
 
 }

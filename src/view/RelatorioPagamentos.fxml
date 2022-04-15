@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.RelatorioEntradasControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.RelatorioPagamentosControler">
    <bottom>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
@@ -68,18 +68,18 @@
             <RowConstraints maxHeight="535.9999954223632" minHeight="10.0" prefHeight="527.1999923706054" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Listagem de entradas">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Listagem de pagamentos">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Text>
-            <TableView fx:id="tabela_entradas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TableView fx:id="tabela_pagamentos" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <columns>
-                  <TableColumn fx:id="entrada_valor" minWidth="100.0" prefWidth="110.39998626708984" text="Valor" />
-                  <TableColumn fx:id="entrada_data_hora" prefWidth="164.800048828125" text="Data e Hora" />
-                  <TableColumn fx:id="entrada_observacoes" minWidth="61.60003662109375" prefWidth="174.39999389648438" text="Observações" />
+                  <TableColumn fx:id="pagamento_valor" minWidth="100.0" prefWidth="110.39998626708984" text="Valor" />
+                  <TableColumn fx:id="pagamento_data_hora" prefWidth="164.800048828125" text="Data e Hora" />
+                  <TableColumn fx:id="pagamento_observacoes" minWidth="61.60003662109375" prefWidth="174.39999389648438" text="Observações" />
                </columns>
             </TableView>
          </children>
