@@ -10,6 +10,7 @@ import financeiro.Entrada;
 import quarto.Quarto;
 
 public class Reserva {
+	private int id;
 	private Date dataEstimadaCheckin;
 	private Date dataEstimadaCheckout;
 	private String hospede;
@@ -19,6 +20,16 @@ public class Reserva {
 	private String observacoes;
 
 	public static ArrayList<Reserva> reservas = new ArrayList<>();
+	public static int idCont = 0;
+
+	public int getId() {
+		return id;
+	}
+
+	private void setId() {
+		Reserva.idCont++;
+		this.id = idCont;
+	}
 
 	public Date getdataEstimadaCheckin() {
 		return dataEstimadaCheckin;
@@ -111,6 +122,7 @@ public class Reserva {
 		this.observacoes = observacoes;
 		this.pago = pago;
 		this.quarto = quarto;
+		this.setId();
 
 		reservas.add(this);
 	}
