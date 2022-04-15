@@ -20,7 +20,7 @@ public class Reserva {
 	private String observacoes;
 
 	public static ArrayList<Reserva> reservas = new ArrayList<>();
-	public static int idCont = 0;
+	private static int idCont = 0;
 
 	public int getId() {
 		return id;

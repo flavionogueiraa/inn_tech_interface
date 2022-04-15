@@ -16,7 +16,7 @@ public class Entrada {
 	private String observacoes;
 
 	public static ArrayList<Entrada> entradas = new ArrayList<>();
-	public static int idCont = 0;
+	private static int idCont = 0;
 
 	public int getId() {
 		return id;
