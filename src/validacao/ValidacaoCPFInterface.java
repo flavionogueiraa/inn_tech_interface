@@ -7,10 +7,10 @@ import usuario.Usuario;
 public class ValidacaoCPFInterface {
 	public static String validacaoNormal(String CPF) {
 		if (isCPF(CPF)) {
-			System.out.println("CPF válido");
+			System.out.println("CPF valido");
 			return CPF;
 		} else {
-			System.out.println("Informe um CPF válido");
+			System.out.println("Informe um CPF valido");
 		}
 		return null;
 	}
@@ -80,7 +80,7 @@ public class ValidacaoCPFInterface {
 				System.out.println("CPF cadastrado");
 				return cpfValidado;
 			} else {
-				System.out.println("Desculpe, CPF não cadastrado");
+				System.out.println("Desculpe, CPF nao cadastrado");
 			}
 		}
 

@@ -101,7 +101,7 @@ public class Reserva {
 		if (this.isPago()) {
 			return "Sim";
 		} else {
-			return "N�o";
+			return "Nao";
 		}
 	}
 

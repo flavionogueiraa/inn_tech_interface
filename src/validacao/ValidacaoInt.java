@@ -17,7 +17,7 @@ public class ValidacaoInt {
 
 			} catch (Exception error) {
 				erro = true;
-				System.out.println("Insira um valor númerico");
+				System.out.println("Insira um valor numerico");
 			}
 		} while (erro);
 		return 0;

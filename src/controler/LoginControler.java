@@ -29,7 +29,7 @@ public class LoginControler {
 
 			MainInterface.trocaTela("home");
 		} else {
-			mensagem_erro.setText("Informações incorretas!");
+			mensagem_erro.setText("Informacoes incorretas!");
 		}
 	}
 }
