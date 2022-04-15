@@ -2,8 +2,6 @@
 100.0	07/10/2021 19:33	Teste	Nenhuma
 50.0	22/10/2021 17:54	NenhumMotivo	Nenhuma
 20.0	09/09/2019 19:09	NenhumMesmo	NenhumaObs
-15.0	21/11/2021 11:25	aguaMineral	Nenhuma
-50.0	17/10/2021 17:17	Nenhum	Nenhuma
-25.0	20/10/2021 16:30	TesteTeste	Nenhuma
+15.0	21/11/2021 11:25	Água mineral	Nenhuma
 75.0	20/12/2021 12:45	Testando	Teste de novo
 10.0	10/10/2021 12:45	teste	teste

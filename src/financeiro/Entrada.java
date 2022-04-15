@@ -10,11 +10,22 @@ import arquivo.ConfigArquivoEntradas;
 public class Entrada {
 	static double totalEntradas = 0;
 
+	private int id;
 	private double valor;
 	private Date dataCriacao;
 	private String observacoes;
 
 	public static ArrayList<Entrada> entradas = new ArrayList<>();
+	public static int idCont = 0;
+
+	public int getId() {
+		return id;
+	}
+
+	private void setId() {
+		Entrada.idCont++;
+		this.id = idCont;
+	}
 
 	public static double getTotalEntradas() {
 		return totalEntradas;
@@ -61,12 +72,13 @@ public class Entrada {
 		this.valor = valor;
 		this.dataCriacao = dataCriacao;
 		this.observacoes = observacoes;
+		this.setId();
+
 		Entrada.totalEntradas += valor;
 		entradas.add(this);
 		if (Arq) {
 			ConfigArquivoEntradas.cadastraEntrada(this);
 		}
-
 	}
 
 	public static double totalEntradasMes(int mes) {

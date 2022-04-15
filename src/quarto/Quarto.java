@@ -5,11 +5,21 @@ import java.util.ArrayList;
 import arquivo.ConfigArquivoQuartos;
 
 public class Quarto {
-	private int numero, capacidade;
+	private int id, numero, capacidade;
 	private String descricao;
 	private boolean ocupado;
 
 	public static ArrayList<Quarto> quartos = new ArrayList<>();
+	public static int idCont = 0;
+
+	public int getId() {
+		return id;
+	}
+
+	private void setId() {
+		Quarto.idCont++;
+		this.id = idCont;
+	}
 
 	public Integer getNumero() {
 		return numero;
@@ -56,6 +66,8 @@ public class Quarto {
 		this.capacidade = capacidade;
 		this.descricao = descricao;
 		this.ocupado = ocupado;
+		this.setId();
+
 		quartos.add(this);
 	}
 
