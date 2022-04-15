@@ -10,12 +10,23 @@ import arquivo.ConfigArquivoSaidas;
 public class Saida {
 	static double totalSaidas;
 
+	private int id;
 	private double valor;
 	private Date dataCriacao;
 	private String motivo;
 	private String observacoes;
 
 	public static ArrayList<Saida> saidas = new ArrayList<>();
+	private static int idCont = 0;
+
+	public int getId() {
+		return id;
+	}
+
+	private void setId() {
+		Saida.idCont++;
+		this.id = idCont;
+	}
 
 	public static double getTotalSaidas() {
 		return totalSaidas;
@@ -71,6 +82,8 @@ public class Saida {
 		this.dataCriacao = dataCriacao;
 		this.motivo = motivo;
 		this.observacoes = observacoes;
+		this.setId();
+
 		saidas.add(this);
 		Saida.totalSaidas += this.valor;
 	}
