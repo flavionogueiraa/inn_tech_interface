@@ -16,7 +16,7 @@ public class Reserva {
 	private String nomeHospede;
 	private double valorDiaria;
 	private Quarto quarto;
-	private boolean pago;
+	private boolean pagamentoConfirmado;
 	private String observacoes;
 
 	public static ArrayList<Reserva> reservas = new ArrayList<>();
@@ -90,11 +90,11 @@ public class Reserva {
 	}
 
 	public boolean isPago() {
-		return pago;
+		return pagamentoConfirmado;
 	}
 
-	public void setPago(boolean pago) {
-		this.pago = pago;
+	public void setPago(boolean pagamentoConfirmado) {
+		this.pagamentoConfirmado = pagamentoConfirmado;
 	}
 
 	public String isPagoSimNao() {
@@ -114,13 +114,13 @@ public class Reserva {
 	}
 
 	public Reserva(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
-			String observacoes, boolean pago, Quarto quarto) {
+			String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
 		this.nomeHospede = nomeHospede;
 		this.valorDiaria = valorDiaria;
 		this.dataEstimadaCheckin = dataEstimadaCheckin;
 		this.dataEstimadaCheckout = dataEstimadaCheckout;
 		this.observacoes = observacoes;
-		this.pago = pago;
+		this.pagamentoConfirmado = pagamentoConfirmado;
 		this.quarto = quarto;
 		this.setId();
 
@@ -128,8 +128,8 @@ public class Reserva {
 	}
 
 	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
-			Date dataEstimadaCheckout, String observacoes, boolean pago, Quarto quarto) {
-		Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria, dataEstimadaCheckin, null, observacoes, pago, quarto);
+			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+		Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria, dataEstimadaCheckin, null, observacoes, pagamentoConfirmado, quarto);
 		ConfigArquivoReservas.atualizaReservas();
 
 		nova_reserva.quarto.setOcupado(true);

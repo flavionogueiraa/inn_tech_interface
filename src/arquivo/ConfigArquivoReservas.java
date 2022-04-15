@@ -46,11 +46,11 @@ public class ConfigArquivoReservas {
 
 					String observacoes = palavras[4];
 
-					boolean pago = Boolean.parseBoolean(palavras[5]);
+					boolean pagamentoConfirmado = Boolean.parseBoolean(palavras[5]);
 
 					Quarto quarto = Quarto.getQuarto(Integer.parseInt(palavras[6]));
 
-					new Reserva(nomeHospede, valorDiaria, data, horarioSaida, observacoes, pago, quarto);
+					new Reserva(nomeHospede, valorDiaria, data, horarioSaida, observacoes, pagamentoConfirmado, quarto);
 					linha = lerArq.readLine();
 				}
 				arq.close();
