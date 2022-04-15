@@ -3,7 +3,6 @@ package controler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,18 +42,18 @@ public class QuartoControler extends MenuControler implements Initializable {
 
 	@FXML
 	private TableColumn<Quarto, String> quarto_ocupado;
-	
+
 	private void limparCampos() {
 		campo_numero.clear();
 		campo_capacidade.clear();
 		campo_descricao.clear();
 	}
-	
+
 	private boolean validarCampos(String numero, String capacidade, String descricao) {
 		if (numero.isEmpty() || capacidade.isEmpty() || descricao.isEmpty()) {
 			return false;
 		}
-		
+
 		try {
 			Integer.parseInt(numero);
 		} catch (Exception error) {
@@ -66,7 +65,7 @@ public class QuartoControler extends MenuControler implements Initializable {
 		} catch (Exception error) {
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -76,10 +75,11 @@ public class QuartoControler extends MenuControler implements Initializable {
 		String numero = campo_numero.getText();
 		String capacidade = campo_capacidade.getText();
 		String descricao = campo_descricao.getText();
-		
-		if(validarCampos(numero, capacidade, descricao)) {
+
+		if (validarCampos(numero, capacidade, descricao)) {
 			if (Quarto.getQuarto(Integer.parseInt(numero)) == null) {
-				Quarto novo_quarto = Quarto.cadastraQuartoInterface(Integer.parseInt(numero), Integer.parseInt(capacidade), descricao);
+				Quarto novo_quarto = Quarto.cadastraQuartoInterface(Integer.parseInt(numero),
+						Integer.parseInt(capacidade), descricao);
 				tabela_quartos.getItems().add(novo_quarto);
 				limparCampos();
 			} else {
@@ -110,13 +110,13 @@ public class QuartoControler extends MenuControler implements Initializable {
 		String numero = campo_numero.getText();
 		String capacidade = campo_capacidade.getText();
 		String descricao = campo_descricao.getText();
-		
-		if(validarCampos(numero, capacidade, descricao)) {
+
+		if (validarCampos(numero, capacidade, descricao)) {
 			if (ValidacaoQuartoInterface.validacaoEdicao(quarto, Integer.parseInt(numero))) {
 				quarto.setNumero(Integer.parseInt(numero));
 				quarto.setCapacidade(Integer.parseInt(capacidade));
 				quarto.setDescricao(descricao);
-				
+
 				tabela_quartos.refresh();
 				limparCampos();
 			} else {
@@ -134,7 +134,7 @@ public class QuartoControler extends MenuControler implements Initializable {
 			Quarto quarto = tabela_quartos.getSelectionModel().getSelectedItem();
 			tabela_quartos.getItems().remove(quarto);
 			quarto.deletaQuarto();
-		} catch(Exception error) {
+		} catch (Exception error) {
 			label_erro.setText("Nenhum quarto selecionado!");
 		}
 	}
@@ -142,7 +142,8 @@ public class QuartoControler extends MenuControler implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		quarto_numero.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNumero().toString()));
-		quarto_capacidade.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCapacidade().toString()));
+		quarto_capacidade
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCapacidade().toString()));
 		quarto_descricao.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDescricao()));
 		quarto_ocupado.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isOcupadoSimNao()));
 

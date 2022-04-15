@@ -1,6 +1,6 @@
 1	2	uma cama de casal	false
 2	3	uma cama de casal e uma de solteiro	true
-3	1	cama de solteiro	false
+3	1	cama de solteiro	true
 5	1	uma cama de solteiro	true
 11	12	Teste	false
 12	12	Um grande quarto, grande mesmo	false
