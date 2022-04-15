@@ -73,8 +73,8 @@ public class SaidaControler extends MenuControler implements Initializable {
 		try {
 			dataCriacao = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_criacao.getText());
 		} catch (ParseException e) {
-			label_erro.setText("Data e hora inválidas!");
-			System.err.println("Data e hora inválidas!");
+			label_erro.setText("Data e hora invalidas!");
+			System.err.println("Data e hora invalidas!");
 		}
 
 		if (dataCriacao != null) {
@@ -90,7 +90,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 				tabela_saidas.getItems().add(nova_saida);
 				limparCampos();
 			} else {
-				label_erro.setText("Preencha todos os campos que contém um '*'");
+				label_erro.setText("Preencha todos os campos que contem um '*'");
 			}
 		}
 	}
@@ -105,7 +105,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 			campo_data_hora_criacao.setText(saida.getDataCriacaoFormatada());
 			campo_observacoes.setText(saida.getObservacoes());
 		} catch (Exception error) {
-			label_erro.setText("Nenhuma saída selecionada");
+			label_erro.setText("Nenhuma saida selecionada");
 		}
 	}
 
@@ -116,7 +116,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 		try {
 			dataCriacao = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_criacao.getText());
 		} catch (ParseException e) {
-			System.err.println("Data e hora de chegada inválidas!");
+			System.err.println("Data e hora de chegada invalidas!");
 		}
 		Double valor = Double.parseDouble(campo_valor.getText());
 		String motivo = campo_motivo.getText();
@@ -139,7 +139,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 			tabela_saidas.getItems().remove(saida);
 			saida.deletaSaida();
 		} catch (Exception error) {
-			label_erro.setText("Nenhuma saída selecionada");
+			label_erro.setText("Nenhuma saida selecionada");
 		}
 	}
 

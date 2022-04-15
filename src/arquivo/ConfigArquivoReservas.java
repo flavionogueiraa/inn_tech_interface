@@ -58,7 +58,7 @@ public class ConfigArquivoReservas {
 				System.out.println("Erro na linha");
 			}
 		} catch (FileNotFoundException ex) {
-			System.out.println("Erro: Arquivo n�o encontrado!");
+			System.out.println("Erro: Arquivo nao encontrado!");
 		}
 	}
 
