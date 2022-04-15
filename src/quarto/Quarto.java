@@ -10,7 +10,7 @@ public class Quarto {
 	private boolean ocupado;
 
 	public static ArrayList<Quarto> quartos = new ArrayList<>();
-	public static int idCont = 0;
+	private static int idCont = 0;
 
 	public int getId() {
 		return id;
