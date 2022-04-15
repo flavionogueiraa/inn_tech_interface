@@ -83,10 +83,10 @@ public class QuartoControler extends MenuControler implements Initializable {
 				tabela_quartos.getItems().add(novo_quarto);
 				limparCampos();
 			} else {
-				label_erro.setText("Quarto já existente!");
+				label_erro.setText("Quarto ja existente!");
 			}
 		} else {
-			label_erro.setText("Campos inválidos!");
+			label_erro.setText("Campos invalidos!");
 		}
 	}
 
@@ -120,7 +120,7 @@ public class QuartoControler extends MenuControler implements Initializable {
 				tabela_quartos.refresh();
 				limparCampos();
 			} else {
-				label_erro.setText("Quarto já existente!");
+				label_erro.setText("Quarto ja existente!");
 			}
 		} else {
 			label_erro.setText("Preencha todos os campos!");

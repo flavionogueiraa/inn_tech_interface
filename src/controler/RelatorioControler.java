@@ -74,7 +74,7 @@ public class RelatorioControler extends MenuControler implements Initializable {
 			}
 		}
 		XYChart.Series<String, Double> saidas = new Series<String, Double>();
-		saidas.setName("Saídas");
+		saidas.setName("Saidas");
 
 		LinkedHashMap<String, Double> saidasDicionario = Saida.saidasMes();
 		Set<String> chavesSaidas = saidasDicionario.keySet();
