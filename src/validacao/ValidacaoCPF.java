@@ -104,7 +104,7 @@ public class ValidacaoCPF {
 			} else {
 				erro = true;
 				pulaLinha = false;
-				System.out.println("Desculpe, CPF já cadastrado");
+				System.out.println("Desculpe, CPF ja cadastrado");
 			}
 		} while (erro);
 
@@ -120,7 +120,7 @@ public class ValidacaoCPF {
 				return var;
 			} else {
 				erro = true;
-				System.out.println("Desculpe, CPF não cadastrado");
+				System.out.println("Desculpe, CPF nao cadastrado");
 			}
 		} while (erro);
 
@@ -136,7 +136,7 @@ public class ValidacaoCPF {
 				if (var.equals(usuario.getCPF())) {
 					return var;
 				} else {
-					System.out.println("Desculpe, o CPF já está em uso");
+					System.out.println("Desculpe, o CPF ja esta em uso");
 					erro = true;
 					pulaLinha = false;
 				}

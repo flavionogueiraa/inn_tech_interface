@@ -60,7 +60,7 @@ public class Usuario {
 		if (isProprietario()) {
 			return "Sim";
 		} else {
-			return "Não";
+			return "Nao";
 		}
 	}
 
