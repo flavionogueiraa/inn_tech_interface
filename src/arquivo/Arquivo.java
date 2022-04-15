@@ -26,7 +26,7 @@ public class Arquivo {
 				return "";
 			}
 		} catch (FileNotFoundException ex) {
-			System.out.println("Erro: Arquivo não encontrado!");
+			System.out.println("Erro: Arquivo nao encontrado!");
 			return "";
 		}
 	}
