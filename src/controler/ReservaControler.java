@@ -106,7 +106,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 	}
 
 	private void setaQuartosDisponiveis() {
-		label_quartos_disponiveis.setText("Quartos dispon�veis: " + Quarto.quartosDisponiveis());
+		label_quartos_disponiveis.setText("Quartos disponiveis: " + Quarto.quartosDisponiveis());
 	}
 
 	@FXML
@@ -116,7 +116,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		try {
 			dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
 		} catch (ParseException e) {
-			System.err.println("Data e hora de chegada inv�lidas!");
+			System.err.println("Data e hora de chegada invalidas!");
 		}
 		if (dataEstimadaCheckin != null) {
 			if (validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor.getText())) {
@@ -136,13 +136,13 @@ public class ReservaControler extends MenuControler implements Initializable {
 					limparCampos();
 					setaQuartosDisponiveis();
 				} else {
-					label_erro.setText("Informe um quarto v�lido");
+					label_erro.setText("Informe um quarto valido");
 				}
 			} else {
-				label_erro.setText("Campos inv�lidos!");
+				label_erro.setText("Campos invalidos!");
 			}
 		} else {
-			label_erro.setText("Data e hora de chegada inv�lidas!");
+			label_erro.setText("Data e hora de chegada invalidas!");
 		}
 	}
 
@@ -171,13 +171,13 @@ public class ReservaControler extends MenuControler implements Initializable {
 			try {
 				dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
 			} catch (ParseException e) {
-				System.err.println("Data e hora de chegada inv�lidas!");
+				System.err.println("Data e hora de chegada invalidas!");
 			}
 			Date dataEstimadaCheckout = null;
 			try {
 				dataEstimadaCheckout = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_saida.getText());
 			} catch (ParseException e) {
-				System.err.println("Data e hora de sa�da inv�lidas!");
+				System.err.println("Data e hora de saada invalidas!");
 			}
 			String nomeHospede = campo_nome_hospede.getText();
 			String observacoes = campo_observacoes.getText();
@@ -197,7 +197,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 					new Entrada(valor, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
 				}
 			} else {
-				label_erro.setText("A reserva j� foi paga!");
+				label_erro.setText("A reserva ja foi paga!");
 			}
 
 			tabela_reservas.refresh();

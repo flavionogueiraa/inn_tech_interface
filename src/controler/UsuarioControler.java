@@ -78,11 +78,11 @@ public class UsuarioControler extends MenuControler implements Initializable {
 					label_erro.setText("Preencha todos os campos");
 				}
 			} else {
-				label_erro.setText("CPF já cadastrado");
+				label_erro.setText("CPF ja cadastrado");
 			}
 
 		} else {
-			label_erro.setText("CPF inválido");
+			label_erro.setText("CPF invalido");
 		}
 	}
 
@@ -96,7 +96,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 			campo_senha.setText(usuarioEscolhido.getSenha());
 			campo_proprietario.setSelected((usuarioEscolhido.isProprietario()));
 		} catch (Exception error) {
-			label_erro.setText("Nenhum usuário selecionado");
+			label_erro.setText("Nenhum usuario selecionado");
 		}
 	}
 
@@ -124,11 +124,11 @@ public class UsuarioControler extends MenuControler implements Initializable {
 					label_erro.setText("Preencha todos os campos");
 				}
 			} else {
-				label_erro.setText("CPF já está em uso");
+				label_erro.setText("CPF ja esta em uso");
 			}
 
 		} else {
-			label_erro.setText("CPF inválido");
+			label_erro.setText("CPF invalido");
 		}
 	}
 
@@ -140,7 +140,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 			tabela_usuarios.getItems().remove(usuario);
 			usuario.deletaUsuario();
 		} catch (Exception error) {
-			label_erro.setText("Nenhum usuário selecionado");
+			label_erro.setText("Nenhum usuario selecionado");
 		}
 	}
 
