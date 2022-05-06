@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 
 import arquivo.ConfigArquivoPagamentos;
+import reserva.Reserva;
 
 public class Pagamento {
 	static double totalPagamentos = 0;
@@ -14,6 +15,7 @@ public class Pagamento {
 	private double valor;
 	private Date dataCriacao;
 	private String observacoes;
+	private Reserva reserva;
 
 	public static ArrayList<Pagamento> pagamentos = new ArrayList<>();
 	private static int idCont = 0;
