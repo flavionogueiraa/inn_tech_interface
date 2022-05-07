@@ -39,7 +39,7 @@ public class Quarto {
 		if (this.isOcupado()) {
 			return "Sim";
 		} else {
-			return "Não";
+			return "Nï¿½o";
 		}
 	}
 
@@ -66,6 +66,10 @@ public class Quarto {
 	public Usuario getUsuarioCriacao() {
 		return usuarioCriacao;
 	}
+
+	public void setUsuarioCriacao(Usuario usuarioCriacao) {
+		this.usuarioCriacao = usuarioCriacao;
+	}
 	
 	public String getNomeUsuario() {
 		if (usuarioCriacao != null) {
@@ -73,10 +77,6 @@ public class Quarto {
 		} else {
 			return "-";
 		}
-	}
-
-	public void setUsuarioCriacao(Usuario usuarioCriacao) {
-		this.usuarioCriacao = usuarioCriacao;
 	}
 
 	public Quarto(int numero, int capacidade, String descricao, boolean ocupado) {

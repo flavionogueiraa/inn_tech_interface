@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.SaidaControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.SaidaControler">
    <bottom>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
@@ -87,6 +87,7 @@
                   <TableColumn fx:id="saida_valor" minWidth="77.60000610351562" prefWidth="116.79998779296875" text="Valor" />
                   <TableColumn fx:id="saida_data_hora" prefWidth="144.79998779296875" text="Data e hora" />
                   <TableColumn fx:id="saida_observacoes" minWidth="61.60003662109375" prefWidth="194.40005493164062" text="Observações" />
+                  <TableColumn fx:id="saida_usuario_criacao" minWidth="61.60003662109375" prefWidth="194.40005493164062" text="Usuário de criação" />
                </columns>
             </TableView>
             <GridPane GridPane.rowIndex="2">
