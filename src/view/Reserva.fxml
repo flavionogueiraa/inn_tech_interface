@@ -85,12 +85,12 @@
             <TableView fx:id="tabela_reservas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="reserva_hospede" minWidth="100.0" prefWidth="181.0" text="Nome" />
-                <TableColumn fx:id="reserva_valor" prefWidth="75.0" text="Valor" />
+                <TableColumn fx:id="reserva_valor_diaria" prefWidth="75.0" text="Valor" />
                   <TableColumn fx:id="reserva_data_hora_chegada" prefWidth="125.0" text="Data e hora chegada" />
                   <TableColumn fx:id="reserva_data_hora_saida" prefWidth="125.0" text="Data e hora saída" />
                   <TableColumn fx:id="reserva_observacoes" prefWidth="185.0" text="Observações" />
                   <TableColumn fx:id="reserva_quarto" prefWidth="103.20001220703125" text="Quarto" />
-                  <TableColumn fx:id="reserva_pago" minWidth="100.0" prefWidth="0.0" text="Pago" />
+                  <TableColumn fx:id="reserva_pagamento_confirmado" minWidth="100.0" prefWidth="0.0" text="Pago" />
               </columns>
             </TableView>
             <GridPane GridPane.rowIndex="2">
@@ -114,7 +114,7 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="campo_valor" layoutX="20.0" layoutY="18.0" promptText="Valor*" GridPane.columnIndex="1">
+                  <TextField fx:id="campo_valor_diaria" layoutX="20.0" layoutY="18.0" promptText="Valor*" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -146,7 +146,7 @@
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <CheckBox fx:id="campo_pago" mnemonicParsing="false" text="Pago?" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <CheckBox fx:id="campo_pagamento_confirmado" mnemonicParsing="false" text="Pago?" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="10.0" top="-20.0" />
                      </GridPane.margin>

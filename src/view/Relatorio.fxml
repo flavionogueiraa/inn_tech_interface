@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.RelatorioControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.RelatorioControler">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -82,11 +82,11 @@
                 <RowConstraints maxHeight="233.5999740600586" minHeight="10.0" prefHeight="212.7999969482422" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView fx:id="tabela_entradas" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="tabela_pagamentos" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn fx:id="entrada_valor" minWidth="100.0" prefWidth="144.0" text="Valor" />
-                        <TableColumn fx:id="entrada_data_hora" prefWidth="144.0" text="Data e Hora" />
-                        <TableColumn fx:id="entrada_observacoes" minWidth="61.60003662109376" prefWidth="144.0" text="Observações" />
+                        <TableColumn fx:id="pagamento_valor" minWidth="100.0" prefWidth="144.0" text="Valor" />
+                        <TableColumn fx:id="pagamento_data_hora" prefWidth="144.0" text="Data e Hora" />
+                        <TableColumn fx:id="pagamento_reserva" minWidth="61.60003662109376" prefWidth="144.0" text="Reserva" />
                      </columns>
                   </TableView>
                   <TableView fx:id="tabela_relatorio_saidas" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -104,7 +104,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Text>
-                  <Text layoutX="20.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entradas" GridPane.valignment="BOTTOM">
+                  <Text layoutX="20.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pagamentos" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Italic" size="18.0" />
                      </font>
@@ -130,7 +130,7 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Entradas x Saídas" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pagamentos x Saídas" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
                   <Font name="System Italic" size="18.0" />
                </font>

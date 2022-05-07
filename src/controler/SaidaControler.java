@@ -36,6 +36,9 @@ public class SaidaControler extends MenuControler implements Initializable {
 	private TableColumn<Saida, String> saida_observacoes;
 
 	@FXML
+	private TableColumn<Saida, String> saida_usuario_criacao;
+
+	@FXML
 	private TextField campo_motivo;
 
 	@FXML
@@ -149,6 +152,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 		saida_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		saida_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
 		saida_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
+		saida_usuario_criacao.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario()));
 
 		tabela_saidas.getItems().addAll(Saida.saidas);
 

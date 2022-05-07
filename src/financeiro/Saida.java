@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 
 import arquivo.ConfigArquivoSaidas;
+import usuario.Usuario;
 
 public class Saida {
 	static double totalSaidas;
@@ -15,6 +16,7 @@ public class Saida {
 	private Date dataCriacao;
 	private String motivo;
 	private String observacoes;
+	private Usuario usuarioCriacao;
 
 	public static ArrayList<Saida> saidas = new ArrayList<>();
 	private static int idCont = 0;
@@ -77,12 +79,29 @@ public class Saida {
 		this.observacoes = observacoes;
 	}
 
+	public Usuario getUsuarioCriacao() {
+		return usuarioCriacao;
+	}
+
+	public void setUsuarioCriacao(Usuario usuarioCriacao) {
+		this.usuarioCriacao = usuarioCriacao;
+	}
+	
+	public String getNomeUsuario() {
+		if (usuarioCriacao != null) {
+			return usuarioCriacao.getNome();
+		} else {
+			return "-";
+		}
+	}
+
 	public Saida(double valor, Date dataCriacao, String motivo, String observacoes) {
 		this.valor = valor;
 		this.dataCriacao = dataCriacao;
 		this.motivo = motivo;
 		this.observacoes = observacoes;
 		this.setId();
+		this.usuarioCriacao = Usuario.usuarioLogado;
 
 		saidas.add(this);
 		Saida.totalSaidas += this.valor;
@@ -104,8 +123,8 @@ public class Saida {
 		double totalSaidaMes = 0;
 		for (Saida saida : Saida.saidas) {
 			String[] data = saida.getDataCriacaoFormatada().split("/");
-			int mesEntrada = Integer.parseInt(data[1]);
-			if (mesEntrada == mes) {
+			int mesPagamento = Integer.parseInt(data[1]);
+			if (mesPagamento == mes) {
 				totalSaidaMes += saida.getValor();
 			}
 		}

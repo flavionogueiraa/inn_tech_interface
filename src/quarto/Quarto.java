@@ -3,11 +3,13 @@ package quarto;
 import java.util.ArrayList;
 
 import arquivo.ConfigArquivoQuartos;
+import usuario.Usuario;
 
 public class Quarto {
 	private int id, numero, capacidade;
 	private String descricao;
 	private boolean ocupado;
+	private Usuario usuarioCriacao;
 
 	public static ArrayList<Quarto> quartos = new ArrayList<>();
 	private static int idCont = 0;
@@ -37,7 +39,7 @@ public class Quarto {
 		if (this.isOcupado()) {
 			return "Sim";
 		} else {
-			return "Não";
+			return "Nao";
 		}
 	}
 
@@ -61,12 +63,29 @@ public class Quarto {
 		this.descricao = descricao;
 	}
 
+	public Usuario getUsuarioCriacao() {
+		return usuarioCriacao;
+	}
+
+	public void setUsuarioCriacao(Usuario usuarioCriacao) {
+		this.usuarioCriacao = usuarioCriacao;
+	}
+	
+	public String getNomeUsuario() {
+		if (usuarioCriacao != null) {
+			return usuarioCriacao.getNome();
+		} else {
+			return "-";
+		}
+	}
+
 	public Quarto(int numero, int capacidade, String descricao, boolean ocupado) {
 		this.numero = numero;
 		this.capacidade = capacidade;
 		this.descricao = descricao;
 		this.ocupado = ocupado;
 		this.setId();
+		this.usuarioCriacao = Usuario.usuarioLogado;
 
 		quartos.add(this);
 	}

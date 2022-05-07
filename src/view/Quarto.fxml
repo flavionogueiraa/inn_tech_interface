@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.QuartoControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.QuartoControler">
    <bottom>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
@@ -87,6 +87,7 @@
                   <TableColumn fx:id="quarto_capacidade" minWidth="77.60000610351562" prefWidth="116.79998779296875" text="Capacidade" />
                   <TableColumn fx:id="quarto_descricao" prefWidth="239.20004272460938" text="Descrição" />
                   <TableColumn fx:id="quarto_ocupado" minWidth="61.60003662109375" prefWidth="129.5999755859375" text="Ocupado" />
+                  <TableColumn fx:id="usuario_criacao" minWidth="143.0" prefWidth="128.79998779296875" text="Usuário de criação" />
                </columns>
             </TableView>
             <GridPane GridPane.rowIndex="2">

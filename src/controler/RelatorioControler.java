@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import financeiro.Entrada;
+import financeiro.Pagamento;
 import financeiro.Saida;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -21,18 +21,18 @@ import javafx.scene.control.TableView;
 
 public class RelatorioControler extends MenuControler implements Initializable {
 	@FXML
-	private TableView<Entrada> tabela_entradas;
+	private TableView<Pagamento> tabela_pagamentos;
 
 	@FXML
-	private TableColumn<Entrada, String> entrada_valor;
+	private TableColumn<Pagamento, String> pagamento_valor;
 
 	@FXML
-	private TableColumn<Entrada, String> entrada_data_hora;
+	private TableColumn<Pagamento, String> pagamento_data_hora;
 
 	@FXML
-	private TableColumn<Entrada, String> entrada_observacoes;
+	private TableColumn<Pagamento, String> pagamento_reserva;
 
-	ObservableList<Entrada> lista_entradas = FXCollections.observableArrayList();
+	ObservableList<Pagamento> lista_pagamentos = FXCollections.observableArrayList();
 
 	@FXML
 	private TableView<Saida> tabela_relatorio_saidas;
@@ -53,24 +53,24 @@ public class RelatorioControler extends MenuControler implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		entrada_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
-		entrada_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
-		entrada_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
-		tabela_entradas.getItems().addAll(Entrada.entradas);
+		pagamento_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
+		pagamento_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
+		pagamento_reserva.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIdReserva().toString()));
+		tabela_pagamentos.getItems().addAll(Pagamento.pagamentos);
 
 		relatorio_saida_motivo.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMotivo()));
 		relatorio_saida_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		relatorio_saida_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
 		tabela_relatorio_saidas.getItems().addAll(Saida.saidas);
 
-		XYChart.Series<String, Double> entradas = new XYChart.Series<String, Double>();
-		entradas.setName("Entradas");
+		XYChart.Series<String, Double> pagamentos = new XYChart.Series<String, Double>();
+		pagamentos.setName("Pagamentos");
 
-		LinkedHashMap<String, Double> entradasDicionario = Entrada.entradasMes();
-		Set<String> chavesEntradas = entradasDicionario.keySet();
-		for (String chave : chavesEntradas) {
+		LinkedHashMap<String, Double> pagamentosDicionario = Pagamento.pagamentosMes();
+		Set<String> chavesPagamentos = pagamentosDicionario.keySet();
+		for (String chave : chavesPagamentos) {
 			if (chave != null) {
-				entradas.getData().add(new Data<String, Double>(chave, entradasDicionario.get(chave)));
+				pagamentos.getData().add(new Data<String, Double>(chave, pagamentosDicionario.get(chave)));
 			}
 		}
 		XYChart.Series<String, Double> saidas = new Series<String, Double>();
@@ -84,7 +84,7 @@ public class RelatorioControler extends MenuControler implements Initializable {
 			}
 		}
 
-		grafico_relatorio.getData().add(entradas);
+		grafico_relatorio.getData().add(pagamentos);
 		grafico_relatorio.getData().add(saidas);
 	}
 }

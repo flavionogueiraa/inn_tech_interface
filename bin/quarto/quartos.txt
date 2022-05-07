@@ -1,8 +1,9 @@
-1	2	uma cama de casal	false
+1	2	uma cama de casal	true
 2	3	uma cama de casal e uma de solteiro	true
 3	1	cama de solteiro	true
 5	1	uma cama de solteiro	true
-11	12	Teste	false
-12	12	Um grande quarto, grande mesmo	false
+12	15	Um grande quarto, grande mesmo!	false
 17	2	Uma cama de casal e um ar condicionado	true
 69	3	Uma cama de solteiro e duas de casal	false
+70	2	Quarto simples	false
+71	3	Exemplo	false

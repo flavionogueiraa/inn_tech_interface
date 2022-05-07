@@ -8,7 +8,7 @@ public class Usuario {
 	private int id;
 	private String nome;
 	private String CPF;
-	private String Senha;
+	private String senha;
 	private boolean proprietario;
 
 	public static ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -41,11 +41,11 @@ public class Usuario {
 	}
 
 	public String getSenha() {
-		return Senha;
+		return senha;
 	}
 
 	public void setSenha(String senha) {
-		Senha = senha;
+		this.senha = senha;
 	}
 
 	public boolean isProprietario() {
@@ -68,7 +68,7 @@ public class Usuario {
 		super();
 		this.nome = nome;
 		this.CPF = CPF;
-		this.Senha = senha;
+		this.senha = senha;
 		this.proprietario = proprietario;
 		this.setId();
 		
@@ -88,7 +88,7 @@ public class Usuario {
 
 	public static Usuario login(String CPF, String senha) {
 		Usuario.usuarioLogado = getUsuario(CPF);
-		if (Usuario.usuarioLogado != null && Usuario.usuarioLogado.Senha.equals(senha)) {
+		if (Usuario.usuarioLogado != null && Usuario.usuarioLogado.senha.equals(senha)) {
 			return Usuario.usuarioLogado;
 		}
 

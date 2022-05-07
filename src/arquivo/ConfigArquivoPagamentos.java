@@ -10,14 +10,14 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import financeiro.Entrada;
+import financeiro.Pagamento;
 
-public class ConfigArquivoEntradas {
-	public static void cadastraEntrada(Entrada entrada) {
+public class ConfigArquivoPagamentos {
+	public static void cadastraPagamento(Pagamento pagamento) {
 		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		String arquivo = "src/financeiro/entradas.txt";
-		String texto = "" + entrada.getValor() + "\t" + formatar.format(entrada.getDataCriacao()) + "\t"
-				+ entrada.getObservacoes() + "\n";
+		String arquivo = "src/financeiro/pagamentos.txt";
+		String texto = "" + pagamento.getValor() + "\t" + formatar.format(pagamento.getDataCriacao()) + "\t"
+				+ pagamento.getObservacoes() + "\n";
 
 		String textoArquivo = Arquivo.Read(arquivo);
 		if (texto.isEmpty())
@@ -32,14 +32,14 @@ public class ConfigArquivoEntradas {
 		}
 	}
 
-	public static void atualizaEntradas() {
-		String caminho = "src/financeiro/entradas.txt";
+	public static void atualizaPagamentos() {
+		String caminho = "src/financeiro/pagamentos.txt";
 		String texto = "";
 		SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		for (Entrada entrada : Entrada.entradas) {
+		for (Pagamento pagamento : Pagamento.pagamentos) {
 
-			texto += "" + entrada.getValor() + "\t" + formatar.format(entrada.getDataCriacao()) + "\t"
-					+ entrada.getObservacoes() + "\n";
+			texto += "" + pagamento.getValor() + "\t" + formatar.format(pagamento.getDataCriacao()) + "\t"
+					+ pagamento.getObservacoes() + "\n";
 
 		}
 
@@ -50,7 +50,7 @@ public class ConfigArquivoEntradas {
 		}
 	}
 
-	public static void inicializaEntradas(String Caminho) {
+	public static void inicializaPagamentos(String Caminho) {
 		try {
 			FileReader arq = new FileReader(Caminho);
 			BufferedReader lerArq = new BufferedReader(arq);
@@ -65,12 +65,12 @@ public class ConfigArquivoEntradas {
 					try {
 						data = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataCriacao);
 					} catch (ParseException ex) {
-						Logger.getLogger(ConfigArquivoEntradas.class.getName()).log(Level.SEVERE, null, ex);
+						Logger.getLogger(ConfigArquivoPagamentos.class.getName()).log(Level.SEVERE, null, ex);
 					}
 
 					String observacoes = palavras[2];
 
-					new Entrada(valor, data, observacoes, false);
+					new Pagamento(valor, data, observacoes, false, null);
 
 					linha = lerArq.readLine();
 				}

@@ -23,8 +23,8 @@ public class ConfigArquivoReservas {
 				linha = lerArq.readLine();
 				while (linha != null) {
 					String[] palavras = linha.split("\t");
-					String hospede = palavras[0];
-					Double valor = Double.parseDouble(palavras[1]);
+					String nomeHospede = palavras[0];
+					Double valorDiaria = Double.parseDouble(palavras[1]);
 
 					String dataString = palavras[2];
 					Date data = null;
@@ -46,11 +46,11 @@ public class ConfigArquivoReservas {
 
 					String observacoes = palavras[4];
 
-					boolean pago = Boolean.parseBoolean(palavras[5]);
+					boolean pagamentoConfirmado = Boolean.parseBoolean(palavras[5]);
 
 					Quarto quarto = Quarto.getQuarto(Integer.parseInt(palavras[6]));
 
-					new Reserva(hospede, valor, data, horarioSaida, observacoes, pago, quarto);
+					new Reserva(nomeHospede, valorDiaria, data, horarioSaida, observacoes, pagamentoConfirmado, quarto);
 					linha = lerArq.readLine();
 				}
 				arq.close();
