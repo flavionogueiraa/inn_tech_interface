@@ -8,6 +8,7 @@ import arquivo.ConfigArquivoQuartos;
 import arquivo.ConfigArquivoReservas;
 import financeiro.Pagamento;
 import quarto.Quarto;
+import usuario.Usuario;
 
 public class Reserva {
 	private int id;
@@ -18,6 +19,7 @@ public class Reserva {
 	private Quarto quarto;
 	private boolean pagamentoConfirmado;
 	private String observacoes;
+	private Usuario usuarioCriacao;
 
 	public static ArrayList<Reserva> reservas = new ArrayList<>();
 	private static int idCont = 0;
@@ -113,6 +115,22 @@ public class Reserva {
 		this.observacoes = observacoes;
 	}
 
+	public Usuario getUsuarioCriacao() {
+		return usuarioCriacao;
+	}
+
+	public void setUsuarioCriacao(Usuario usuarioCriacao) {
+		this.usuarioCriacao = usuarioCriacao;
+	}
+	
+	public String getNomeUsuario() {
+		if (usuarioCriacao != null) {
+			return usuarioCriacao.getNome();
+		} else {
+			return "-";
+		}
+	}
+
 	public Reserva(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
 			String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
 		this.nomeHospede = nomeHospede;
@@ -123,6 +141,7 @@ public class Reserva {
 		this.pagamentoConfirmado = pagamentoConfirmado;
 		this.quarto = quarto;
 		this.setId();
+		this.usuarioCriacao = Usuario.usuarioLogado;
 
 		reservas.add(this);
 	}
