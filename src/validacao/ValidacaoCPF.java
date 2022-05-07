@@ -84,68 +84,68 @@ public class ValidacaoCPF {
 		}
 	}
 
-	private static boolean CPFunico(String CPF) {
-		for (Usuario usuario : Usuario.usuarios) {
-			if (usuario.getCPF().equals(CPF)) {
-				return false;
-			}
-		}
+//	private static boolean CPFunico(String CPF) {
+//		for (Usuario usuario : Usuario.usuarios) {
+//			if (usuario.getCPF().equals(CPF)) {
+//				return false;
+//			}
+//		}
+//
+//		return true;
+//	}
 
-		return true;
-	}
+//	public static String validacaoCadastro(Scanner sc, String nomeCampo, boolean pulaLinha) {
+//		boolean erro = false;
+//
+//		do {
+//			String var = validacaoNormal(sc, nomeCampo, pulaLinha);
+//			if (CPFunico(var)) {
+//				return var;
+//			} else {
+//				erro = true;
+//				pulaLinha = false;
+//				System.out.println("Desculpe, CPF ja cadastrado");
+//			}
+//		} while (erro);
+//
+//		return null;
+//	}
 
-	public static String validacaoCadastro(Scanner sc, String nomeCampo, boolean pulaLinha) {
-		boolean erro = false;
+//	public static String validacaoLogin(Scanner sc, String nomeCampo, boolean pulaLinha) {
+//		boolean erro = false;
+//
+//		do {
+//			String var = validacaoNormal(sc, nomeCampo, pulaLinha);
+//			if (!CPFunico(var)) {
+//				return var;
+//			} else {
+//				erro = true;
+//				System.out.println("Desculpe, CPF nao cadastrado");
+//			}
+//		} while (erro);
+//
+//		return null;
+//	}
 
-		do {
-			String var = validacaoNormal(sc, nomeCampo, pulaLinha);
-			if (CPFunico(var)) {
-				return var;
-			} else {
-				erro = true;
-				pulaLinha = false;
-				System.out.println("Desculpe, CPF ja cadastrado");
-			}
-		} while (erro);
-
-		return null;
-	}
-
-	public static String validacaoLogin(Scanner sc, String nomeCampo, boolean pulaLinha) {
-		boolean erro = false;
-
-		do {
-			String var = validacaoNormal(sc, nomeCampo, pulaLinha);
-			if (!CPFunico(var)) {
-				return var;
-			} else {
-				erro = true;
-				System.out.println("Desculpe, CPF nao cadastrado");
-			}
-		} while (erro);
-
-		return null;
-	}
-
-	public static String validacaoEdicao(Scanner sc, String nomeCampo, boolean pulaLinha, Usuario usuario) {
-		boolean erro = false;
-
-		do {
-			String var = validacaoNormal(sc, nomeCampo, pulaLinha);
-			if (!CPFunico(var)) {
-				if (var.equals(usuario.getCPF())) {
-					return var;
-				} else {
-					System.out.println("Desculpe, o CPF ja esta em uso");
-					erro = true;
-					pulaLinha = false;
-				}
-			} else {
-				return var;
-			}
-		} while (erro);
-
-		return null;
-	}
+//	public static String validacaoEdicao(Scanner sc, String nomeCampo, boolean pulaLinha, Usuario usuario) {
+//		boolean erro = false;
+//
+//		do {
+//			String var = validacaoNormal(sc, nomeCampo, pulaLinha);
+//			if (!CPFunico(var)) {
+//				if (var.equals(usuario.getCPF())) {
+//					return var;
+//				} else {
+//					System.out.println("Desculpe, o CPF ja esta em uso");
+//					erro = true;
+//					pulaLinha = false;
+//				}
+//			} else {
+//				return var;
+//			}
+//		} while (erro);
+//
+//		return null;
+//	}
 
 }

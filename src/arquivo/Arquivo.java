@@ -45,10 +45,7 @@ public class Arquivo {
 	}
 
 	public static void inicializaVariaveis() {
-		ConfigArquivoQuartos.inicializaQuartos("src/quarto/quartos.txt");
-		ConfigArquivoUsuarios.inicializaUsuarios("src/usuario/usuarios.txt");
 		ConfigArquivoReservas.inicializaReservas("src/reserva/reservas.txt");
-		ConfigArquivoSaidas.inicializaSaidas("src/financeiro/saidas.txt");
 		ConfigArquivoPagamentos.inicializaPagamentos("src/financeiro/pagamentos.txt");
 	}
 

@@ -5,7 +5,7 @@ import validacao.ValidacaoCPFInterface;
 
 public class LoginInterface {
 	public static Usuario realizarLoginInterface(String CPF, String senha) {
-		String cpfValidado = ValidacaoCPFInterface.validacaoLogin(CPF);
+		String cpfValidado = ValidacaoCPFInterface.validacaoNormal(CPF);
 		if (cpfValidado != null) {
 			Usuario usuario = Usuario.login(CPF, senha);
 			if (usuario != null) {

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
-import arquivo.ConfigArquivoSaidas;
 import usuario.Usuario;
 
 public class Saida {
@@ -109,14 +108,12 @@ public class Saida {
 
 	public static Saida cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes) {
 		Saida nova_saida = new Saida(valor, dataCriacao, motivo, observacoes);
-		ConfigArquivoSaidas.atualizaSaida();
 
 		return nova_saida;
 	}
 
 	public void deletaSaida() {
 		Saida.saidas.remove(this);
-		ConfigArquivoSaidas.atualizaSaida();
 	}
 
 	public static double totalSaidaMes(int mes) {
