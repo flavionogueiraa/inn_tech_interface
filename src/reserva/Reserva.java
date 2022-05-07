@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import arquivo.ConfigArquivoQuartos;
 import arquivo.ConfigArquivoReservas;
 import financeiro.Pagamento;
 import quarto.Quarto;
@@ -176,7 +175,6 @@ public class Reserva {
 	public void finalizaReserva() {
 		this.dataEstimadaCheckout = new Date();
 		this.quarto.setOcupado(false);
-		ConfigArquivoQuartos.atualizaQuartos();
 		new Pagamento(this.valorDiaria, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true, this);
 	}
 }

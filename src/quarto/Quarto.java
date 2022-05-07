@@ -2,7 +2,6 @@ package quarto;
 
 import java.util.ArrayList;
 
-import arquivo.ConfigArquivoQuartos;
 import usuario.Usuario;
 
 public class Quarto {
@@ -92,7 +91,6 @@ public class Quarto {
 
 	public static Quarto cadastraQuartoInterface(int numero, int capacidade, String descricao) {
 		Quarto novo_quarto = new Quarto(numero, capacidade, descricao, false);
-		ConfigArquivoQuartos.atualizaQuartos();
 
 		return novo_quarto;
 	}
@@ -130,6 +128,5 @@ public class Quarto {
 
 	public void deletaQuarto() {
 		Quarto.quartos.remove(this);
-		ConfigArquivoQuartos.atualizaQuartos();
 	}
 }

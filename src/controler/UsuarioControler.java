@@ -3,7 +3,6 @@ package controler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import arquivo.ConfigArquivoUsuarios;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -63,9 +62,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		label_erro.setText("");
 		String CPF = ValidacaoCPFInterface.validacaoNormal(campo_cpf.getText());
 		if (CPF != null) {
-			CPF = ValidacaoCPFInterface.validacaoCadastro(CPF);
-
-			if (CPF != null) {
+			if (Usuario.getUsuario(CPF)==null) {
 				String nome = campo_nome.getText();
 				String senha = campo_senha.getText();
 				Boolean proprietario = campo_proprietario.isSelected();
@@ -106,8 +103,8 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		Usuario usuario = tabela_usuarios.getSelectionModel().getSelectedItem();
 		String CPF = ValidacaoCPFInterface.validacaoNormal(campo_cpf.getText());
 		if (CPF != null) {
-			CPF = ValidacaoCPFInterface.validacaoEdicao(CPF, usuario);
-			if (CPF != null) {
+			Usuario usuarioCadastrado = Usuario.getUsuario(CPF);
+			if (usuarioCadastrado == null || usuarioCadastrado.getId() == usuario.getId()) {
 				String nome = campo_nome.getText();
 				String senha = campo_senha.getText();
 				Boolean proprietario = campo_proprietario.isSelected();
@@ -118,7 +115,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 					usuario.setSenha(senha);
 					usuario.setProprietario(proprietario);
 					tabela_usuarios.refresh();
-					ConfigArquivoUsuarios.atualizaUsuarios();
+					usuario.atualizarUsuario();
 					limparCampos();
 				} else {
 					label_erro.setText("Preencha todos os campos");
@@ -151,6 +148,6 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		senha_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSenha()));
 		proprietario_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isProprietarioSimNao()));
 
-		tabela_usuarios.getItems().addAll(Usuario.usuarios);
+		tabela_usuarios.getItems().addAll(Usuario.getUsuarios());
 	}
 }
