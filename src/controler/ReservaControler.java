@@ -194,7 +194,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			if (!reserva.isPago()) {
 				reserva.setPago(pagamentoConfirmado);
 				if (reserva.isPago()) {
-					new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
+					new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true, reserva);
 				}
 			} else {
 				label_erro.setText("A reserva ja foi paga!");

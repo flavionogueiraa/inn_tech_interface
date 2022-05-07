@@ -70,7 +70,7 @@ public class ConfigArquivoPagamentos {
 
 					String observacoes = palavras[2];
 
-					new Pagamento(valor, data, observacoes, false);
+					new Pagamento(valor, data, observacoes, false, null);
 
 					linha = lerArq.readLine();
 				}

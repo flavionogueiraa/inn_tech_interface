@@ -70,11 +70,28 @@ public class Pagamento {
 		this.observacoes = observacoes;
 	}
 
-	public Pagamento(double valor, Date dataCriacao, String observacoes, boolean Arq) {
+	public Reserva getReserva() {
+		return reserva;
+	}
+
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
+	}
+
+	public Integer getIdReserva() {
+		if (reserva != null) {
+			return reserva.getId();
+		} else {
+			return -1;
+		}
+	}
+
+	public Pagamento(double valor, Date dataCriacao, String observacoes, boolean Arq, Reserva reserva) {
 		this.valor = valor;
 		this.dataCriacao = dataCriacao;
 		this.observacoes = observacoes;
 		this.setId();
+		this.reserva = reserva;
 
 		Pagamento.totalPagamentos += valor;
 		pagamentos.add(this);

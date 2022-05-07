@@ -5,3 +5,5 @@
 12	15	Um grande quarto, grande mesmo!	false
 17	2	Uma cama de casal e um ar condicionado	true
 69	3	Uma cama de solteiro e duas de casal	false
+70	2	Quarto simples	false
+71	3	Exemplo	false

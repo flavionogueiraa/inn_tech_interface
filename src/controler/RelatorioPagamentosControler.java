@@ -23,7 +23,7 @@ public class RelatorioPagamentosControler extends MenuControler implements Initi
     private TableColumn<Pagamento, String> pagamento_data_hora;
 
     @FXML
-    private TableColumn<Pagamento, String> pagamento_observacoes;
+    private TableColumn<Pagamento, String> pagamento_reserva;
     
     ObservableList<Pagamento> lista = FXCollections.observableArrayList();
 
@@ -31,7 +31,7 @@ public class RelatorioPagamentosControler extends MenuControler implements Initi
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		pagamento_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		pagamento_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
-		pagamento_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
+		pagamento_reserva.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIdReserva().toString()));
 
 		tabela_pagamentos.getItems().addAll(Pagamento.pagamentos);
 	}

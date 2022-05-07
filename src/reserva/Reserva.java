@@ -134,7 +134,7 @@ public class Reserva {
 
 		nova_reserva.quarto.setOcupado(true);
 		if (nova_reserva.isPago()) {
-			new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true);
+			new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true, nova_reserva);
 		}
 		return nova_reserva;
 	}
@@ -158,6 +158,6 @@ public class Reserva {
 		this.dataEstimadaCheckout = new Date();
 		this.quarto.setOcupado(false);
 		ConfigArquivoQuartos.atualizaQuartos();
-		new Pagamento(this.valorDiaria, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true);
+		new Pagamento(this.valorDiaria, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true, this);
 	}
 }
