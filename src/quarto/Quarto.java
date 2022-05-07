@@ -39,7 +39,7 @@ public class Quarto {
 		if (this.isOcupado()) {
 			return "Sim";
 		} else {
-			return "N�o";
+			return "Nao";
 		}
 	}
 
