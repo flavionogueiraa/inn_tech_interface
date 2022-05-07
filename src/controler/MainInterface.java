@@ -1,6 +1,7 @@
 package controler;
 
-import arquivo.Arquivo;
+
+import bd.Conection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,7 +29,8 @@ public class MainInterface extends Application {
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
-		Arquivo.inicializaVariaveis();
+		//Arquivo.inicializaVariaveis();
+		Conection.conectar();
 		stage = primeiroEstagio;
 		primeiroEstagio.setResizable(false);
 

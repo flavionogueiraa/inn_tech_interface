@@ -73,46 +73,6 @@ public class ValidacaoCPFInterface {
 		}
 	}
 
-	public static String validacaoLogin(String CPF) {
-		String cpfValidado = validacaoNormal(CPF);
-		if (cpfValidado != null) {
-			if (!CPFunico(cpfValidado)) {
-				System.out.println("CPF cadastrado");
-				return cpfValidado;
-			} else {
-				System.out.println("Desculpe, CPF nao cadastrado");
-			}
-		}
 
-		return null;
 	}
 
-	private static boolean CPFunico(String CPF) {
-		for (Usuario usuario : Usuario.usuarios) {
-			if (usuario.getCPF().equals(CPF)) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	public static String validacaoCadastro(String CPF) {
-		if (CPFunico(CPF)) {
-			return CPF;
-		}
-		return null;
-	}
-
-	public static String validacaoEdicao(String CPF, Usuario usuario) {
-		if (!CPFunico(CPF)) {
-			if (CPF.equals(usuario.getCPF())) {
-				return CPF;
-			} else {
-				return null;
-			}
-		} else {
-			return CPF;
-		}
-	}
-}
