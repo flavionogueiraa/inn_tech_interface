@@ -1,7 +1,10 @@
 package quarto;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import bd.Conection;
 import usuario.Usuario;
 
 public class Quarto {
@@ -78,7 +81,7 @@ public class Quarto {
 		}
 	}
 
-	public Quarto(int numero, int capacidade, String descricao, boolean ocupado) {
+	public Quarto(int id, int numero, int capacidade, String descricao, boolean ocupado, Usuario usuarioCriacao) {
 		this.numero = numero;
 		this.capacidade = capacidade;
 		this.descricao = descricao;
@@ -89,10 +92,30 @@ public class Quarto {
 		quartos.add(this);
 	}
 
-	public static Quarto cadastraQuartoInterface(int numero, int capacidade, String descricao) {
-		Quarto novo_quarto = new Quarto(numero, capacidade, descricao, false);
+	// public static Quarto cadastraQuartoInterface(int numero, int capacidade, String descricao) {
+	// 	Quarto novo_quarto = new Quarto(numero, capacidade, descricao, false);
 
-		return novo_quarto;
+	// 	return novo_quarto;
+	// }
+
+	public static Quarto cadastraQuartoInterface(int numero, int capacidade, String descricao) {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"insert into tbQUARTO(numero, capacidade, descricao, id_usuario) values" + "(?, ?, ?, ?) returning *")) {
+			int idUsuario = Usuario.usuarioLogado.getId();
+			
+			ps.setInt(1, numero);
+			ps.setInt(2, capacidade);
+			ps.setString(3, descricao);
+			ps.setInt(4, idUsuario);
+			try (ResultSet rs = ps.executeQuery()) {
+				return rs.next()
+						? new Quarto(rs.getInt("id"), rs.getInt("numero"), rs.getInt("capacidade"), rs.getString("descricao"), rs.getBoolean("ocupado"), Usuario.getUsuario(rs.getInt("id_usuario")))
+						: null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public static Quarto getQuarto(int numero) {
