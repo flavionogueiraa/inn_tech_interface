@@ -1,10 +1,13 @@
 package reserva;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import arquivo.ConfigArquivoReservas;
+//import arquivo.ConfigArquivoReservas;
+import bd.Conection;
 import financeiro.Pagamento;
 import quarto.Quarto;
 import usuario.Usuario;
@@ -25,11 +28,6 @@ public class Reserva {
 
 	public int getId() {
 		return id;
-	}
-
-	private void setId() {
-		Reserva.idCont++;
-		this.id = idCont;
 	}
 
 	public Date getdataEstimadaCheckin() {
@@ -130,8 +128,9 @@ public class Reserva {
 		}
 	}
 
-	public Reserva(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
+	public Reserva(int id, String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
 			String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+		this.id = id;
 		this.nomeHospede = nomeHospede;
 		this.valorDiaria = valorDiaria;
 		this.dataEstimadaCheckin = dataEstimadaCheckin;
@@ -139,27 +138,46 @@ public class Reserva {
 		this.observacoes = observacoes;
 		this.pagamentoConfirmado = pagamentoConfirmado;
 		this.quarto = quarto;
-		this.setId();
 		this.usuarioCriacao = Usuario.usuarioLogado;
 
 		reservas.add(this);
 	}
 
-	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
-			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
-		Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria, dataEstimadaCheckin, null, observacoes, pagamentoConfirmado, quarto);
-		ConfigArquivoReservas.atualizaReservas();
+	// public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+	// 	Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria, dataEstimadaCheckin, null, observacoes, pagamentoConfirmado, quarto);
+	// 	ConfigArquivoReservas.atualizaReservas();
 
-		nova_reserva.quarto.setOcupado(true);
-		if (nova_reserva.isPago()) {
-			new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true, nova_reserva);
+	// 	nova_reserva.quarto.setOcupado(true);
+	// 	if (nova_reserva.isPago()) {
+	// 		new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true, nova_reserva);
+	// 	}
+	// 	return nova_reserva;
+	// }
+
+	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+		try(PreparedStatement ps = Conection.con.prepareStatement(
+			"insert into tbRESERVA(nomeHospede, valorDiaria, dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto) values (?, ?, ?, ?, ?, ?, ?) returning *")) {
+			ps.setString(1, nomeHospede);
+			ps.setDouble(2, valorDiaria);
+			ps.setDate(3, (java.sql.Date) dataEstimadaCheckin);
+			ps.setDate(4, (java.sql.Date) dataEstimadaCheckout);
+			ps.setString(5, observacoes);
+			ps.setBoolean(6, pagamentoConfirmado);
+			ps.setInt(7, quarto.getId());
+			try(ResultSet rs = ps.executeQuery()) {
+				return rs.next()
+					? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"), rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"), rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"), Quarto.getQuarto(rs.getInt("quarto")))
+					: null;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		return nova_reserva;
 	}
 
 	public void deletaReserva() {
 		Reserva.reservas.remove(this);
-		ConfigArquivoReservas.atualizaReservas();
+//		ConfigArquivoReservas.atualizaReservas();
 	}
 
 	public static Reserva getReserva(int numeroQuarto) {

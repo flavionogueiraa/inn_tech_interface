@@ -45,7 +45,6 @@ public class Arquivo {
 	}
 
 	public static void inicializaVariaveis() {
-		ConfigArquivoReservas.inicializaReservas("src/reserva/reservas.txt");
 		ConfigArquivoPagamentos.inicializaPagamentos("src/financeiro/pagamentos.txt");
 	}
 
