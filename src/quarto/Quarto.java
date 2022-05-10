@@ -109,7 +109,7 @@ public class Quarto {
 			ps.setInt(4, idUsuario);
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
-						? new Quarto(rs.getInt("id"), rs.getInt("numero"), rs.getInt("capacidade"), rs.getString("descricao"), rs.getBoolean("ocupado"), Usuario.getUsuario(rs.getInt("id_usuario")))
+						? new Quarto(rs.getInt("id"), rs.getInt("numero"), rs.getInt("capacidade"), rs.getString("descricao"), rs.getBoolean("ocupado"), Usuario.getUsuario(rs.getString("cpf")))
 						: null;
 			}
 		} catch (Exception e) {
