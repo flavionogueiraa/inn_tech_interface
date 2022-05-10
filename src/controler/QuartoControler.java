@@ -80,7 +80,7 @@ public class QuartoControler extends MenuControler implements Initializable {
 		String descricao = campo_descricao.getText();
 
 		if (validarCampos(numero, capacidade, descricao)) {
-			if (Quarto.getQuarto(Integer.parseInt(numero)) == null) {
+			if (Quarto.getQuarto(numero) == null) {
 				Quarto novo_quarto = Quarto.cadastraQuartoInterface(Integer.parseInt(numero),
 						Integer.parseInt(capacidade), descricao);
 				tabela_quartos.getItems().add(novo_quarto);
@@ -115,10 +115,11 @@ public class QuartoControler extends MenuControler implements Initializable {
 		String descricao = campo_descricao.getText();
 
 		if (validarCampos(numero, capacidade, descricao)) {
-			if (ValidacaoQuartoInterface.validacaoEdicao(quarto, Integer.parseInt(numero))) {
+			if (ValidacaoQuartoInterface.validacaoEdicao(quarto, numero)) {
 				quarto.setNumero(Integer.parseInt(numero));
 				quarto.setCapacidade(Integer.parseInt(capacidade));
 				quarto.setDescricao(descricao);
+				quarto.atualizarQuarto();
 
 				tabela_quartos.refresh();
 				limparCampos();
@@ -151,6 +152,6 @@ public class QuartoControler extends MenuControler implements Initializable {
 		quarto_ocupado.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isOcupadoSimNao()));
 		usuario_criacao.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario()));
 
-		tabela_quartos.getItems().addAll(Quarto.quartos);
+		tabela_quartos.getItems().addAll(Quarto.getQuartos());
 	}
 }
