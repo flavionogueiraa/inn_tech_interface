@@ -114,8 +114,9 @@ public class UsuarioControler extends MenuControler implements Initializable {
 					usuario.setCPF(CPF);
 					usuario.setSenha(senha);
 					usuario.setProprietario(proprietario);
-					tabela_usuarios.refresh();
 					usuario.atualizarUsuario();
+					
+					tabela_usuarios.refresh();
 					limparCampos();
 				} else {
 					label_erro.setText("Preencha todos os campos");

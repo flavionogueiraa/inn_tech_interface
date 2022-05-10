@@ -79,13 +79,12 @@ public class Usuario {
 		}
 	}
 
-	public Usuario(int ID, String nome, String CPF, String senha, boolean proprietario) {
-		super();
+	public Usuario(int id, String nome, String CPF, String senha, boolean proprietario) {
+		this.id = id;
 		this.nome = nome;
 		this.CPF = CPF;
 		this.senha = senha;
 		this.proprietario = proprietario;
-		this.id = ID;
 	}
 
 	public static Usuario cadastraUsuarioInterface(String nome, String CPF, String senha, boolean proprietario) {
@@ -146,7 +145,24 @@ public class Usuario {
 			try (ResultSet rs = ps.executeQuery()) {
 				/* rs.next ele verifica se vai ter um valor proximo */
 				return rs.next()
-						? new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("CPF"), rs.getString("senha"),
+						? new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("cpf"), rs.getString("senha"),
+								rs.getBoolean("proprietario"))
+						: null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static Usuario getUsuario(int id) {
+		try (PreparedStatement ps = Conection.con.prepareStatement("select * from tbUSUARIO where id = ?")) {
+			/* Aqui vai ser feito o login */
+			ps.setInt(1, id);
+			try (ResultSet rs = ps.executeQuery()) {
+				/* rs.next ele verifica se vai ter um valor proximo */
+				return rs.next()
+						? new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("cpf"), rs.getString("senha"),
 								rs.getBoolean("proprietario"))
 						: null;
 			}
