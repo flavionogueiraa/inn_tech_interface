@@ -145,11 +145,11 @@ public class Usuario {
 
 	}
 
-	public static Usuario getUsuario(Integer id) {
+	public static Usuario getUsuario(String CPF) {
 		try (PreparedStatement ps = Conection.con
-				.prepareStatement("select * from tbUSUARIO where id = ?")) {
+				.prepareStatement("select * from tbUSUARIO where cpf = ?")) {
 			/* Aqui vai ser feito o login */
-			ps.setInt(1, id);
+			ps.setString(1, CPF);
 			try (ResultSet rs = ps.executeQuery()) {
 				/* rs.next ele verifica se vai ter um valor proximo */
 				return rs.next()
