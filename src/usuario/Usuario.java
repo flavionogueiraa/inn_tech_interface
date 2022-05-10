@@ -27,22 +27,16 @@ public class Usuario {
 			}
 			return Usuarios;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	};
 
 	public static Usuario usuarioLogado;
-	private static int idCont = 0;
 
 	public int getId() {
 		return id;
-	}
-
-	private void setId() {
-		Usuario.idCont++;
-		this.id = idCont;
 	}
 
 	public String getCPF() {
@@ -146,8 +140,7 @@ public class Usuario {
 	}
 
 	public static Usuario getUsuario(String CPF) {
-		try (PreparedStatement ps = Conection.con
-				.prepareStatement("select * from tbUSUARIO where cpf = ?")) {
+		try (PreparedStatement ps = Conection.con.prepareStatement("select * from tbUSUARIO where cpf = ?")) {
 			/* Aqui vai ser feito o login */
 			ps.setString(1, CPF);
 			try (ResultSet rs = ps.executeQuery()) {
@@ -162,11 +155,11 @@ public class Usuario {
 			return null;
 		}
 	}
-	
+
 	public void atualizarUsuario() {
 		/* Inserir as informa��es no banco de dados */
-		try (PreparedStatement ps = Conection.con.prepareStatement(
-				"update tbUSUARIO set nome = ?, CPF = ? , senha = ? , proprietario = ? where id=?" )) {
+		try (PreparedStatement ps = Conection.con
+				.prepareStatement("update tbUSUARIO set nome = ?, CPF = ? , senha = ? , proprietario = ? where id=?")) {
 			/* Aqui vai ser inserindo pela indexa��o das interroga��es **/
 			ps.setString(1, nome);
 			// Ignorando a formata��o do CPF
@@ -178,6 +171,6 @@ public class Usuario {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }
