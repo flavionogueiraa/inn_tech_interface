@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
-import arquivo.ConfigArquivoPagamentos;
 import reserva.Reserva;
 
 public class Pagamento {
@@ -95,9 +94,7 @@ public class Pagamento {
 
 		Pagamento.totalPagamentos += valor;
 		pagamentos.add(this);
-		if (Arq) {
-			ConfigArquivoPagamentos.cadastraPagamento(this);
-		}
+		
 	}
 
 	public static double totalPagamentosMes(int mes) {
