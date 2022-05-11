@@ -165,7 +165,7 @@ public class Reserva {
 			ps.setString(1, nomeHospede);
 			ps.setDouble(2, valorDiaria);
 			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
-			ps.setTimestamp(4, dataEstimadaCheckout != null ?  new Timestamp(dataEstimadaCheckin.getTime()) : null);
+			ps.setTimestamp(4, dataEstimadaCheckout != null ?  new Timestamp(dataEstimadaCheckout.getTime()) : null);
 			ps.setString(5, observacoes);
 			ps.setBoolean(6, pagamentoConfirmado);
 			ps.setInt(7, quarto.getId());
