@@ -175,9 +175,17 @@ public class Quarto {
 		try (PreparedStatement ps = Conection.con.prepareStatement("SELECT * FROM tbQuarto q WHERE q.numero = ? AND NOT EXISTS (SELECT 1 FROM tbReserva r WHERE r.idquarto = q.id AND (r.dataEstimadaCheckIn BETWEEN ? AND ? OR r.dataEstimadaCheckOut BETWEEN ? AND ?));")) {
 			ps.setInt(1, numero);
 			ps.setTimestamp(2, new Timestamp(dataEstimadaCheckin.getTime()));
-			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckout.getTime()));
+			if(dataEstimadaCheckout!= null) {
+				ps.setTimestamp(3, new Timestamp(dataEstimadaCheckout.getTime()));
+			}else {
+				ps.setTimestamp(3, null);
+			}
 			ps.setTimestamp(4, new Timestamp(dataEstimadaCheckin.getTime()));
-			ps.setTimestamp(5, new Timestamp(dataEstimadaCheckout.getTime()));
+			if(dataEstimadaCheckout!= null) {
+				ps.setTimestamp(5, new Timestamp(dataEstimadaCheckout.getTime()));
+			}else {
+				ps.setTimestamp(5, null);
+			}
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
 						? new Quarto(rs.getInt("id"), rs.getInt("numero"), rs.getInt("capacidade"),
