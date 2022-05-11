@@ -2,9 +2,13 @@ package reserva;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 //import arquivo.ConfigArquivoReservas;
 import bd.Conection;
@@ -23,9 +27,6 @@ public class Reserva {
 	private String observacoes;
 	private Usuario usuarioCriacao;
 
-	public static ArrayList<Reserva> reservas = new ArrayList<>();
-	private static int idCont = 0;
-
 	public int getId() {
 		return id;
 	}
@@ -36,7 +37,7 @@ public class Reserva {
 
 	public String getdataEstimadaCheckinFormatada() {
 		if (this.dataEstimadaCheckin != null) {
-			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 			return formatar.format(this.getdataEstimadaCheckin());
 		} else {
 			return "-";
@@ -53,7 +54,7 @@ public class Reserva {
 
 	public String getdataEstimadaCheckoutFormatada() {
 		if (this.dataEstimadaCheckout != null) {
-			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 			return formatar.format(this.getdataEstimadaCheckout());
 		} else {
 			return "-";
@@ -119,7 +120,7 @@ public class Reserva {
 	public void setUsuarioCriacao(Usuario usuarioCriacao) {
 		this.usuarioCriacao = usuarioCriacao;
 	}
-	
+
 	public String getNomeUsuario() {
 		if (usuarioCriacao != null) {
 			return usuarioCriacao.getNome();
@@ -140,59 +141,98 @@ public class Reserva {
 		this.quarto = quarto;
 		this.usuarioCriacao = Usuario.usuarioLogado;
 
-		reservas.add(this);
 	}
 
-	// public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
-	// 	Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria, dataEstimadaCheckin, null, observacoes, pagamentoConfirmado, quarto);
-	// 	ConfigArquivoReservas.atualizaReservas();
+	// public static Reserva cadastraReservaInterface(String nomeHospede, Double
+	// valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout, String
+	// observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+	// Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria,
+	// dataEstimadaCheckin, null, observacoes, pagamentoConfirmado, quarto);
+	// ConfigArquivoReservas.atualizaReservas();
 
-	// 	nova_reserva.quarto.setOcupado(true);
-	// 	if (nova_reserva.isPago()) {
-	// 		new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " + quarto.getNumero(), true, nova_reserva);
-	// 	}
-	// 	return nova_reserva;
+	// nova_reserva.quarto.setOcupado(true);
+	// if (nova_reserva.isPago()) {
+	// new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " +
+	// quarto.getNumero(), true, nova_reserva);
+	// }
+	// return nova_reserva;
 	// }
 
-	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
-		try(PreparedStatement ps = Conection.con.prepareStatement(
-			"insert into tbRESERVA(nomeHospede, valorDiaria, dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto) values (?, ?, ?, ?, ?, ?, ?) returning *")) {
+	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
+			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"insert into tbRESERVA(nomeHospede, valorDiaria, dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, idquarto) values (?, ?, ?, ?, ?, ?, ?) returning *")) {
 			ps.setString(1, nomeHospede);
 			ps.setDouble(2, valorDiaria);
-			ps.setDate(3, (java.sql.Date) dataEstimadaCheckin);
-			ps.setDate(4, (java.sql.Date) dataEstimadaCheckout);
+			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
+			ps.setTimestamp(4, dataEstimadaCheckout != null ?  new Timestamp(dataEstimadaCheckin.getTime()) : null);
 			ps.setString(5, observacoes);
 			ps.setBoolean(6, pagamentoConfirmado);
 			ps.setInt(7, quarto.getId());
-			try(ResultSet rs = ps.executeQuery()) {
+			
+			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
-					? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"), rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"), rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"), Quarto.getQuarto(rs.getInt("quarto")))
-					: null;
+						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
+								rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"),
+								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
+								Quarto.getQuarto(rs.getInt("idquarto")))
+						: null;
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
 	public void deletaReserva() {
-		Reserva.reservas.remove(this);
-//		ConfigArquivoReservas.atualizaReservas();
+		try (PreparedStatement ps = Conection.con.prepareStatement("delete from tbRESERVA where id=?")) {
+			ps.setInt(1, id);
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	public static Reserva getReserva(int numeroQuarto) {
-		for (Reserva reserva : reservas) {
-			if (reserva.quarto.getNumero() == numeroQuarto) {
-				return reserva;
+	public static Reserva getReserva(int reservaNumero) {
+		try (PreparedStatement ps = Conection.con.prepareStatement("SELECT TBRESERVA.* FROM TBRESERVA JOIN TBQUARTO ON NUMERO = ? AND IDQUARTO = TBQUARTO.ID")) {
+			ps.setInt(1, reservaNumero);
+			try (ResultSet rs = ps.executeQuery()) {
+				return rs.next()
+						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
+								rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"),
+								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
+								Quarto.getQuarto(rs.getInt("idquarto")))
+						: null;
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-
-		return null;
 	}
 
 	public void finalizaReserva() {
 		this.dataEstimadaCheckout = new Date();
 		this.quarto.setOcupado(false);
-		new Pagamento(this.valorDiaria, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true, this);
+		new Pagamento(this.valorDiaria, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true,
+				this);
 	}
+	
+	public static List<Reserva> getReservas() {
+		try (Statement stm = Conection.con.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT * FROM tbRESERVA")) {
+			/* criamos uma lista para inserir informa��es de login da banco dados */
+			List<Reserva> Reservaa = new ArrayList<>();
+			while (rs.next()) {
+				Reservaa.add(new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
+						rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"),
+						rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
+						Quarto.getQuarto(rs.getInt("idquarto"))));
+			}
+			return Reservaa;
+		} catch (SQLException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	};
 }
