@@ -37,7 +37,7 @@ public class Reserva {
 
 	public String getdataEstimadaCheckinFormatada() {
 		if (this.dataEstimadaCheckin != null) {
-			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			return formatar.format(this.getdataEstimadaCheckin());
 		} else {
 			return "-";
@@ -54,7 +54,7 @@ public class Reserva {
 
 	public String getdataEstimadaCheckoutFormatada() {
 		if (this.dataEstimadaCheckout != null) {
-			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			return formatar.format(this.getdataEstimadaCheckout());
 		} else {
 			return "-";
@@ -173,7 +173,7 @@ public class Reserva {
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
 						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
-								rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"),
+								rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
 								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
 								Quarto.getQuarto(rs.getInt("idquarto")))
 						: null;
@@ -199,7 +199,7 @@ public class Reserva {
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
 						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
-								rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"),
+								rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
 								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
 								Quarto.getQuarto(rs.getInt("idquarto")))
 						: null;
@@ -224,7 +224,7 @@ public class Reserva {
 			List<Reserva> Reservaa = new ArrayList<>();
 			while (rs.next()) {
 				Reservaa.add(new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
-						rs.getDate("dataEstimadaCheckin"), rs.getDate("dataEstimadaCheckout"),
+						rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
 						rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
 						Quarto.getQuarto(rs.getInt("idquarto"))));
 			}
