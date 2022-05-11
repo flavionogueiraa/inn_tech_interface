@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import bd.Conection;
@@ -169,13 +171,24 @@ public class Quarto {
 		}
 	}
 
-	public static Quarto getQuartoDisponivel(int numero) {
-		for (Quarto quarto : quartos) {
-			if (quarto.numero == numero && quarto.isOcupado() == false) {
-				return quarto;
+	public static Quarto getQuartoDisponivel(int numero, Date dataEstimadaCheckin, Date dataEstimadaCheckout) {
+		try (PreparedStatement ps = Conection.con.prepareStatement("SELECT * FROM tbQuarto q WHERE q.numero = ? AND NOT EXISTS (SELECT 1 FROM tbReserva r WHERE r.idquarto = q.id AND (r.dataEstimadaCheckIn BETWEEN ? AND ? OR r.dataEstimadaCheckOut BETWEEN ? AND ?));")) {
+			ps.setInt(1, numero);
+			ps.setTimestamp(2, new Timestamp(dataEstimadaCheckin.getTime()));
+			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckout.getTime()));
+			ps.setTimestamp(4, new Timestamp(dataEstimadaCheckin.getTime()));
+			ps.setTimestamp(5, new Timestamp(dataEstimadaCheckout.getTime()));
+			try (ResultSet rs = ps.executeQuery()) {
+				return rs.next()
+						? new Quarto(rs.getInt("id"), rs.getInt("numero"), rs.getInt("capacidade"),
+								rs.getString("descricao"), rs.getBoolean("ocupado"),
+								Usuario.getUsuario(rs.getString("id_usuario")))
+						: null;
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	public static String quartosDisponiveis() {
