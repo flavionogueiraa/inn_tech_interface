@@ -26,7 +26,7 @@ public class Saida {
 
 	public static List<Saida> saidas = new ArrayList<>();
 
-	public static List<Saida> getSaidas() {
+	public static void createAllSaidas() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbSAIDA")) {
 			/* criamos uma lista para inserir informacoes de saida no banco dados */
@@ -35,12 +35,10 @@ public class Saida {
 						rs.getString("motivo"), rs.getString("observacoes"),
 						Usuario.getUsuario(rs.getInt("id_usuariosaida"))));
 			}
-			return saidas;
 		} catch (SQLException e) {
 			// Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
 	};
 
 	public Integer getId() {

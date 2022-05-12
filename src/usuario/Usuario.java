@@ -15,22 +15,20 @@ public class Usuario {
 	private String CPF;
 	private String senha;
 	private boolean proprietario;
+	public static List<Usuario> usuarios = new ArrayList<>();
 
-	public static List<Usuario> getUsuarios() {
+	public static void createAllUsuarios() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbUSUARIO")) {
 			/* criamos uma lista para inserir informacoes de login da banco dados */
-			List<Usuario> Usuarios = new ArrayList<>();
 			while (rs.next()) {
-				Usuarios.add(new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("CPF"),
+				usuarios.add(new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("CPF"),
 						rs.getString("senha"), rs.getBoolean("proprietario")));
 			}
-			return Usuarios;
 		} catch (SQLException e) {
 			// Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
 	};
 
 	public static Usuario usuarioLogado;

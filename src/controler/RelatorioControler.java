@@ -56,7 +56,7 @@ public class RelatorioControler extends MenuControler implements Initializable {
 		pagamento_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
 		pagamento_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
 		pagamento_reserva.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIdReserva().toString()));
-		tabela_pagamentos.getItems().addAll(Pagamento.pagamentos);
+		tabela_pagamentos.getItems().addAll(Pagamento.getPagamentos());
 
 		relatorio_saida_motivo.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMotivo()));
 		relatorio_saida_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
