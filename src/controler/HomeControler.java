@@ -16,8 +16,9 @@ public class HomeControler extends MenuControler implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Saida.createAllSaidas();
 		Usuario.createAllUsuarios();
+
+		Saida.createAllSaidas();
 		
 		Double valorCaixa = Pagamento.getTotalPagamentos() - Saida.getTotalSaidas();
 		valor_caixa.setText("R$ " + (valorCaixa) + "0");
