@@ -108,9 +108,11 @@ public class ReservaControler extends MenuControler implements Initializable {
 		return true;
 	}
 
-	/*private void setaQuartosDisponiveis() {
-		label_quartos_disponiveis.setText("Quartos disponiveis: " + Quarto.quartosDisponiveis());
-	}*/
+	/*
+	 * private void setaQuartosDisponiveis() {
+	 * label_quartos_disponiveis.setText("Quartos disponiveis: " +
+	 * Quarto.quartosDisponiveis()); }
+	 */
 
 	@FXML
 	void cadastrarReserva(ActionEvent event) {
@@ -147,7 +149,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 							dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto);
 					tabela_reservas.getItems().add(nova_reserva);
 					limparCampos();
-					//setaQuartosDisponiveis();
+					// setaQuartosDisponiveis();
 				} else {
 					label_erro.setText("Informe um quarto valido");
 				}
@@ -190,7 +192,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			try {
 				dataEstimadaCheckout = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(campo_data_hora_saida.getText());
 			} catch (ParseException e) {
-				System.err.println("Data e hora de saada invalidas!");
+				System.err.println("Data e hora de saida invalidas!");
 			}
 			String nomeHospede = campo_nome_hospede.getText();
 			String observacoes = campo_observacoes.getText();
@@ -204,6 +206,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			reserva.setdataEstimadaCheckout(dataEstimadaCheckout);
 			reserva.setObservacoes(observacoes);
 			reserva.setQuarto(quarto);
+
 			if (!reserva.isPago()) {
 				reserva.setPago(pagamentoConfirmado);
 				if (reserva.isPago()) {
@@ -213,6 +216,11 @@ public class ReservaControler extends MenuControler implements Initializable {
 			} else {
 				label_erro.setText("A reserva ja foi paga!");
 			}
+
+			if (reserva.getdataEstimadaCheckout() != null) {
+				quarto.atualizarQuartoOcupado();
+			}
+
 			reserva.atualizarReserva();
 			tabela_reservas.refresh();
 			limparCampos();
@@ -245,7 +253,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		reserva_usuario_criacao
 				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario().toString()));
 
-		//setaQuartosDisponiveis();
+		// setaQuartosDisponiveis();
 
 		tabela_reservas.getItems().addAll(Reserva.getReservas());
 	}

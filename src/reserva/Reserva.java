@@ -179,7 +179,7 @@ public class Reserva {
 	public static List<Reserva> getReservas() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbRESERVA")) {
-			/* criamos uma lista para inserir informa��es de login da banco dados */
+			/* criamos uma lista para inserir informacoes de login da banco dados */
 			List<Reserva> Reservaa = new ArrayList<>();
 			while (rs.next()) {
 				Reservaa.add(new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
@@ -208,19 +208,24 @@ public class Reserva {
 			ps.setInt(7, quarto.getId());
 
 			try (ResultSet rs = ps.executeQuery()) {
-				return rs.next()
-						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
-								rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
-								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
-								Quarto.getQuarto(rs.getInt("idquarto")))
-						: null;
+				if (rs.next()) {
+					Reserva nova_reserva = new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
+							rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
+							rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
+							Quarto.getQuarto(rs.getInt("idquarto")));
+					
+					quarto.atualizarQuartoOcupado();
+					return nova_reserva;
+				} else {
+					return null;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
+
 	public void atualizarReserva() {
 		/* Inserir as informacoes no banco de dados */
 		try (PreparedStatement ps = Conection.con
