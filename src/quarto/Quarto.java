@@ -199,18 +199,24 @@ public class Quarto {
 		}
 	}
 
-	public static String quartosDisponiveis() {
-		String quartosDisponiveis = "";
-		for (Quarto quarto : Quarto.quartos) {
-			if (!quarto.isOcupado()) {
-				quartosDisponiveis += quarto.getNumero() + " ";
-			}
-		}
-		if (quartosDisponiveis.isEmpty()) {
-			quartosDisponiveis = "Nenhum";
-		}
-		return quartosDisponiveis;
-	}
+//	public static String quartosDisponiveis() {
+//		String quartosDisponiveis = "";
+//		try (PreparedStatement ps = Conection.con.prepareStatement("select numero from tbQUARTO where ocupado = false")){
+//			ps.setInt(1, numero);
+//			if (!quarto.isOcupado()) {
+//				ps.getQuartosDisponiveis += quarto.getNumero() + " ";
+//			}
+//		for (Quarto quarto : Quarto.quartos) {
+//			if (!quarto.isOcupado()) {
+//				quartosDisponiveis += quarto.getNumero() + " ";
+//			}
+//		}
+//		if (quartosDisponiveis.isEmpty()) {
+//			quartosDisponiveis = "Nenhum";
+//		}
+//		return quartosDisponiveis;
+//		}
+//	}
 
 	public void deletaQuarto() {
 		try (PreparedStatement ps = Conection.con.prepareStatement("delete from tbQUARTO where id=?")) {
