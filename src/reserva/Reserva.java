@@ -142,32 +142,6 @@ public class Reserva {
 
 	}
 
-	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
-			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
-		try (PreparedStatement ps = Conection.con.prepareStatement(
-				"insert into tbRESERVA(nomeHospede, valorDiaria, dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, idquarto) values (?, ?, ?, ?, ?, ?, ?) returning *")) {
-			ps.setString(1, nomeHospede);
-			ps.setDouble(2, valorDiaria);
-			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
-			ps.setTimestamp(4, dataEstimadaCheckout != null ? new Timestamp(dataEstimadaCheckout.getTime()) : null);
-			ps.setString(5, observacoes);
-			ps.setBoolean(6, pagamentoConfirmado);
-			ps.setInt(7, quarto.getId());
-
-			try (ResultSet rs = ps.executeQuery()) {
-				return rs.next()
-						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
-								rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
-								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
-								Quarto.getQuarto(rs.getInt("idquarto")))
-						: null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
 	public void deletaReserva() {
 		try (PreparedStatement ps = Conection.con.prepareStatement("delete from tbRESERVA where id=?")) {
 			ps.setInt(1, id);
@@ -220,4 +194,30 @@ public class Reserva {
 		}
 		return null;
 	};
+
+	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
+			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"insert into tbRESERVA(nomeHospede, valorDiaria, dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, idquarto) values (?, ?, ?, ?, ?, ?, ?) returning *")) {
+			ps.setString(1, nomeHospede);
+			ps.setDouble(2, valorDiaria);
+			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
+			ps.setTimestamp(4, dataEstimadaCheckout != null ? new Timestamp(dataEstimadaCheckout.getTime()) : null);
+			ps.setString(5, observacoes);
+			ps.setBoolean(6, pagamentoConfirmado);
+			ps.setInt(7, quarto.getId());
+
+			try (ResultSet rs = ps.executeQuery()) {
+				return rs.next()
+						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
+								rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
+								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
+								Quarto.getQuarto(rs.getInt("idquarto")))
+						: null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
