@@ -10,22 +10,22 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainInterface extends Application {
-	private static Stage stage;
+	public static Stage stage;
 
-	private static Scene cenaLogin;
-	private static Scene cenaHome;
+	public static Scene cenaLogin;
+	public static Scene cenaHome;
 
-	private static Scene cenaUsuario;
+	public static Scene cenaUsuario;
 
-	private static Scene cenaReserva;
+	public static Scene cenaReserva;
 
-	private static Scene cenaQuarto;
+	public static Scene cenaQuarto;
 	
-	private static Scene cenaSaida;
+	public static Scene cenaSaida;
 
-	private static Scene cenaRelatorioPagamentos;
-	private static Scene cenaRelatorioSaidas;
-	private static Scene cenaRelatorio;
+	public static Scene cenaRelatorioPagamentos;
+	public static Scene cenaRelatorioSaidas;
+	public static Scene cenaRelatorio;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
@@ -95,32 +95,32 @@ public class MainInterface extends Application {
 		}
 	}
 
-	private void carregaTelasLogin() throws Exception {
+	public void carregaTelasLogin() throws Exception {
 		Parent FXMLLogin = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		cenaLogin = new Scene(FXMLLogin);
 	}
 
-	private void carregaTelasMenu() throws Exception {
+	public void carregaTelasMenu() throws Exception {
 		Parent FXMLHome = FXMLLoader.load(getClass().getResource("/view/Home.fxml"));
 		cenaHome = new Scene(FXMLHome);
 	}
 
-	private void carregaTelasUsuario() throws Exception {
+	public void carregaTelasUsuario() throws Exception {
 		Parent FXMLUsuario = FXMLLoader.load(getClass().getResource("/view/Usuario.fxml"));
 		cenaUsuario = new Scene(FXMLUsuario);
 	}
 
-	private void carregaTelasReserva() throws Exception {
+	public void carregaTelasReserva() throws Exception {
 		Parent FXMLReserva = FXMLLoader.load(getClass().getResource("/view/Reserva.fxml"));
 		cenaReserva = new Scene(FXMLReserva);
 	}
 
-	private void carregaTelasQuarto() throws Exception {
+	public void carregaTelasQuarto() throws Exception {
 		Parent FXMLQuarto = FXMLLoader.load(getClass().getResource("/view/Quarto.fxml"));
 		cenaQuarto = new Scene(FXMLQuarto);
 	}
 
-	private void carregaTelasRelatorio() throws Exception {
+	public void carregaTelasRelatorio() throws Exception {
 		Parent FXMLRelatorioPagamentos = FXMLLoader.load(getClass().getResource("/view/RelatorioPagamentos.fxml"));
 		cenaRelatorioPagamentos = new Scene(FXMLRelatorioPagamentos);
 
@@ -131,7 +131,7 @@ public class MainInterface extends Application {
 		cenaRelatorio= new Scene(FXMLRelatorio);
 	}
 
-	private void carregaTelasSaida() throws Exception {
+	public void carregaTelasSaida() throws Exception {
 		Parent FXMLSaida = FXMLLoader.load(getClass().getResource("/view/Saida.fxml"));
 		cenaSaida = new Scene(FXMLSaida);
 	}
