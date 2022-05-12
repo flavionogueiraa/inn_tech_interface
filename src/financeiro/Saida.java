@@ -1,14 +1,18 @@
 package financeiro;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
+import bd.Conection;
 import usuario.Usuario;
 
 public class Saida {
-	static double totalSaidas;
+	static double totalSaidas = 0;
 
 	private int id;
 	private double valor;
@@ -30,8 +34,17 @@ public class Saida {
 	}
 
 	public static double getTotalSaidas() {
-		return totalSaidas;
-	}
+		try (Statement stm = Conection.con.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT SUM(valor) as valor FROM tbSAIDA")) {
+			while (rs.next()) {
+				Saida.totalSaidas += rs.getDouble("valor");
+			}
+			return Saida.totalSaidas;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	};
 
 	public static void setTotalSaidas(double totalSaidas) {
 		Saida.totalSaidas = totalSaidas;
@@ -85,7 +98,7 @@ public class Saida {
 	public void setUsuarioCriacao(Usuario usuarioCriacao) {
 		this.usuarioCriacao = usuarioCriacao;
 	}
-	
+
 	public String getNomeUsuario() {
 		if (usuarioCriacao != null) {
 			return usuarioCriacao.getNome();

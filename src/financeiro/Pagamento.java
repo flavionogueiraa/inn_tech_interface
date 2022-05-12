@@ -39,12 +39,21 @@ public class Pagamento {
 		return null;
 	};
 
+	public static double getTotalPagamentos() {
+		try (Statement stm = Conection.con.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT SUM(valortotal) as valortotal FROM tbPAGAMENTO")) {
+			while (rs.next()) {
+				Pagamento.totalPagamentos += rs.getDouble("valortotal");
+			}
+			return Pagamento.totalPagamentos;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	};
+
 	public int getId() {
 		return id;
-	}
-
-	public static double getTotalPagamentos() {
-		return totalPagamentos;
 	}
 
 	public static void setTotalPagamentos(double totalPagamentos) {
@@ -152,9 +161,11 @@ public class Pagamento {
 		return pagamentosMes;
 	}
 
-	public static Pagamento cadastraPagamentoInterface(double valor, Date dataCriacao, String observacoes, Reserva reserva) {
-		try (PreparedStatement ps = Conection.con.prepareStatement(
-				"insert into tbPAGAMENTO(valortotal, datacriacao, observacoes, idreserva) values" + "(?, ?, ?, ?) returning *")) {
+	public static Pagamento cadastraPagamentoInterface(double valor, Date dataCriacao, String observacoes,
+			Reserva reserva) {
+		try (PreparedStatement ps = Conection.con
+				.prepareStatement("insert into tbPAGAMENTO(valortotal, datacriacao, observacoes, idreserva) values"
+						+ "(?, ?, ?, ?) returning *")) {
 			ps.setDouble(1, valor);
 			ps.setTimestamp(2, new Timestamp(dataCriacao.getTime()));
 			ps.setString(3, observacoes);
