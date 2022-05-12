@@ -240,4 +240,16 @@ public class Quarto {
 			e.printStackTrace();
 		}
 	}
+
+	public void atualizarQuartoOcupado() {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"update tbQUARTO set ocupado = ? where id=?")) {
+			
+			ps.setBoolean(1, !ocupado);
+			ps.setInt(2, id);
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
