@@ -15,8 +15,6 @@ import bd.Conection;
 import usuario.Usuario;
 
 public class Saida {
-	static double totalSaidas = 0;
-
 	private int id;
 	private double valor;
 	private Date dataCriacao;
@@ -50,19 +48,16 @@ public class Saida {
 	public static double getTotalSaidas() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT SUM(valor) as valor FROM tbSAIDA")) {
+			Double total = 0.0;
 			while (rs.next()) {
-				Saida.totalSaidas += rs.getDouble("valor");
+				total += rs.getDouble("valor");
 			}
-			return Saida.totalSaidas;
+			return total;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return 0;
 	};
-
-	public static void setTotalSaidas(double totalSaidas) {
-		Saida.totalSaidas = totalSaidas;
-	}
 
 	public Double getValor() {
 		return valor;
@@ -133,7 +128,6 @@ public class Saida {
 
 			this.usuarioCriacao = Usuario.usuarioLogado;
 		}
-		Saida.totalSaidas += this.valor;
 	}
 
 	public static Saida cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes,

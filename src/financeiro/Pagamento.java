@@ -15,8 +15,6 @@ import bd.Conection;
 import reserva.Reserva;
 
 public class Pagamento {
-	static double totalPagamentos = 0;
-
 	private int id;
 	private double valor;
 	private Date dataCriacao;
@@ -42,10 +40,11 @@ public class Pagamento {
 	public static double getTotalPagamentos() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT SUM(valortotal) as valortotal FROM tbPAGAMENTO")) {
+				Double total = 0.0;
 			while (rs.next()) {
-				Pagamento.totalPagamentos += rs.getDouble("valortotal");
+				total += rs.getDouble("valortotal");
 			}
-			return Pagamento.totalPagamentos;
+			return total;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -54,10 +53,6 @@ public class Pagamento {
 
 	public int getId() {
 		return id;
-	}
-
-	public static void setTotalPagamentos(double totalPagamentos) {
-		Pagamento.totalPagamentos = totalPagamentos;
 	}
 
 	public Double getValor() {
@@ -115,8 +110,6 @@ public class Pagamento {
 		this.dataCriacao = dataCriacao;
 		this.observacoes = observacoes;
 		this.reserva = reserva;
-
-		Pagamento.totalPagamentos += valor;
 	}
 
 	public static double totalPagamentosMes(int mes) {
