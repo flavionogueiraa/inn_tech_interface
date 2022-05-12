@@ -226,7 +226,7 @@ public class Reserva {
 		try (PreparedStatement ps = Conection.con
 				.prepareStatement("update tbRESERVA set nomeHospede = ?, valorDiaria = ? , dataEstimadaCheckin = ? , "
 						+ "dataEstimadaCheckout = ? , observacoes = ? , pagamentoConfirmado = ? where id=?")) {
-			/* Aqui vai ser inserindo pela indexa��o das interroga��es **/
+			/* Aqui vai ser inserindo pela indexacao das interrogacoes **/
 			ps.setString(1, nomeHospede);
 			ps.setDouble(2, valorDiaria);
 			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
@@ -238,6 +238,5 @@ public class Reserva {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 }
