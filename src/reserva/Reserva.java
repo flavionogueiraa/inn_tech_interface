@@ -209,11 +209,11 @@ public class Reserva {
 
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
-					Reserva nova_reserva = new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
-							rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
-							rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
-							Quarto.getQuarto(rs.getInt("idquarto")));
-					
+					Reserva nova_reserva = new Reserva(rs.getInt("id"), rs.getString("nomeHospede"),
+							rs.getDouble("valorDiaria"), rs.getTimestamp("dataEstimadaCheckin"),
+							rs.getTimestamp("dataEstimadaCheckout"), rs.getString("observacoes"),
+							rs.getBoolean("pagamentoConfirmado"), Quarto.getQuarto(rs.getInt("idquarto")));
+
 					quarto.atualizarQuartoOcupado();
 					return nova_reserva;
 				} else {

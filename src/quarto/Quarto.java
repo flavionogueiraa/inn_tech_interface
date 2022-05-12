@@ -172,18 +172,19 @@ public class Quarto {
 	}
 
 	public static Quarto getQuartoDisponivel(int numero, Date dataEstimadaCheckin, Date dataEstimadaCheckout) {
-		try (PreparedStatement ps = Conection.con.prepareStatement("SELECT * FROM tbQuarto q WHERE q.numero = ? AND NOT EXISTS (SELECT 1 FROM tbReserva r WHERE r.idquarto = q.id AND (r.dataEstimadaCheckIn BETWEEN ? AND ? OR r.dataEstimadaCheckOut BETWEEN ? AND ?));")) {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"SELECT * FROM tbQuarto q WHERE q.numero = ? AND NOT EXISTS (SELECT 1 FROM tbReserva r WHERE r.idquarto = q.id AND (r.dataEstimadaCheckIn BETWEEN ? AND ? OR r.dataEstimadaCheckOut BETWEEN ? AND ?));")) {
 			ps.setInt(1, numero);
 			ps.setTimestamp(2, new Timestamp(dataEstimadaCheckin.getTime()));
-			if(dataEstimadaCheckout!= null) {
+			if (dataEstimadaCheckout != null) {
 				ps.setTimestamp(3, new Timestamp(dataEstimadaCheckout.getTime()));
-			}else {
+			} else {
 				ps.setTimestamp(3, null);
 			}
 			ps.setTimestamp(4, new Timestamp(dataEstimadaCheckin.getTime()));
-			if(dataEstimadaCheckout!= null) {
+			if (dataEstimadaCheckout != null) {
 				ps.setTimestamp(5, new Timestamp(dataEstimadaCheckout.getTime()));
-			}else {
+			} else {
 				ps.setTimestamp(5, null);
 			}
 			try (ResultSet rs = ps.executeQuery()) {
@@ -199,24 +200,21 @@ public class Quarto {
 		}
 	}
 
-//	public static String quartosDisponiveis() {
-//		String quartosDisponiveis = "";
-//		try (PreparedStatement ps = Conection.con.prepareStatement("select numero from tbQUARTO where ocupado = false")){
-//			ps.setInt(1, numero);
-//			if (!quarto.isOcupado()) {
-//				ps.getQuartosDisponiveis += quarto.getNumero() + " ";
-//			}
-//		for (Quarto quarto : Quarto.quartos) {
-//			if (!quarto.isOcupado()) {
-//				quartosDisponiveis += quarto.getNumero() + " ";
-//			}
-//		}
-//		if (quartosDisponiveis.isEmpty()) {
-//			quartosDisponiveis = "Nenhum";
-//		}
-//		return quartosDisponiveis;
-//		}
-//	}
+	public static String quartosDisponiveis() {
+		String quartosDisponiveis = "";
+
+		try (Statement stm = Conection.con.createStatement();
+				ResultSet rs = stm.executeQuery("select numero from tbQUARTO where ocupado = false")) {
+			while (rs.next()) {
+				quartosDisponiveis += rs.getInt("numero") + " ";
+			}
+			return quartosDisponiveis;
+		} catch (SQLException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+			return "Nenhum";
+		}
+	}
 
 	public void deletaQuarto() {
 		try (PreparedStatement ps = Conection.con.prepareStatement("delete from tbQUARTO where id=?")) {
@@ -242,9 +240,8 @@ public class Quarto {
 	}
 
 	public void atualizarQuartoOcupado() {
-		try (PreparedStatement ps = Conection.con.prepareStatement(
-				"update tbQUARTO set ocupado = ? where id=?")) {
-			
+		try (PreparedStatement ps = Conection.con.prepareStatement("update tbQUARTO set ocupado = ? where id=?")) {
+
 			ps.setBoolean(1, !ocupado);
 			ps.setInt(2, id);
 			ps.execute();
