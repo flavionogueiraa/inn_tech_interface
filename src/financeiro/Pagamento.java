@@ -1,10 +1,17 @@
 package financeiro;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 
+import bd.Conection;
 import reserva.Reserva;
 
 public class Pagamento {
@@ -15,17 +22,25 @@ public class Pagamento {
 	private Date dataCriacao;
 	private String observacoes;
 	private Reserva reserva;
+	public static List<Pagamento> pagamentos = new ArrayList<>();
 
-	public static ArrayList<Pagamento> pagamentos = new ArrayList<>();
-	private static int idCont = 0;
+	public static List<Pagamento> getPagamentos() {
+		try (Statement stm = Conection.con.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT * FROM tbPAGAMENTO")) {
+			while (rs.next()) {
+				Pagamento.pagamentos
+						.add(new Pagamento(rs.getInt("id"), rs.getDouble("valortotal"), rs.getTimestamp("datacriacao"),
+								rs.getString("observacoes"), Reserva.getReserva(rs.getInt("idreserva"))));
+			}
+			return pagamentos;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	};
 
 	public int getId() {
 		return id;
-	}
-
-	private void setId() {
-		Pagamento.idCont++;
-		this.id = idCont;
 	}
 
 	public static double getTotalPagamentos() {
@@ -85,16 +100,15 @@ public class Pagamento {
 		}
 	}
 
-	public Pagamento(double valor, Date dataCriacao, String observacoes, boolean Arq, Reserva reserva) {
+	public Pagamento(int id, double valor, Date dataCriacao, String observacoes, Reserva reserva) {
+		this.id = id;
 		this.valor = valor;
 		this.dataCriacao = dataCriacao;
 		this.observacoes = observacoes;
-		this.setId();
 		this.reserva = reserva;
 
 		Pagamento.totalPagamentos += valor;
-		pagamentos.add(this);
-		
+
 	}
 
 	public static double totalPagamentosMes(int mes) {
@@ -136,5 +150,24 @@ public class Pagamento {
 		}
 
 		return pagamentosMes;
+	}
+
+	public static Pagamento cadastraPagamentoInterface(double valor, Date dataCriacao, String observacoes, Reserva reserva) {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"insert into tbPAGAMENTO(valortotal, datacriacao, observacoes, idreserva) values" + "(?, ?, ?, ?) returning *")) {
+			ps.setDouble(1, valor);
+			ps.setTimestamp(2, new Timestamp(dataCriacao.getTime()));
+			ps.setString(3, observacoes);
+			ps.setInt(4, reserva.getId());
+			try (ResultSet rs = ps.executeQuery()) {
+				return rs.next()
+						? new Pagamento(rs.getInt("id"), rs.getDouble("valortotal"), rs.getTimestamp("datacriacao"),
+								rs.getString("observacoes"), Reserva.getReserva(rs.getInt("idreserva")))
+						: null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
