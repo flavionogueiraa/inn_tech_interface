@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//import arquivo.ConfigArquivoReservas;
 import bd.Conection;
 import financeiro.Pagamento;
 import quarto.Quarto;
