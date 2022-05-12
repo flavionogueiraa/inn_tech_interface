@@ -161,8 +161,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 		saida_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
 		saida_usuario_criacao.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario()));
 
-		tabela_saidas.getItems().addAll(Saida.getSaidas());
-
+		tabela_saidas.getItems().addAll(Saida.saidas);
 	}
 
 }
