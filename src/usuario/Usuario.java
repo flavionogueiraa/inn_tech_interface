@@ -19,7 +19,7 @@ public class Usuario {
 	public static List<Usuario> getUsuarios() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbUSUARIO")) {
-			/* criamos uma lista para inserir informa��es de login da banco dados */
+			/* criamos uma lista para inserir informacoes de login da banco dados */
 			List<Usuario> Usuarios = new ArrayList<>();
 			while (rs.next()) {
 				Usuarios.add(new Usuario(rs.getInt("id"), rs.getString("nome"), rs.getString("CPF"),
@@ -88,10 +88,10 @@ public class Usuario {
 	}
 
 	public static Usuario cadastraUsuarioInterface(String nome, String CPF, String senha, boolean proprietario) {
-		/* Inserir as informa��es no banco de dados */
+		/* Inserir as informacoes no banco de dados */
 		try (PreparedStatement ps = Conection.con.prepareStatement(
 				"insert into tbUSUARIO(nome, CPF, senha, proprietario) values" + "(?, ?, ?, ?) returning *")) {
-			/* Aqui vai ser inserindo pela indexa��o das interroga��es **/
+			/* Aqui vai ser inserindo pela indexacao das interrogacoes **/
 			ps.setString(1, nome);
 			ps.setString(2, CPF.replaceAll("[^\\d]+", ""));
 			ps.setString(3, senha);
@@ -110,7 +110,7 @@ public class Usuario {
 
 	public void deletaUsuario() {
 		try (PreparedStatement ps = Conection.con.prepareStatement("delete from tbUSUARIO where id=?")) {
-			/* Aqui vai ser delete pela indexa��o das interroga��es **/
+			/* Aqui vai ser delete pela indexacao das interrogacoes **/
 			ps.setInt(1, id);
 			ps.execute();
 		} catch (Exception e) {
@@ -173,12 +173,12 @@ public class Usuario {
 	}
 
 	public void atualizarUsuario() {
-		/* Inserir as informa��es no banco de dados */
+		/* Inserir as informacoes no banco de dados */
 		try (PreparedStatement ps = Conection.con
 				.prepareStatement("update tbUSUARIO set nome = ?, CPF = ? , senha = ? , proprietario = ? where id=?")) {
-			/* Aqui vai ser inserindo pela indexa��o das interroga��es **/
+			/* Aqui vai ser inserindo pela indexacao das interrogacoes **/
 			ps.setString(1, nome);
-			// Ignorando a formata��o do CPF
+			// Ignorando a formatacao do CPF
 			ps.setString(2, CPF.replaceAll("[^\\d]+", ""));
 			ps.setString(3, senha);
 			ps.setBoolean(4, proprietario);
