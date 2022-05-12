@@ -15,20 +15,18 @@ import bd.Conection;
 import reserva.Reserva;
 
 public class Pagamento {
-	static double totalPagamentos = 0;
-
 	private int id;
 	private double valor;
 	private Date dataCriacao;
 	private String observacoes;
 	private Reserva reserva;
-	public static List<Pagamento> pagamentos = new ArrayList<>();
 
 	public static List<Pagamento> getPagamentos() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbPAGAMENTO")) {
+			List<Pagamento> pagamentos = new ArrayList<>();
 			while (rs.next()) {
-				Pagamento.pagamentos
+				pagamentos
 						.add(new Pagamento(rs.getInt("id"), rs.getDouble("valortotal"), rs.getTimestamp("datacriacao"),
 								rs.getString("observacoes"), Reserva.getReserva(rs.getInt("idreserva"))));
 			}
@@ -42,10 +40,11 @@ public class Pagamento {
 	public static double getTotalPagamentos() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT SUM(valortotal) as valortotal FROM tbPAGAMENTO")) {
+				Double total = 0.0;
 			while (rs.next()) {
-				Pagamento.totalPagamentos += rs.getDouble("valortotal");
+				total += rs.getDouble("valortotal");
 			}
-			return Pagamento.totalPagamentos;
+			return total;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -54,10 +53,6 @@ public class Pagamento {
 
 	public int getId() {
 		return id;
-	}
-
-	public static void setTotalPagamentos(double totalPagamentos) {
-		Pagamento.totalPagamentos = totalPagamentos;
 	}
 
 	public Double getValor() {
@@ -115,14 +110,11 @@ public class Pagamento {
 		this.dataCriacao = dataCriacao;
 		this.observacoes = observacoes;
 		this.reserva = reserva;
-
-		Pagamento.totalPagamentos += valor;
-
 	}
 
 	public static double totalPagamentosMes(int mes) {
 		double totalPagamentosMes = 0;
-		for (Pagamento pagamento : Pagamento.pagamentos) {
+		for (Pagamento pagamento : Pagamento.getPagamentos()) {
 			String[] data = pagamento.getDataCriacaoFormatada().split("/");
 			int mesPagamento = Integer.parseInt(data[1]);
 			if (mesPagamento == mes) {

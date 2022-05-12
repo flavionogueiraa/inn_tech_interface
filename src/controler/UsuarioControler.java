@@ -149,6 +149,6 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		senha_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSenha()));
 		proprietario_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isProprietarioSimNao()));
 
-		tabela_usuarios.getItems().addAll(Usuario.usuarios);
+		tabela_usuarios.getItems().addAll(Usuario.getUsuarios());
 	}
 }
