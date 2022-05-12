@@ -220,4 +220,24 @@ public class Reserva {
 			return null;
 		}
 	}
+	
+	public void atualizarReserva() {
+		/* Inserir as informacoes no banco de dados */
+		try (PreparedStatement ps = Conection.con
+				.prepareStatement("update tbRESERVA set nomeHospede = ?, valorDiaria = ? , dataEstimadaCheckin = ? , "
+						+ "dataEstimadaCheckout = ? , observacoes = ? , pagamentoConfirmado = ? where id=?")) {
+			/* Aqui vai ser inserindo pela indexa��o das interroga��es **/
+			ps.setString(1, nomeHospede);
+			ps.setDouble(2, valorDiaria);
+			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
+			ps.setTimestamp(4, dataEstimadaCheckout != null ? new Timestamp(dataEstimadaCheckout.getTime()) : null);
+			ps.setString(5, observacoes);
+			ps.setBoolean(6, pagamentoConfirmado);
+			ps.setInt(7, id);
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }
