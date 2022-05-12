@@ -2,8 +2,6 @@ package validacao;
 
 import java.util.InputMismatchException;
 
-import usuario.Usuario;
-
 public class ValidacaoCPFInterface {
 	public static String validacaoNormal(String CPF) {
 		if (isCPF(CPF)) {

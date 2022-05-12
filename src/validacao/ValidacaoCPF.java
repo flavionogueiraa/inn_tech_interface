@@ -3,8 +3,6 @@ package validacao;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import usuario.Usuario;
-
 public class ValidacaoCPF {
 	public static String validacaoNormal(Scanner sc, String nomeCampo, boolean pulaLinha) {
 		String var;
