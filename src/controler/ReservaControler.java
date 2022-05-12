@@ -213,7 +213,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			} else {
 				label_erro.setText("A reserva ja foi paga!");
 			}
-
+			reserva.atualizarReserva();
 			tabela_reservas.refresh();
 			limparCampos();
 		} else {
