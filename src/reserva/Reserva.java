@@ -142,21 +142,6 @@ public class Reserva {
 
 	}
 
-	// public static Reserva cadastraReservaInterface(String nomeHospede, Double
-	// valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout, String
-	// observacoes, boolean pagamentoConfirmado, Quarto quarto) {
-	// Reserva nova_reserva = new Reserva(nomeHospede, valorDiaria,
-	// dataEstimadaCheckin, null, observacoes, pagamentoConfirmado, quarto);
-	// ConfigArquivoReservas.atualizaReservas();
-
-	// nova_reserva.quarto.setOcupado(true);
-	// if (nova_reserva.isPago()) {
-	// new Pagamento(valorDiaria, dataEstimadaCheckin, "Reserva do quarto " +
-	// quarto.getNumero(), true, nova_reserva);
-	// }
-	// return nova_reserva;
-	// }
-
 	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
 			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
 		try (PreparedStatement ps = Conection.con.prepareStatement(
@@ -164,11 +149,11 @@ public class Reserva {
 			ps.setString(1, nomeHospede);
 			ps.setDouble(2, valorDiaria);
 			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
-			ps.setTimestamp(4, dataEstimadaCheckout != null ?  new Timestamp(dataEstimadaCheckout.getTime()) : null);
+			ps.setTimestamp(4, dataEstimadaCheckout != null ? new Timestamp(dataEstimadaCheckout.getTime()) : null);
 			ps.setString(5, observacoes);
 			ps.setBoolean(6, pagamentoConfirmado);
 			ps.setInt(7, quarto.getId());
-			
+
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
 						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
@@ -193,7 +178,8 @@ public class Reserva {
 	}
 
 	public static Reserva getReserva(int reservaNumero) {
-		try (PreparedStatement ps = Conection.con.prepareStatement("SELECT TBRESERVA.* FROM TBRESERVA JOIN TBQUARTO ON NUMERO = ? AND IDQUARTO = TBQUARTO.ID")) {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"SELECT TBRESERVA.* FROM TBRESERVA JOIN TBQUARTO ON NUMERO = ? AND IDQUARTO = TBQUARTO.ID")) {
 			ps.setInt(1, reservaNumero);
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
@@ -212,10 +198,10 @@ public class Reserva {
 	public void finalizaReserva() {
 		this.dataEstimadaCheckout = new Date();
 		this.quarto.setOcupado(false);
-		new Pagamento(this.valorDiaria, this.dataEstimadaCheckout, "Reserva do quarto " + this.quarto.getNumero(), true,
-				this);
+		Pagamento.cadastraPagamentoInterface(this.valorDiaria, this.dataEstimadaCheckout,
+				"Reserva do quarto " + this.quarto.getNumero(), this);
 	}
-	
+
 	public static List<Reserva> getReservas() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbRESERVA")) {
