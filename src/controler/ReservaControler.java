@@ -108,9 +108,9 @@ public class ReservaControler extends MenuControler implements Initializable {
 		return true;
 	}
 
-	private void setaQuartosDisponiveis() {
+	/*private void setaQuartosDisponiveis() {
 		label_quartos_disponiveis.setText("Quartos disponiveis: " + Quarto.quartosDisponiveis());
-	}
+	}*/
 
 	@FXML
 	void cadastrarReserva(ActionEvent event) {
@@ -146,7 +146,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 							observacoes, pagamentoConfirmado, quarto);
 					tabela_reservas.getItems().add(nova_reserva);
 					limparCampos();
-					setaQuartosDisponiveis();
+					//setaQuartosDisponiveis();
 				} else {
 					label_erro.setText("Informe um quarto valido");
 				}
@@ -240,7 +240,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		reserva_pagamento_confirmado.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isPagoSimNao()));
 		reserva_usuario_criacao.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario().toString()));
 
-		setaQuartosDisponiveis();
+		//setaQuartosDisponiveis();
 
 		tabela_reservas.getItems().addAll(Reserva.getReservas());
 	}
