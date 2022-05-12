@@ -24,20 +24,22 @@ public class Saida {
 	private String observacoes;
 	private Usuario usuarioCriacao;
 
-	public static List<Saida> saidas = new ArrayList<>();
-
-	public static void createAllSaidas() {
+	public static List<Saida> getSaidas() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbSAIDA")) {
 			/* criamos uma lista para inserir informacoes de saida no banco dados */
+
+			List<Saida> saidas = new ArrayList<>();
 			while (rs.next()) {
 				saidas.add(new Saida(rs.getInt("id"), rs.getDouble("valor"), rs.getTimestamp("dataCriacao"),
 						rs.getString("motivo"), rs.getString("observacoes"),
 						Usuario.getUsuario(rs.getInt("id_usuariosaida"))));
 			}
+			return saidas;
 		} catch (SQLException e) {
 			// Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 	};
 
@@ -134,10 +136,12 @@ public class Saida {
 		Saida.totalSaidas += this.valor;
 	}
 
-	public static Saida cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes, Usuario usuarioCriacao) {
+	public static Saida cadastraSaidaInterface(double valor, Date dataCriacao, String motivo, String observacoes,
+			Usuario usuarioCriacao) {
 		/* Inserir as informacoes no banco de dados */
-		try (PreparedStatement ps = Conection.con.prepareStatement(
-				"insert into tbSAIDA(valor, datacriacao, motivo, observacoes, id_usuariosaida) values" + "(?, ?, ?, ?, ?) returning *")) {
+		try (PreparedStatement ps = Conection.con
+				.prepareStatement("insert into tbSAIDA(valor, datacriacao, motivo, observacoes, id_usuariosaida) values"
+						+ "(?, ?, ?, ?, ?) returning *")) {
 			/* Aqui vai ser inserindo pela indexacao das interrogacoes **/
 			ps.setDouble(1, valor);
 			ps.setTimestamp(2, new Timestamp(dataCriacao.getTime()));
@@ -146,8 +150,9 @@ public class Saida {
 			ps.setInt(5, usuarioCriacao.getId());
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
-						? new Saida(rs.getInt("id"), rs.getDouble("valor"), rs.getTimestamp("dataCriacao"), rs.getString("motivo"),
-								rs.getString("observacoes"), Usuario.getUsuario(rs.getInt("id_usuariosaida")))
+						? new Saida(rs.getInt("id"), rs.getDouble("valor"), rs.getTimestamp("dataCriacao"),
+								rs.getString("motivo"), rs.getString("observacoes"),
+								Usuario.getUsuario(rs.getInt("id_usuariosaida")))
 						: null;
 			}
 		} catch (Exception e) {
@@ -168,7 +173,7 @@ public class Saida {
 
 	public static double totalSaidaMes(int mes) {
 		double totalSaidaMes = 0;
-		for (Saida saida : Saida.saidas) {
+		for (Saida saida : Saida.getSaidas()) {
 			String[] data = saida.getDataCriacaoFormatada().split("/");
 			int mesPagamento = Integer.parseInt(data[1]);
 			if (mesPagamento == mes) {
@@ -206,11 +211,11 @@ public class Saida {
 
 		return saidasMes;
 	}
-	
+
 	public void atualizarSaida() {
 		/* Inserir as informacoes no banco de dados */
-		try (PreparedStatement ps = Conection.con
-				.prepareStatement("update tbSAIDA set valor = ?, datacriacao = ?, motivo = ?, observacoes = ?, id_usuariosaida = ? where id=?")) {
+		try (PreparedStatement ps = Conection.con.prepareStatement(
+				"update tbSAIDA set valor = ?, datacriacao = ?, motivo = ?, observacoes = ?, id_usuariosaida = ? where id=?")) {
 			/* Aqui vai ser inserindo pela indexacao das interrogacoes **/
 			ps.setDouble(1, valor);
 			ps.setTimestamp(2, new Timestamp(dataCriacao.getTime()));

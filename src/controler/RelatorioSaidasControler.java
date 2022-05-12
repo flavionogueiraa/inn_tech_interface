@@ -37,6 +37,6 @@ public class RelatorioSaidasControler extends MenuControler implements Initializ
 		relatorio_saida_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
 		relatorio_saida_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
 
-		tabela_relatorio_saidas.getItems().addAll(Saida.saidas);
+		tabela_relatorio_saidas.getItems().addAll(Saida.getSaidas());
 	}
 }

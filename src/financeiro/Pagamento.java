@@ -22,13 +22,13 @@ public class Pagamento {
 	private Date dataCriacao;
 	private String observacoes;
 	private Reserva reserva;
-	public static List<Pagamento> pagamentos = new ArrayList<>();
 
 	public static List<Pagamento> getPagamentos() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbPAGAMENTO")) {
+			List<Pagamento> pagamentos = new ArrayList<>();
 			while (rs.next()) {
-				Pagamento.pagamentos
+				pagamentos
 						.add(new Pagamento(rs.getInt("id"), rs.getDouble("valortotal"), rs.getTimestamp("datacriacao"),
 								rs.getString("observacoes"), Reserva.getReserva(rs.getInt("idreserva"))));
 			}
@@ -117,12 +117,11 @@ public class Pagamento {
 		this.reserva = reserva;
 
 		Pagamento.totalPagamentos += valor;
-
 	}
 
 	public static double totalPagamentosMes(int mes) {
 		double totalPagamentosMes = 0;
-		for (Pagamento pagamento : Pagamento.pagamentos) {
+		for (Pagamento pagamento : Pagamento.getPagamentos()) {
 			String[] data = pagamento.getDataCriacaoFormatada().split("/");
 			int mesPagamento = Integer.parseInt(data[1]);
 			if (mesPagamento == mes) {

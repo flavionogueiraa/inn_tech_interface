@@ -54,14 +54,18 @@ public class RelatorioControler extends MenuControler implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		pagamento_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
-		pagamento_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
-		pagamento_reserva.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIdReserva().toString()));
+		pagamento_data_hora
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
+		pagamento_reserva
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIdReserva().toString()));
 		tabela_pagamentos.getItems().addAll(Pagamento.getPagamentos());
 
 		relatorio_saida_motivo.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMotivo()));
-		relatorio_saida_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
-		relatorio_saida_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
-		tabela_relatorio_saidas.getItems().addAll(Saida.saidas);
+		relatorio_saida_valor
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
+		relatorio_saida_data_hora
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
+		tabela_relatorio_saidas.getItems().addAll(Saida.getSaidas());
 
 		XYChart.Series<String, Double> pagamentos = new XYChart.Series<String, Double>();
 		pagamentos.setName("Pagamentos");

@@ -18,8 +18,6 @@ public class HomeControler extends MenuControler implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Usuario.createAllUsuarios();
 
-		Saida.createAllSaidas();
-		
 		Double valorCaixa = Pagamento.getTotalPagamentos() - Saida.getTotalSaidas();
 		valor_caixa.setText("R$ " + (valorCaixa) + "0");
 	}

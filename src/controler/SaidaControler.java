@@ -23,9 +23,9 @@ import usuario.Usuario;
 public class SaidaControler extends MenuControler implements Initializable {
 	@FXML
 	private TableView<Saida> tabela_saidas;
-    
-    @FXML
-    private TableColumn<Saida, String> saida_id;
+
+	@FXML
+	private TableColumn<Saida, String> saida_id;
 
 	@FXML
 	private TableColumn<Saida, String> saida_motivo;
@@ -93,7 +93,8 @@ public class SaidaControler extends MenuControler implements Initializable {
 			}
 
 			if (validarCampos(motivo, valor)) {
-				Saida nova_saida = Saida.cadastraSaidaInterface(Double.parseDouble(valor), dataCriacao, motivo, observacoes, Usuario.usuarioLogado);
+				Saida nova_saida = Saida.cadastraSaidaInterface(Double.parseDouble(valor), dataCriacao, motivo,
+						observacoes, Usuario.usuarioLogado);
 				tabela_saidas.getItems().add(nova_saida);
 				limparCampos();
 			} else {
@@ -137,7 +138,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 
 		tabela_saidas.refresh();
 		limparCampos();
-	
+
 	}
 
 	@FXML
@@ -157,11 +158,12 @@ public class SaidaControler extends MenuControler implements Initializable {
 		saida_id.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId().toString()));
 		saida_motivo.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMotivo()));
 		saida_valor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getValor().toString()));
-		saida_data_hora.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
+		saida_data_hora
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDataCriacaoFormatada()));
 		saida_observacoes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getObservacoes()));
 		saida_usuario_criacao.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario()));
 
-		tabela_saidas.getItems().addAll(Saida.saidas);
+		tabela_saidas.getItems().addAll(Saida.getSaidas());
 	}
 
 }
