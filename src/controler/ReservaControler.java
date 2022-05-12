@@ -136,7 +136,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			if (validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor_diaria.getText())) {
 				Quarto quarto = Quarto.getQuartoDisponivel(Integer.parseInt(campo_quarto.getText()),
 						dataEstimadaCheckin, dataEstimadaCheckout);
-				if (quarto != null) {
+				if (quarto != null && !quarto.isOcupado()) {
 					String nomeHospede = campo_nome_hospede.getText();
 					Boolean pagamentoConfirmado = campo_pagamento_confirmado.isSelected();
 					Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
