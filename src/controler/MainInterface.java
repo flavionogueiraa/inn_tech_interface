@@ -1,6 +1,5 @@
 package controler;
 
-
 import bd.Conection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +19,7 @@ public class MainInterface extends Application {
 	private static Scene cenaReserva;
 
 	private static Scene cenaQuarto;
-	
+
 	private static Scene cenaSaida;
 
 	private static Scene cenaRelatorioPagamentos;
@@ -29,7 +28,7 @@ public class MainInterface extends Application {
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {
-		//Arquivo.inicializaVariaveis();
+		// Arquivo.inicializaVariaveis();
 		Conection.conectar();
 		stage = primeiroEstagio;
 		primeiroEstagio.setResizable(false);
@@ -73,7 +72,7 @@ public class MainInterface extends Application {
 		case "quarto":
 			stage.setScene(cenaQuarto);
 			break;
-			
+
 		case "saida":
 			stage.setScene(cenaSaida);
 			break;
@@ -128,7 +127,7 @@ public class MainInterface extends Application {
 		cenaRelatorioSaidas = new Scene(FXMLRelatorioSaidas);
 
 		Parent FXMLRelatorio = FXMLLoader.load(getClass().getResource("/view/Relatorio.fxml"));
-		cenaRelatorio= new Scene(FXMLRelatorio);
+		cenaRelatorio = new Scene(FXMLRelatorio);
 	}
 
 	private void carregaTelasSaida() throws Exception {

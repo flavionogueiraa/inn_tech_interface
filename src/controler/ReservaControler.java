@@ -108,11 +108,9 @@ public class ReservaControler extends MenuControler implements Initializable {
 		return true;
 	}
 
-	/*
-	 * private void setaQuartosDisponiveis() {
-	 * label_quartos_disponiveis.setText("Quartos disponiveis: " +
-	 * Quarto.quartosDisponiveis()); }
-	 */
+	private void setaQuartosDisponiveis() {
+		label_quartos_disponiveis.setText("Quartos disponiveis: " + Quarto.quartosDisponiveis());
+	}
 
 	@FXML
 	void cadastrarReserva(ActionEvent event) {
@@ -136,7 +134,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 			if (validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor_diaria.getText())) {
 				Quarto quarto = Quarto.getQuartoDisponivel(Integer.parseInt(campo_quarto.getText()),
 						dataEstimadaCheckin, dataEstimadaCheckout);
-				if (quarto != null) {
+				if (quarto != null && !quarto.isOcupado()) {
 					String nomeHospede = campo_nome_hospede.getText();
 					Boolean pagamentoConfirmado = campo_pagamento_confirmado.isSelected();
 					Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
@@ -148,8 +146,14 @@ public class ReservaControler extends MenuControler implements Initializable {
 					Reserva nova_reserva = Reserva.cadastraReservaInterface(nomeHospede, valorDiaria,
 							dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto);
 					tabela_reservas.getItems().add(nova_reserva);
+
+					if (nova_reserva.isPago()) {
+						Pagamento.cadastraPagamentoInterface(valorDiaria, dataEstimadaCheckin,
+								"Reserva do quarto " + quarto.getNumero(), nova_reserva);
+					}
+
 					limparCampos();
-					// setaQuartosDisponiveis();
+					setaQuartosDisponiveis();
 				} else {
 					label_erro.setText("Informe um quarto valido");
 				}
@@ -201,13 +205,13 @@ public class ReservaControler extends MenuControler implements Initializable {
 			Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
 
 			reserva.setHospede(nomeHospede);
-			reserva.setValor(valorDiaria);
 			reserva.setdataEstimadaCheckin(dataEstimadaCheckin);
 			reserva.setdataEstimadaCheckout(dataEstimadaCheckout);
 			reserva.setObservacoes(observacoes);
 			reserva.setQuarto(quarto);
 
 			if (!reserva.isPago()) {
+				reserva.setValor(valorDiaria);
 				reserva.setPago(pagamentoConfirmado);
 				if (reserva.isPago()) {
 					Pagamento.cadastraPagamentoInterface(valorDiaria, dataEstimadaCheckin,
@@ -253,7 +257,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 		reserva_usuario_criacao
 				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario().toString()));
 
-		// setaQuartosDisponiveis();
+		setaQuartosDisponiveis();
 
 		tabela_reservas.getItems().addAll(Reserva.getReservas());
 	}
