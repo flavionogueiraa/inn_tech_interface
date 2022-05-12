@@ -151,8 +151,8 @@ public class Quarto {
 		}
 	}
 
-	// Criada pois na listagem n�o existe id,
-	// sendo assim precisamos pegar pelo n�mero
+	// Criada pois na listagem nao existe id,
+	// sendo assim precisamos pegar pelo numero
 	public static Quarto getQuarto(String numero) {
 		try (PreparedStatement ps = Conection.con.prepareStatement("select * from tbQUARTO where numero = ?")) {
 			int numeroInt = Integer.parseInt(numero);
