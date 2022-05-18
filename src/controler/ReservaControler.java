@@ -237,6 +237,12 @@ public class ReservaControler extends MenuControler implements Initializable {
 	@FXML
 	void excluirReserva(ActionEvent event) {
 		Reserva reserva = tabela_reservas.getSelectionModel().getSelectedItem();
+
+		if (reserva.getdataEstimadaCheckout() == null) {
+			reserva.getQuarto().atualizarQuartoOcupado();
+			setaQuartosDisponiveis();
+		}
+
 		tabela_reservas.getItems().remove(reserva);
 		reserva.deletaReserva();
 	}
