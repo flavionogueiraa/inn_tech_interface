@@ -1,3 +1,4 @@
 bin
 /*.classpath
 /.java_fx_sdk
+/*.vscode
