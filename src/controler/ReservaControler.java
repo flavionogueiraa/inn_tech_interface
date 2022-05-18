@@ -225,6 +225,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 				quarto.atualizarQuartoOcupado();
 			}
 
+			setaQuartosDisponiveis();
 			reserva.atualizarReserva();
 			tabela_reservas.refresh();
 			limparCampos();
