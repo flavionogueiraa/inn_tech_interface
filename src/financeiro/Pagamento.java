@@ -40,7 +40,7 @@ public class Pagamento {
 	public static double getTotalPagamentos() {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT SUM(valortotal) as valortotal FROM tbPAGAMENTO")) {
-				Double total = 0.0;
+			Double total = 0.0;
 			while (rs.next()) {
 				total += rs.getDouble("valortotal");
 			}
@@ -135,18 +135,18 @@ public class Pagamento {
 		int anoPassado = anoAtual - 1;
 
 		if (mesInicial <= 0) {
-			for (int i = mesAtual; i <= 12; i++) {
-				double totalMes = Pagamento.totalPagamentosMes(i);
-				pagamentosMes.put((i + "/" + Integer.toString(anoPassado)), totalMes);
+			for (int mes = mesAtual; mes <= 12; mes++) {
+				double totalMes = Pagamento.totalPagamentosMes(mes);
+				pagamentosMes.put((mes + "/" + Integer.toString(anoPassado)), totalMes);
 			}
-			for (int i = 1; i <= mesAtual; i++) {
-				double totalMes = Pagamento.totalPagamentosMes(i);
-				pagamentosMes.put((i + "/" + Integer.toString(anoAtual)), totalMes);
+			for (int mes = 1; mes <= mesAtual; mes++) {
+				double totalMes = Pagamento.totalPagamentosMes(mes);
+				pagamentosMes.put((mes + "/" + Integer.toString(anoAtual)), totalMes);
 			}
 		} else {
-			for (int i = mesInicial; i <= mesAtual; i++) {
-				double totalMes = Pagamento.totalPagamentosMes(i);
-				pagamentosMes.put((i + Integer.toString(anoAtual)), totalMes);
+			for (int mes = mesInicial; mes <= mesAtual; mes++) {
+				double totalMes = Pagamento.totalPagamentosMes(mes);
+				pagamentosMes.put((mes + Integer.toString(anoAtual)), totalMes);
 			}
 		}
 

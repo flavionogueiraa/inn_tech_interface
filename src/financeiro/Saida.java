@@ -188,18 +188,18 @@ public class Saida {
 		int anoPassado = anoAtual - 1;
 
 		if (mesInicial <= 0) {
-			for (int i = mesAtual; i <= 12; i++) {
-				double totalMes = Saida.totalSaidaMes(i);
-				saidasMes.put((i + "/" + Integer.toString(anoPassado)), totalMes);
+			for (int mes = mesAtual; mes <= 12; mes++) {
+				double totalMes = Saida.totalSaidaMes(mes);
+				saidasMes.put((mes + "/" + Integer.toString(anoPassado)), totalMes);
 			}
-			for (int i = 1; i <= mesAtual; i++) {
-				double totalMes = Saida.totalSaidaMes(i);
-				saidasMes.put((i + "/" + Integer.toString(anoAtual)), totalMes);
+			for (int mes = 1; mes <= mesAtual; mes++) {
+				double totalMes = Saida.totalSaidaMes(mes);
+				saidasMes.put((mes + "/" + Integer.toString(anoAtual)), totalMes);
 			}
 		} else {
-			for (int i = mesInicial; i <= mesAtual; i++) {
-				double totalMes = Saida.totalSaidaMes(i);
-				saidasMes.put((i + Integer.toString(anoAtual)), totalMes);
+			for (int mes = mesInicial; mes <= mesAtual; mes++) {
+				double totalMes = Saida.totalSaidaMes(mes);
+				saidasMes.put((mes + Integer.toString(anoAtual)), totalMes);
 			}
 		}
 
