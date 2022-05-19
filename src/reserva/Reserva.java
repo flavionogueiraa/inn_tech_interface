@@ -13,7 +13,6 @@ import java.util.List;
 import bd.Conection;
 import financeiro.Pagamento;
 import quarto.Quarto;
-import usuario.Usuario;
 
 public class Reserva {
 	private int id;
