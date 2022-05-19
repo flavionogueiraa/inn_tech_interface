@@ -77,6 +77,12 @@ public class ReservaControler extends MenuControler implements Initializable {
 	@FXML
 	private Label label_quartos_disponiveis;
 
+	@FXML
+	private Label label_ex_data_hora1;
+
+	@FXML
+	private Label label_ex_data_hora2;
+
 	ObservableList<Reserva> lista = FXCollections.observableArrayList();
 
 	private void limparCampos() {
