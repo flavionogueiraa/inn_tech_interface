@@ -112,12 +112,14 @@ public class Pagamento {
 		this.reserva = reserva;
 	}
 
-	public static double totalPagamentosMes(int mes) {
+	public static double totalPagamentosMes(int mes, int ano) {
 		double totalPagamentosMes = 0;
 		for (Pagamento pagamento : Pagamento.getPagamentos()) {
 			String[] data = pagamento.getDataCriacaoFormatada().split("/");
 			int mesPagamento = Integer.parseInt(data[1]);
-			if (mesPagamento == mes) {
+			int anoPagamento = Integer.parseInt(data[2].split(" ")[0]);
+
+			if (mesPagamento == mes && anoPagamento == ano) {
 				totalPagamentosMes += pagamento.getValor();
 			}
 		}
@@ -136,16 +138,16 @@ public class Pagamento {
 
 		if (mesInicial <= 0) {
 			for (int mes = mesAtual; mes <= 12; mes++) {
-				double totalMes = Pagamento.totalPagamentosMes(mes);
+				double totalMes = Pagamento.totalPagamentosMes(mes, anoPassado);
 				pagamentosMes.put((mes + "/" + Integer.toString(anoPassado)), totalMes);
 			}
 			for (int mes = 1; mes <= mesAtual; mes++) {
-				double totalMes = Pagamento.totalPagamentosMes(mes);
+				double totalMes = Pagamento.totalPagamentosMes(mes, anoAtual);
 				pagamentosMes.put((mes + "/" + Integer.toString(anoAtual)), totalMes);
 			}
 		} else {
 			for (int mes = mesInicial; mes <= mesAtual; mes++) {
-				double totalMes = Pagamento.totalPagamentosMes(mes);
+				double totalMes = Pagamento.totalPagamentosMes(mes, anoAtual);
 				pagamentosMes.put((mes + Integer.toString(anoAtual)), totalMes);
 			}
 		}

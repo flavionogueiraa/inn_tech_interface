@@ -165,12 +165,14 @@ public class Saida {
 		}
 	}
 
-	public static double totalSaidaMes(int mes) {
+	public static double totalSaidaMes(int mes, int ano) {
 		double totalSaidaMes = 0;
 		for (Saida saida : Saida.getSaidas()) {
 			String[] data = saida.getDataCriacaoFormatada().split("/");
 			int mesPagamento = Integer.parseInt(data[1]);
-			if (mesPagamento == mes) {
+			int anoPagamento = Integer.parseInt(data[2].split(" ")[0]);
+
+			if (mesPagamento == mes && anoPagamento == ano) {
 				totalSaidaMes += saida.getValor();
 			}
 		}
@@ -189,16 +191,16 @@ public class Saida {
 
 		if (mesInicial <= 0) {
 			for (int mes = mesAtual; mes <= 12; mes++) {
-				double totalMes = Saida.totalSaidaMes(mes);
+				double totalMes = Saida.totalSaidaMes(mes, anoPassado);
 				saidasMes.put((mes + "/" + Integer.toString(anoPassado)), totalMes);
 			}
 			for (int mes = 1; mes <= mesAtual; mes++) {
-				double totalMes = Saida.totalSaidaMes(mes);
+				double totalMes = Saida.totalSaidaMes(mes, anoAtual);
 				saidasMes.put((mes + "/" + Integer.toString(anoAtual)), totalMes);
 			}
 		} else {
 			for (int mes = mesInicial; mes <= mesAtual; mes++) {
-				double totalMes = Saida.totalSaidaMes(mes);
+				double totalMes = Saida.totalSaidaMes(mes, anoAtual);
 				saidasMes.put((mes + Integer.toString(anoAtual)), totalMes);
 			}
 		}
