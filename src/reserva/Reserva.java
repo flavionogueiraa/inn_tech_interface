@@ -213,7 +213,9 @@ public class Reserva {
 							rs.getTimestamp("dataEstimadaCheckout"), rs.getString("observacoes"),
 							rs.getBoolean("pagamentoConfirmado"), Quarto.getQuarto(rs.getInt("idquarto")));
 
-					quarto.atualizarQuartoOcupado();
+					if (dataEstimadaCheckout == null) {
+						quarto.atualizarQuartoOcupado();
+					}
 					return nova_reserva;
 				} else {
 					return null;
