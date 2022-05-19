@@ -165,12 +165,14 @@ public class Saida {
 		}
 	}
 
-	public static double totalSaidaMes(int mes) {
+	public static double totalSaidaMes(int mes, int ano) {
 		double totalSaidaMes = 0;
 		for (Saida saida : Saida.getSaidas()) {
 			String[] data = saida.getDataCriacaoFormatada().split("/");
 			int mesPagamento = Integer.parseInt(data[1]);
-			if (mesPagamento == mes) {
+			int anoPagamento = Integer.parseInt(data[2].split(" ")[0]);
+
+			if (mesPagamento == mes && anoPagamento == ano) {
 				totalSaidaMes += saida.getValor();
 			}
 		}
@@ -188,18 +190,18 @@ public class Saida {
 		int anoPassado = anoAtual - 1;
 
 		if (mesInicial <= 0) {
-			for (int i = mesAtual; i <= 12; i++) {
-				double totalMes = Saida.totalSaidaMes(i);
-				saidasMes.put((i + "/" + Integer.toString(anoPassado)), totalMes);
+			for (int mes = mesAtual; mes <= 12; mes++) {
+				double totalMes = Saida.totalSaidaMes(mes, anoPassado);
+				saidasMes.put((mes + "/" + Integer.toString(anoPassado)), totalMes);
 			}
-			for (int i = 1; i <= mesAtual; i++) {
-				double totalMes = Saida.totalSaidaMes(i);
-				saidasMes.put((i + "/" + Integer.toString(anoAtual)), totalMes);
+			for (int mes = 1; mes <= mesAtual; mes++) {
+				double totalMes = Saida.totalSaidaMes(mes, anoAtual);
+				saidasMes.put((mes + "/" + Integer.toString(anoAtual)), totalMes);
 			}
 		} else {
-			for (int i = mesInicial; i <= mesAtual; i++) {
-				double totalMes = Saida.totalSaidaMes(i);
-				saidasMes.put((i + Integer.toString(anoAtual)), totalMes);
+			for (int mes = mesInicial; mes <= mesAtual; mes++) {
+				double totalMes = Saida.totalSaidaMes(mes, anoAtual);
+				saidasMes.put((mes + Integer.toString(anoAtual)), totalMes);
 			}
 		}
 

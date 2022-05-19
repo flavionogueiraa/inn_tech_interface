@@ -151,10 +151,9 @@ public class Reserva {
 		}
 	}
 
-	public static Reserva getReserva(int reservaNumero) {
-		try (PreparedStatement ps = Conection.con.prepareStatement(
-				"SELECT TBRESERVA.* FROM TBRESERVA JOIN TBQUARTO ON NUMERO = ? AND IDQUARTO = TBQUARTO.ID")) {
-			ps.setInt(1, reservaNumero);
+	public static Reserva getReserva(Integer id) {
+		try (PreparedStatement ps = Conection.con.prepareStatement("select * from tbRESERVA where id = ?")) {
+			ps.setInt(1, id);
 			try (ResultSet rs = ps.executeQuery()) {
 				return rs.next()
 						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
@@ -214,7 +213,9 @@ public class Reserva {
 							rs.getTimestamp("dataEstimadaCheckout"), rs.getString("observacoes"),
 							rs.getBoolean("pagamentoConfirmado"), Quarto.getQuarto(rs.getInt("idquarto")));
 
-					quarto.atualizarQuartoOcupado();
+					if (dataEstimadaCheckout == null) {
+						quarto.atualizarQuartoOcupado();
+					}
 					return nova_reserva;
 				} else {
 					return null;
