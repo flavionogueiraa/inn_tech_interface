@@ -15,21 +15,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.QuartoControler">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.QuartoControler">
    <bottom>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="47.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <items>
-            <Button mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #ff4242;" text="Logout" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#sair" style="-fx-background-color: #ff4242;" styleClass="cursorPointer" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#salvarEdicaoQuarto" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: #00002c;" text="Salvar edições" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#salvarEdicaoQuarto" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: #00002c;" styleClass="cursorPointer" text="Salvar edições" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
          </items>
          <padding>
-            <Insets left="29.0" />
+            <Insets left="27.0" />
          </padding>
       </ToolBar>
    </bottom>
@@ -89,15 +89,15 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <Button mnemonicParsing="false" onAction="#cadastrarQuarto" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #00002c;" text="Cadastrar" textFill="WHITE" GridPane.columnIndex="2">
+                  <Button mnemonicParsing="false" onAction="#cadastrarQuarto" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #00002c;" styleClass="cursorPointer" text="Cadastrar" textFill="WHITE" GridPane.columnIndex="2">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="776.0" layoutY="25.0" mnemonicParsing="false" onAction="#excluirQuarto" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #00002c;" text="Excluir" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button layoutX="776.0" layoutY="25.0" mnemonicParsing="false" onAction="#excluirQuarto" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #00002c;" styleClass="cursorPointer" text="Excluir" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="776.0" layoutY="136.0" mnemonicParsing="false" onAction="#editarQuarto" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #00002c;" text="Editar" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button layoutX="776.0" layoutY="136.0" mnemonicParsing="false" onAction="#editarQuarto" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #00002c;" styleClass="cursorPointer" text="Editar" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
@@ -108,12 +108,12 @@
                   </Label>
                </children>
             </GridPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionalidades de quartos" textAlignment="CENTER" wrappingWidth="756.8828125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionalidades de quartos" textAlignment="CENTER" wrappingWidth="900.8828125">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="10.0" />
+                  <Insets />
                </GridPane.margin>
             </Text>
          </children>
@@ -133,32 +133,32 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicio" textAlignment="CENTER" wrappingWidth="88.13671875">
+            <Text fill="WHITE" onMouseClicked="#home" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Inicio" textAlignment="CENTER" wrappingWidth="146.0">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuarios" textAlignment="CENTER" wrappingWidth="95.3359375" GridPane.columnIndex="1">
+            <Text fill="WHITE" onMouseClicked="#usuario" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Usuarios" textAlignment="CENTER" wrappingWidth="146.0" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservas" textAlignment="CENTER" wrappingWidth="114.13671875" GridPane.columnIndex="2">
+            <Text fill="WHITE" onMouseClicked="#reserva" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Reservas" textAlignment="CENTER" wrappingWidth="146.0" GridPane.columnIndex="2">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Quartos" textAlignment="CENTER" wrappingWidth="105.8203125" GridPane.columnIndex="3">
+            <Text fill="WHITE" onMouseClicked="#quarto" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Quartos" textAlignment="CENTER" wrappingWidth="146.0" GridPane.columnIndex="3">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatórios" textAlignment="CENTER" wrappingWidth="109.03125" GridPane.columnIndex="4">
+            <Text fill="WHITE" onMouseClicked="#relatorio" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Relatórios" textAlignment="CENTER" wrappingWidth="146.0" GridPane.columnIndex="4">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Saídas" textAlignment="CENTER" wrappingWidth="112.13671875" GridPane.columnIndex="5">
+            <Text fill="WHITE" onMouseClicked="#saida" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Saídas" textAlignment="CENTER" wrappingWidth="146.0" GridPane.columnIndex="5">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
