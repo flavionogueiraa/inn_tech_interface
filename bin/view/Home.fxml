@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -109,7 +110,15 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Caixa:" textAlignment="CENTER" wrappingWidth="150.4945673942566" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #00002c; -fx-background-radius: 50;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" right="50.0" />
+                     </GridPane.margin>
+                  </VBox>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Caixa:" textAlignment="CENTER" wrappingWidth="150.4945673942566" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets right="50.0" />
                      </GridPane.margin>
@@ -117,7 +126,7 @@
                         <Font name="System Bold Italic" size="50.0" />
                      </font>
                   </Text>
-                  <Text fx:id="valor_caixa" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="288.09447634220123" GridPane.valignment="BOTTOM">
+                  <Text fx:id="valor_caixa" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="288.09447634220123" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Bold Italic" size="50.0" />
                      </font>
