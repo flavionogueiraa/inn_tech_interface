@@ -24,7 +24,6 @@ public class Reserva {
 	private Quarto quarto;
 	private boolean pagamentoConfirmado;
 	private String observacoes;
-	private Usuario usuarioCriacao;
 
 	public int getId() {
 		return id;
@@ -112,22 +111,6 @@ public class Reserva {
 		this.observacoes = observacoes;
 	}
 
-	public Usuario getUsuarioCriacao() {
-		return usuarioCriacao;
-	}
-
-	public void setUsuarioCriacao(Usuario usuarioCriacao) {
-		this.usuarioCriacao = usuarioCriacao;
-	}
-
-	public String getNomeUsuario() {
-		if (usuarioCriacao != null) {
-			return usuarioCriacao.getNome();
-		} else {
-			return "-";
-		}
-	}
-
 	public Reserva(int id, String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
 			String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
 		this.id = id;
@@ -138,8 +121,6 @@ public class Reserva {
 		this.observacoes = observacoes;
 		this.pagamentoConfirmado = pagamentoConfirmado;
 		this.quarto = quarto;
-		this.usuarioCriacao = Usuario.usuarioLogado;
-
 	}
 
 	public void deletaReserva() {
@@ -179,14 +160,14 @@ public class Reserva {
 		try (Statement stm = Conection.con.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM tbRESERVA")) {
 			/* criamos uma lista para inserir informacoes de login da banco dados */
-			List<Reserva> Reservaa = new ArrayList<>();
+			List<Reserva> Reservas = new ArrayList<>();
 			while (rs.next()) {
-				Reservaa.add(new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
+				Reservas.add(new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
 						rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
 						rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
 						Quarto.getQuarto(rs.getInt("idquarto"))));
 			}
-			return Reservaa;
+			return Reservas;
 		} catch (SQLException e) {
 			// Auto-generated catch block
 			e.printStackTrace();

@@ -123,13 +123,13 @@ public class ReservaControler extends MenuControler implements Initializable {
 		label_erro.setText("");
 		Date dataEstimadaCheckin = null;
 		try {
-			dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(campo_data_hora_chegada.getText());
+			dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
 		} catch (ParseException e) {
 			System.err.println("Data e hora de chegada invalidas!");
 		}
 		Date dataEstimadaCheckout = null;
 		try {
-			dataEstimadaCheckout = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(campo_data_hora_saida.getText());
+			dataEstimadaCheckout = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_saida.getText());
 		} catch (ParseException e) {
 			System.err.println("Data e hora de saida invalidas!");
 		}
@@ -194,13 +194,13 @@ public class ReservaControler extends MenuControler implements Initializable {
 		if (reserva != null) {
 			Date dataEstimadaCheckin = null;
 			try {
-				dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(campo_data_hora_chegada.getText());
+				dataEstimadaCheckin = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_chegada.getText());
 			} catch (ParseException e) {
 				System.err.println("Data e hora de chegada invalidas!");
 			}
 			Date dataEstimadaCheckout = null;
 			try {
-				dataEstimadaCheckout = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(campo_data_hora_saida.getText());
+				dataEstimadaCheckout = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(campo_data_hora_saida.getText());
 			} catch (ParseException e) {
 				System.err.println("Data e hora de saida invalidas!");
 			}
@@ -209,6 +209,13 @@ public class ReservaControler extends MenuControler implements Initializable {
 			Boolean pagamentoConfirmado = campo_pagamento_confirmado.isSelected();
 			Quarto quarto = Quarto.getQuarto(campo_quarto.getText());
 			Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
+
+			Boolean mudaOcupacaoQuarto;
+			if (reserva.getdataEstimadaCheckoutFormatada() == "-") {
+				mudaOcupacaoQuarto = true;
+			} else {
+				mudaOcupacaoQuarto = false;
+			}
 
 			reserva.setHospede(nomeHospede);
 			reserva.setdataEstimadaCheckin(dataEstimadaCheckin);
@@ -227,7 +234,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 				label_erro.setText("A reserva ja foi paga!");
 			}
 
-			if (reserva.getdataEstimadaCheckout() != null) {
+			if (reserva.getdataEstimadaCheckout() != null && mudaOcupacaoQuarto) {
 				quarto.atualizarQuartoOcupado();
 			}
 
@@ -267,8 +274,6 @@ public class ReservaControler extends MenuControler implements Initializable {
 				data -> new SimpleStringProperty(data.getValue().getQuarto().getNumero().toString()));
 		reserva_pagamento_confirmado
 				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isPagoSimNao()));
-		reserva_usuario_criacao
-				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuario().toString()));
 
 		setaQuartosDisponiveis();
 
