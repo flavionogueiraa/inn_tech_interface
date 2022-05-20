@@ -15,7 +15,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-		<TextField fx:id="campo_cpf" layoutX="271.0" layoutY="341.0" prefHeight="50.0" prefWidth="355.0" promptText="CPF">
+		<TextField fx:id="campo_cpf" layoutX="271.0" layoutY="341.0" prefHeight="50.0" prefWidth="355.0" promptText="CPF" text="855.537.232-13">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -28,7 +28,7 @@
             <Image url="@../img/logo_circulo.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="campo_senha" layoutX="271.0" layoutY="410.0" prefHeight="50.0" prefWidth="355.0" promptText="Senha">
+      <PasswordField fx:id="campo_senha" layoutX="271.0" layoutY="410.0" prefHeight="50.0" prefWidth="355.0" promptText="Senha" text="123mudar">
          <font>
             <Font size="18.0" />
          </font>
