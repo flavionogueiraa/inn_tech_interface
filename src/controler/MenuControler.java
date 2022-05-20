@@ -34,7 +34,7 @@ public class MenuControler {
 	}
 
 	@FXML
-	void quarto(ActionEvent event) throws Exception {
+	void quarto(MouseEvent event) throws Exception {
 		if (Usuario.usuarioLogado != null && Usuario.usuarioLogado.isProprietario()) {
 			Parent FXMLQuarto = FXMLLoader.load(getClass().getResource("/view/Quarto.fxml"));
 			MainInterface.cenaQuarto = new Scene(FXMLQuarto);
@@ -65,7 +65,7 @@ public class MenuControler {
 	}
 
 	@FXML
-	void sair(ActionEvent event) throws Exception {
+	void sair(MouseEvent event) throws Exception {
 		MainInterface.trocaTela("login");
 	}
 }
