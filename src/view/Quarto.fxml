@@ -152,14 +152,6 @@
                   <Insets left="14.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" onMouseClicked="#reserva" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Reservas" textAlignment="CENTER" wrappingWidth="146.79998779296875" GridPane.columnIndex="2">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="16.0" />
-               </GridPane.margin>
-            </Text>
             <Text fill="WHITE" onMouseClicked="#quarto" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Quartos" textAlignment="CENTER" wrappingWidth="146.0" GridPane.columnIndex="3">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
@@ -257,6 +249,14 @@
                <GridPane.margin>
                   <Insets left="-2.0" />
                </GridPane.margin></Separator>
+            <Text fill="WHITE" onMouseClicked="#reserva" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cursorPointer" text="Reservas" textAlignment="CENTER" wrappingWidth="146.0" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="16.0" />
+               </GridPane.margin>
+            </Text>
          </children>
          <BorderPane.margin>
             <Insets bottom="2.0" />
