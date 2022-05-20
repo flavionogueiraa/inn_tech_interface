@@ -254,7 +254,7 @@
             </Separator>
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="2">
                <GridPane.margin>
-                  <Insets left="148.0" />
+                  <Insets left="149.0" />
                </GridPane.margin>
             </Separator>
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3">
@@ -267,7 +267,7 @@
                   <Insets />
                </opaqueInsets>
                <GridPane.margin>
-                  <Insets left="148.0" />
+                  <Insets left="149.0" />
                </GridPane.margin>
             </Separator>
          </children>

@@ -232,6 +232,10 @@
                   <Insets left="25.0" />
                </GridPane.margin>
             </ImageView>
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="-2.0" />
+               </GridPane.margin></Separator>
             <Separator minWidth="0.3" orientation="VERTICAL" prefHeight="200.0" prefWidth="0.3" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1">
                <opaqueInsets>
                   <Insets />
@@ -240,19 +244,15 @@
                   <Insets left="150.0" />
                </GridPane.margin>
             </Separator>
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets left="-2.0" />
+               </GridPane.margin></Separator>
             <Separator minWidth="0.3" orientation="VERTICAL" prefHeight="200.0" prefWidth="0.3" style="-fx-background-color: #ffffff;" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets left="150.0" />
                </GridPane.margin>
             </Separator>
-            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="-2.0" />
-               </GridPane.margin></Separator>
-            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3">
-               <GridPane.margin>
-                  <Insets left="-2.0" />
-               </GridPane.margin></Separator>
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="5">
                <GridPane.margin>
                   <Insets left="-2.0" />
