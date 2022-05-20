@@ -5,10 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-// Login para testes
-// 855.537.232-13
-// 123mudar
-
 public class LoginControler {
 	@FXML
 	private TextField campo_cpf;
