@@ -32,7 +32,7 @@
                </font></Button>
          </items>
          <padding>
-            <Insets left="27.0" />
+            <Insets left="26.0" />
          </padding>
       </ToolBar>
    </bottom>
@@ -245,9 +245,18 @@
                   <Insets left="150.0" />
                </GridPane.margin>
             </Separator>
-            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="1" />
-            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" />
-            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="5" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="-2.0" />
+               </GridPane.margin></Separator>
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets left="-2.0" />
+               </GridPane.margin></Separator>
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="5">
+               <GridPane.margin>
+                  <Insets left="-2.0" />
+               </GridPane.margin></Separator>
          </children>
          <BorderPane.margin>
             <Insets bottom="2.0" />
