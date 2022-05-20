@@ -290,17 +290,17 @@
             </Separator>
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="2">
                <GridPane.margin>
-                  <Insets left="148.0" />
-               </GridPane.margin>
-            </Separator>
-            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="4">
-               <GridPane.margin>
-                  <Insets left="148.0" />
+                  <Insets left="149.0" />
                </GridPane.margin>
             </Separator>
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="4">
                <GridPane.margin>
                   <Insets left="-2.0" />
+               </GridPane.margin>
+            </Separator>
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="4">
+               <GridPane.margin>
+                  <Insets left="149.0" />
                </GridPane.margin>
             </Separator>
          </children>
