@@ -6,6 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main_interface.LoginInterface;
 
+// Login para testes
+// 855.537.232-13
+// 123mudar
+
 public class LoginControler {
 	@FXML
 	private TextField campo_cpf;
@@ -17,7 +21,7 @@ public class LoginControler {
 	private Label mensagem_erro;
 
 	@FXML
-	void login(ActionEvent event) {
+	void login(ActionEvent event) throws Exception {
 		String CPF = campo_cpf.getText();
 		String senha = campo_senha.getText();
 
@@ -27,7 +31,7 @@ public class LoginControler {
 
 			mensagem_erro.setText("");
 
-			MainInterface.trocaTela("home");
+			MenuControler.main.trocaTela("home");
 		} else {
 			mensagem_erro.setText("Informacoes incorretas!");
 		}
