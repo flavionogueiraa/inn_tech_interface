@@ -9,17 +9,17 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainInterface extends Application {
-	public static Stage stage;
+	private static Stage stage;
 
-	public static Scene cenaLogin;
-	public static Scene cenaHome;
-	public static Scene cenaUsuario;
-	public static Scene cenaReserva;
-	public static Scene cenaQuarto;
-	public static Scene cenaSaida;
-	public static Scene cenaRelatorioPagamentos;
-	public static Scene cenaRelatorioSaidas;
-	public static Scene cenaRelatorio;
+	private static Scene cenaLogin;
+	private static Scene cenaHome;
+	private static Scene cenaUsuario;
+	private static Scene cenaReserva;
+	private static Scene cenaQuarto;
+	private static Scene cenaSaida;
+	private static Scene cenaRelatorioPagamentos;
+	private static Scene cenaRelatorioSaidas;
+	private static Scene cenaRelatorio;
 
 	@Override
 	public void start(Stage primeiroEstagio) throws Exception {

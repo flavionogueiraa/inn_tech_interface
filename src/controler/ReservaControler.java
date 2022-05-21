@@ -136,39 +136,42 @@ public class ReservaControler extends MenuControler implements Initializable {
 
 		System.out.println(dataEstimadaCheckin);
 		System.out.println(dataEstimadaCheckout);
-		if (dataEstimadaCheckin != null) {
-			if (validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor_diaria.getText())) {
-				Quarto quarto = Quarto.getQuartoDisponivel(Integer.parseInt(campo_quarto.getText()),
-						dataEstimadaCheckin, dataEstimadaCheckout);
-				if (quarto != null && !quarto.isOcupado()) {
-					String nomeHospede = campo_nome_hospede.getText();
-					Boolean pagamentoConfirmado = campo_pagamento_confirmado.isSelected();
-					Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
-					String observacoes = campo_observacoes.getText();
-					if (observacoes.isEmpty()) {
-						observacoes = "-";
-					}
 
-					Reserva nova_reserva = Reserva.cadastraReservaInterface(nomeHospede, valorDiaria,
-							dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto);
-					tabela_reservas.getItems().add(nova_reserva);
-
-					if (nova_reserva.isPago()) {
-						Pagamento.cadastraPagamentoInterface(valorDiaria, dataEstimadaCheckin,
-								"Reserva do quarto " + quarto.getNumero(), nova_reserva);
-					}
-
-					limparCampos();
-					setaQuartosDisponiveis();
-				} else {
-					label_erro.setText("Informe um quarto valido");
-				}
-			} else {
-				label_erro.setText("Campos invalidos!");
-			}
-		} else {
+		if (dataEstimadaCheckin == null) {
 			label_erro.setText("Data e hora de chegada invalidas!");
+			return;
 		}
+
+		if (!validarCampos(campo_nome_hospede.getText(), campo_quarto.getText(), campo_valor_diaria.getText())) {
+			label_erro.setText("Campos invalidos!");
+			return;
+		}
+
+		Quarto quarto = Quarto.getQuartoDisponivel(Integer.parseInt(campo_quarto.getText()), dataEstimadaCheckin,
+				dataEstimadaCheckout);
+		if (quarto == null || quarto.isOcupado()) {
+			label_erro.setText("Informe um quarto valido");
+		}
+
+		String nomeHospede = campo_nome_hospede.getText();
+		Boolean pagamentoConfirmado = campo_pagamento_confirmado.isSelected();
+		Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
+		String observacoes = campo_observacoes.getText();
+		if (observacoes.isEmpty()) {
+			observacoes = "-";
+		}
+
+		Reserva nova_reserva = Reserva.cadastraReservaInterface(nomeHospede, valorDiaria,
+				dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto);
+		tabela_reservas.getItems().add(nova_reserva);
+
+		if (nova_reserva.isPago()) {
+			Pagamento.cadastraPagamentoInterface(valorDiaria, dataEstimadaCheckin,
+					"Reserva do quarto " + quarto.getNumero(), nova_reserva);
+		}
+
+		limparCampos();
+		setaQuartosDisponiveis();
 	}
 
 	@FXML
