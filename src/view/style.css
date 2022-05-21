@@ -9,3 +9,11 @@
 .default-color1.chart-bar {
   -fx-bar-fill:  #d1eaee;
 }
+
+.cursorPointer:hover {
+  -fx-effect: dropshadow(three-pass-box, #d1eaee, 10, 0, 0, 0);
+}
+
+.button:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
