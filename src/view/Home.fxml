@@ -95,12 +95,12 @@
                               <Insets left="20.0" top="15.0" />
                            </VBox.margin>
                         </ImageView>
-                        <Text fx:id="valor_caixa" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.09455263614655">
+                        <Text fx:id="valor_caixa" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ -12365.47" textAlignment="CENTER" wrappingWidth="284.8945404291153">
                            <font>
                               <Font name="System Bold Italic" size="36.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="80.0" top="-45.0" />
+                              <Insets left="65.0" top="-45.0" />
                            </VBox.margin>
                         </Text>
                      </children>
