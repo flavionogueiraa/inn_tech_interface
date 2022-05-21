@@ -13,6 +13,7 @@ import java.util.List;
 import bd.Conection;
 import financeiro.Pagamento;
 import quarto.Quarto;
+import usuario.Usuario;
 
 public class Reserva {
 	private int id;
@@ -23,6 +24,7 @@ public class Reserva {
 	private Quarto quarto;
 	private boolean pagamentoConfirmado;
 	private String observacoes;
+	private Usuario usuarioCriacao;
 
 	public int getId() {
 		return id;
@@ -110,8 +112,24 @@ public class Reserva {
 		this.observacoes = observacoes;
 	}
 
+	public Usuario getUsuarioCriacao() {
+		return usuarioCriacao;
+	}
+
+	public void setUsuarioCriacao(Usuario usuarioCriacao) {
+		this.usuarioCriacao = usuarioCriacao;
+	}
+
+	public String getNomeUsuarioCriacao() {
+		if (usuarioCriacao != null) {
+			return usuarioCriacao.getNome();
+		} else {
+			return null;
+		}
+	}
+
 	public Reserva(int id, String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin, Date dataEstimadaCheckout,
-			String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+			String observacoes, boolean pagamentoConfirmado, Quarto quarto, Usuario usuarioCriacao) {
 		this.id = id;
 		this.nomeHospede = nomeHospede;
 		this.valorDiaria = valorDiaria;
@@ -120,6 +138,7 @@ public class Reserva {
 		this.observacoes = observacoes;
 		this.pagamentoConfirmado = pagamentoConfirmado;
 		this.quarto = quarto;
+		this.usuarioCriacao = usuarioCriacao;
 	}
 
 	public void deletaReserva() {
@@ -139,7 +158,7 @@ public class Reserva {
 						? new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
 								rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
 								rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
-								Quarto.getQuarto(rs.getInt("idquarto")))
+								Quarto.getQuarto(rs.getInt("idquarto")), Usuario.getUsuario(rs.getInt("idusuario")))
 						: null;
 			}
 		} catch (Exception e) {
@@ -164,7 +183,7 @@ public class Reserva {
 				Reservas.add(new Reserva(rs.getInt("id"), rs.getString("nomeHospede"), rs.getDouble("valorDiaria"),
 						rs.getTimestamp("dataEstimadaCheckin"), rs.getTimestamp("dataEstimadaCheckout"),
 						rs.getString("observacoes"), rs.getBoolean("pagamentoConfirmado"),
-						Quarto.getQuarto(rs.getInt("idquarto"))));
+						Quarto.getQuarto(rs.getInt("idquarto")), Usuario.getUsuario(rs.getInt("idusuario"))));
 			}
 			return Reservas;
 		} catch (SQLException e) {
@@ -175,9 +194,10 @@ public class Reserva {
 	};
 
 	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
-			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto) {
+			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto,
+			Usuario usuarioCriacao) {
 		try (PreparedStatement ps = Conection.con.prepareStatement(
-				"insert into tbRESERVA(nomeHospede, valorDiaria, dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, idquarto) values (?, ?, ?, ?, ?, ?, ?) returning *")) {
+				"insert into tbRESERVA(nomeHospede, valorDiaria, dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, idquarto, idusuario) values (?, ?, ?, ?, ?, ?, ?, ?) returning *")) {
 			ps.setString(1, nomeHospede);
 			ps.setDouble(2, valorDiaria);
 			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
@@ -185,13 +205,15 @@ public class Reserva {
 			ps.setString(5, observacoes);
 			ps.setBoolean(6, pagamentoConfirmado);
 			ps.setInt(7, quarto.getId());
+			ps.setInt(8, usuarioCriacao.getId());
 
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
 					Reserva nova_reserva = new Reserva(rs.getInt("id"), rs.getString("nomeHospede"),
 							rs.getDouble("valorDiaria"), rs.getTimestamp("dataEstimadaCheckin"),
 							rs.getTimestamp("dataEstimadaCheckout"), rs.getString("observacoes"),
-							rs.getBoolean("pagamentoConfirmado"), Quarto.getQuarto(rs.getInt("idquarto")));
+							rs.getBoolean("pagamentoConfirmado"), Quarto.getQuarto(rs.getInt("idquarto")),
+							Usuario.getUsuario(rs.getInt("idusuario")));
 
 					if (dataEstimadaCheckout == null) {
 						quarto.atualizarQuartoOcupado();

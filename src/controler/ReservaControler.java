@@ -21,6 +21,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import quarto.Quarto;
 import reserva.Reserva;
+import usuario.Usuario;
 
 public class ReservaControler extends MenuControler implements Initializable {
 	@FXML
@@ -162,7 +163,8 @@ public class ReservaControler extends MenuControler implements Initializable {
 		}
 
 		Reserva nova_reserva = Reserva.cadastraReservaInterface(nomeHospede, valorDiaria,
-				dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto);
+				dataEstimadaCheckin, dataEstimadaCheckout, observacoes, pagamentoConfirmado, quarto,
+				Usuario.usuarioLogado);
 		tabela_reservas.getItems().add(nova_reserva);
 
 		if (nova_reserva.isPago()) {
@@ -277,7 +279,8 @@ public class ReservaControler extends MenuControler implements Initializable {
 				data -> new SimpleStringProperty(data.getValue().getQuarto().getNumero().toString()));
 		reserva_pagamento_confirmado
 				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isPagoSimNao()));
-
+		reserva_usuario_criacao
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNomeUsuarioCriacao()));
 		setaQuartosDisponiveis();
 
 		tabela_reservas.getItems().addAll(Reserva.getReservas());
