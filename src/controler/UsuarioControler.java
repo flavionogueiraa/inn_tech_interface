@@ -62,7 +62,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		label_erro.setText("");
 		String CPF = ValidacaoCPFInterface.validacaoNormal(campo_cpf.getText());
 		if (CPF != null) {
-			if (Usuario.getUsuario(CPF)==null) {
+			if (Usuario.getUsuario(CPF) == null) {
 				String nome = campo_nome.getText();
 				String senha = campo_senha.getText();
 				Boolean proprietario = campo_proprietario.isSelected();
@@ -115,7 +115,7 @@ public class UsuarioControler extends MenuControler implements Initializable {
 					usuario.setSenha(senha);
 					usuario.setProprietario(proprietario);
 					usuario.atualizarUsuario();
-					
+
 					tabela_usuarios.refresh();
 					limparCampos();
 				} else {
@@ -147,7 +147,8 @@ public class UsuarioControler extends MenuControler implements Initializable {
 		nome_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNome()));
 		cpf_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCPF()));
 		senha_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSenha()));
-		proprietario_usuario.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isProprietarioSimNao()));
+		proprietario_usuario
+				.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isProprietarioSimNao()));
 
 		tabela_usuarios.getItems().addAll(Usuario.getUsuarios());
 	}

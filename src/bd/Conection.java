@@ -27,7 +27,6 @@ public class Conection {
 			System.out.println("Conexao feita com sucesso! Very nice! :D");
 		} catch (SQLException e) {
 			e.printStackTrace();
-
 		}
 	}
 
