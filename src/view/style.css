@@ -17,3 +17,12 @@
 .button:hover {
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
+
+.table-row-cell:odd {
+  -fx-background-color: #d1eaee;
+}
+
+.table-row-cell:odd:focused {
+  -fx-background-color: #0096C9;
+}
+
