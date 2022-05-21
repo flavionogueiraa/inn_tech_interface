@@ -194,7 +194,7 @@
                   <Insets left="12.0" />
                </GridPane.margin>
             </Text>
-            <ImageView fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="29.0" fitWidth="28.0" onMouseClicked="#home" pickOnBounds="true" preserveRatio="true" styleClass="cursorPointer">
                <image>
                   <Image url="@../img/home_FILL0_wght400_GRAD0_opsz20.png" />
                </image>
@@ -202,7 +202,7 @@
                   <Insets left="30.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+            <ImageView fitHeight="36.0" fitWidth="32.0" onMouseClicked="#usuario" pickOnBounds="true" preserveRatio="true" styleClass="cursorPointer" GridPane.columnIndex="1">
                <image>
                   <Image url="@../img/group.png" />
                </image>
@@ -210,7 +210,7 @@
                   <Insets left="18.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+            <ImageView fitHeight="29.0" fitWidth="28.0" onMouseClicked="#reserva" pickOnBounds="true" preserveRatio="true" styleClass="cursorPointer" GridPane.columnIndex="2">
                <image>
                   <Image url="@../img/online-reservation.png" />
                </image>
@@ -218,7 +218,7 @@
                   <Insets left="18.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+            <ImageView fitHeight="32.0" fitWidth="28.0" onMouseClicked="#quarto" pickOnBounds="true" preserveRatio="true" styleClass="cursorPointer" GridPane.columnIndex="3">
                <image>
                   <Image url="@../img/cama.png" />
                </image>
@@ -226,7 +226,7 @@
                   <Insets left="23.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+            <ImageView fitHeight="32.0" fitWidth="31.0" onMouseClicked="#relatorio" pickOnBounds="true" preserveRatio="true" styleClass="cursorPointer" GridPane.columnIndex="4">
                <image>
                   <Image url="@../img/dashboard.png" />
                </image>
@@ -234,7 +234,7 @@
                   <Insets left="12.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+            <ImageView fitHeight="34.0" fitWidth="29.0" onMouseClicked="#saida" pickOnBounds="true" preserveRatio="true" styleClass="cursorPointer" GridPane.columnIndex="5">
                <image>
                   <Image url="@../img/receita.png" />
                </image>

@@ -28,7 +28,6 @@ public class MainInterface extends Application {
 		primeiroEstagio.setResizable(false);
 
 		carregaTodasTelas();
-
 		primeiroEstagio.getIcons().add(new Image(getClass().getResourceAsStream("/img/18x18_pixel_icon.png")));
 		primeiroEstagio.setTitle("Inn Tech");
 		primeiroEstagio.setScene(cenaLogin);
