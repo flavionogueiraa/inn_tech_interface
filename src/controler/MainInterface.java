@@ -121,12 +121,6 @@ public class MainInterface extends Application {
 	}
 
 	public void carregaTelasRelatorio() throws Exception {
-		Parent FXMLRelatorioPagamentos = getFXMLLoader("/view/RelatorioPagamentos.fxml");
-		cenaRelatorioPagamentos = new Scene(FXMLRelatorioPagamentos);
-
-		Parent FXMLRelatorioSaidas = getFXMLLoader("/view/RelatorioSaidas.fxml");
-		cenaRelatorioSaidas = new Scene(FXMLRelatorioSaidas);
-
 		Parent FXMLRelatorio = getFXMLLoader("/view/Relatorio.fxml");
 		cenaRelatorio = new Scene(FXMLRelatorio);
 	}
