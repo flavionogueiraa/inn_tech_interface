@@ -62,7 +62,7 @@
                   <TableColumn fx:id="saida_valor" minWidth="77.60000610351562" prefWidth="130.39996337890625" text="Valor" />
                   <TableColumn fx:id="saida_data_hora" prefWidth="189.60006713867188" text="Data e hora" />
                   <TableColumn fx:id="saida_observacoes" minWidth="61.60003662109375" prefWidth="147.20001220703125" text="Observações" />
-                  <TableColumn fx:id="saida_usuario_criacao" minWidth="61.60003662109375" prefWidth="178.0" text="Usuário de criação" />
+                  <TableColumn fx:id="saida_usuario_criacao" minWidth="61.60003662109375" prefWidth="168.7999267578125" text="Usuário de criação" />
                </columns>
             </TableView>
             <GridPane style="-fx-background-color: #d1eaee;" GridPane.rowIndex="2">
