@@ -65,7 +65,7 @@
                   <TableColumn fx:id="reserva_observacoes" prefWidth="110.0" text="Observações" />
                   <TableColumn fx:id="reserva_quarto" prefWidth="57.0" text="Quarto" />
                   <TableColumn fx:id="reserva_pagamento_confirmado" minWidth="62.0" prefWidth="67.0" text="Pago" />
-                  <TableColumn fx:id="reserva_usuario_criacao" minWidth="93.0" prefWidth="170.0" text="Usuário de criação" />
+                  <TableColumn fx:id="reserva_usuario_criacao" minWidth="93.0" prefWidth="160.800048828125" text="Usuário de criação" />
               </columns>
             </TableView>
             <GridPane prefWidth="900.0" style="-fx-background-color: #d1eaee;" GridPane.rowIndex="2">
