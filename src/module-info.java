@@ -7,6 +7,6 @@ module ProjetoPOO {
 	requires javafx.swing;
 	requires javafx.web;
 	requires java.sql;
-	
+
 	opens controler;
 }
