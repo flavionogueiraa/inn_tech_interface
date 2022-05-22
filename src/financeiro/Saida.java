@@ -14,7 +14,9 @@ import java.util.List;
 import bd.Conection;
 import usuario.Usuario;
 
+@SuppressWarnings("CanBeFinal")
 public class Saida {
+	@SuppressWarnings("FieldMayBeFinal")
 	private int id;
 	private double valor;
 	private Date dataCriacao;
@@ -39,7 +41,7 @@ public class Saida {
 			e.printStackTrace();
 			return null;
 		}
-	};
+	}
 
 	public Integer getId() {
 		return id;
@@ -57,7 +59,7 @@ public class Saida {
 			e.printStackTrace();
 		}
 		return 0;
-	};
+	}
 
 	public Double getValor() {
 		return valor;
@@ -192,11 +194,11 @@ public class Saida {
 		if (mesInicial <= 0) {
 			for (int mes = mesAtual; mes <= 12; mes++) {
 				double totalMes = Saida.totalSaidaMes(mes, anoPassado);
-				saidasMes.put((mes + "/" + Integer.toString(anoPassado)), totalMes);
+				saidasMes.put((mes + "/" + anoPassado), totalMes);
 			}
 			for (int mes = 1; mes <= mesAtual; mes++) {
 				double totalMes = Saida.totalSaidaMes(mes, anoAtual);
-				saidasMes.put((mes + "/" + Integer.toString(anoAtual)), totalMes);
+				saidasMes.put((mes + "/" + anoAtual), totalMes);
 			}
 		} else {
 			for (int mes = mesInicial; mes <= mesAtual; mes++) {

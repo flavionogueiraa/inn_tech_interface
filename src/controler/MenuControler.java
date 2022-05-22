@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 import usuario.Usuario;
 
 public class MenuControler {
+	@SuppressWarnings("CanBeFinal")
 	public static MainInterface main = new MainInterface();
 
 	@FXML

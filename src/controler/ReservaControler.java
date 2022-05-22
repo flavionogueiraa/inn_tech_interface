@@ -216,17 +216,27 @@ public class ReservaControler extends MenuControler implements Initializable {
 			Double valorDiaria = Double.parseDouble(campo_valor_diaria.getText());
 
 			Boolean mudaOcupacaoQuarto;
-			if (reserva.getdataEstimadaCheckoutFormatada() == "-") {
-				mudaOcupacaoQuarto = true;
-			} else {
-				mudaOcupacaoQuarto = false;
-			}
+			mudaOcupacaoQuarto = reserva.getdataEstimadaCheckoutFormatada() == "-";
 
 			reserva.setHospede(nomeHospede);
 			reserva.setdataEstimadaCheckin(dataEstimadaCheckin);
 			reserva.setdataEstimadaCheckout(dataEstimadaCheckout);
 			reserva.setObservacoes(observacoes);
-			reserva.setQuarto(quarto);
+
+			if (quarto == null || quarto.isOcupado()) {
+				label_erro.setText("Informe um quarto valido");
+				return;
+			}
+
+			if (reserva.getQuarto().getNumero() != quarto.getNumero()) {
+				if (reserva.getdataEstimadaCheckout() == null && !reserva.isPago()) {
+					reserva.getQuarto().atualizarQuartoOcupado();
+					reserva.setQuarto(quarto);
+					reserva.getQuarto().atualizarQuartoOcupado();
+				} else {
+					label_erro.setText("\"Valor\" e \"Quarto\" estão bloqueados, a reserva já foi paga/encerrada.");
+				}
+			}
 
 			if (!reserva.isPago()) {
 				reserva.setValor(valorDiaria);
@@ -236,7 +246,7 @@ public class ReservaControler extends MenuControler implements Initializable {
 							"Reserva do quarto " + quarto.getNumero(), reserva);
 				}
 			} else {
-				label_erro.setText("A reserva ja foi paga!");
+				label_erro.setText("\"Valor\" e \"Quarto\" estão bloqueados, a reserva já foi paga/encerrada.");
 			}
 
 			if (reserva.getdataEstimadaCheckout() != null && mudaOcupacaoQuarto) {
