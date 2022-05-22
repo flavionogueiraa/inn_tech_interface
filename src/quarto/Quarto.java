@@ -12,6 +12,7 @@ import java.util.List;
 import bd.Conection;
 import usuario.Usuario;
 
+@SuppressWarnings({"FieldMayBeFinal", "CanBeFinal"})
 public class Quarto {
 	private int id, numero, capacidade;
 	private String descricao;
@@ -33,7 +34,7 @@ public class Quarto {
 			e.printStackTrace();
 		}
 		return null;
-	};
+	}
 
 	public static ArrayList<Quarto> quartos = new ArrayList<>();
 

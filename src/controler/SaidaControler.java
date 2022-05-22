@@ -67,10 +67,7 @@ public class SaidaControler extends MenuControler implements Initializable {
 	}
 
 	private boolean validarCampos(String motivo, String valor) {
-		if (motivo.isEmpty() || valor.isEmpty()) {
-			return false;
-		}
-		return true;
+		return !motivo.isEmpty() && !valor.isEmpty();
 	}
 
 	@FXML

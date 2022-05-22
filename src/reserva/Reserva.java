@@ -15,6 +15,7 @@ import financeiro.Pagamento;
 import quarto.Quarto;
 import usuario.Usuario;
 
+@SuppressWarnings({"ALL", "CanBeFinal"})
 public class Reserva {
 	private int id;
 	private Date dataEstimadaCheckin;
@@ -191,7 +192,7 @@ public class Reserva {
 			e.printStackTrace();
 		}
 		return null;
-	};
+	}
 
 	public static Reserva cadastraReservaInterface(String nomeHospede, Double valorDiaria, Date dataEstimadaCheckin,
 			Date dataEstimadaCheckout, String observacoes, boolean pagamentoConfirmado, Quarto quarto,
@@ -233,15 +234,16 @@ public class Reserva {
 		/* Inserir as informacoes no banco de dados */
 		try (PreparedStatement ps = Conection.con
 				.prepareStatement("update tbRESERVA set nomeHospede = ?, valorDiaria = ? , dataEstimadaCheckin = ? , "
-						+ "dataEstimadaCheckout = ? , observacoes = ? , pagamentoConfirmado = ? where id=?")) {
+						+ "dataEstimadaCheckout = ? , observacoes = ?, idquarto = ? , pagamentoConfirmado = ? where id=?")) {
 			/* Aqui vai ser inserindo pela indexacao das interrogacoes **/
 			ps.setString(1, nomeHospede);
 			ps.setDouble(2, valorDiaria);
 			ps.setTimestamp(3, new Timestamp(dataEstimadaCheckin.getTime()));
 			ps.setTimestamp(4, dataEstimadaCheckout != null ? new Timestamp(dataEstimadaCheckout.getTime()) : null);
 			ps.setString(5, observacoes);
-			ps.setBoolean(6, pagamentoConfirmado);
-			ps.setInt(7, id);
+			ps.setInt(6, quarto.getId());
+			ps.setBoolean(7, pagamentoConfirmado);
+			ps.setInt(8, id);
 			ps.execute();
 		} catch (Exception e) {
 			e.printStackTrace();

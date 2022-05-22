@@ -15,6 +15,7 @@ import bd.Conection;
 import reserva.Reserva;
 
 public class Pagamento {
+	@SuppressWarnings({"FieldMayBeFinal", "CanBeFinal"})
 	private int id;
 	private double valor;
 	private Date dataCriacao;
@@ -35,7 +36,7 @@ public class Pagamento {
 			e.printStackTrace();
 		}
 		return null;
-	};
+	}
 
 	public static double getTotalPagamentos() {
 		try (Statement stm = Conection.con.createStatement();
@@ -49,7 +50,7 @@ public class Pagamento {
 			e.printStackTrace();
 		}
 		return 0;
-	};
+	}
 
 	public int getId() {
 		return id;
@@ -143,7 +144,7 @@ public class Pagamento {
 			}
 			for (int mes = 1; mes <= mesAtual; mes++) {
 				double totalMes = Pagamento.totalPagamentosMes(mes, anoAtual);
-				pagamentosMes.put((mes + "/" + Integer.toString(anoAtual)), totalMes);
+				pagamentosMes.put((mes + "/" + anoAtual), totalMes);
 			}
 		} else {
 			for (int mes = mesInicial; mes <= mesAtual; mes++) {

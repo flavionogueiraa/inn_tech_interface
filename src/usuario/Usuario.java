@@ -9,6 +9,7 @@ import java.util.List;
 
 import bd.Conection;
 
+@SuppressWarnings({"FieldMayBeFinal", "CanBeFinal"})
 public class Usuario {
 	private int id;
 	private String nome;
@@ -31,7 +32,7 @@ public class Usuario {
 			e.printStackTrace();
 			return null;
 		}
-	};
+	}
 
 	public static Usuario usuarioLogado;
 
