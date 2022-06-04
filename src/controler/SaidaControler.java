@@ -73,6 +73,13 @@ public class SaidaControler extends MenuControler implements Initializable {
 			return false;
 		}
 
+		try {
+			Double.parseDouble(valor);
+		} catch (NumberFormatException e) {
+			label_erro.setText("O valor da saída deve ser um numero");
+			return false;
+		}
+
 		return true;
 	}
 
