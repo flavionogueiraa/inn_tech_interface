@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import financeiro.Pagamento;
 import financeiro.Saida;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -67,7 +68,31 @@ public class SaidaControler extends MenuControler implements Initializable {
 	}
 
 	private boolean validarCampos(String motivo, String valor) {
-		return !motivo.isEmpty() && !valor.isEmpty();
+		if (motivo.isEmpty() || (valor.isEmpty())) {
+			label_erro.setText("Preencha todos os campos que contem um '*'");
+			return false;
+		}
+
+		return true;
+	}
+
+	private boolean validarValorSaida(String valor) {
+		Double valorCaixaAtual = Pagamento.getTotalPagamentos() - Saida.getTotalSaidas();
+		Double valorSaida = Double.parseDouble(valor);
+
+		Boolean valorInvalido = valorSaida <= 0;
+		if (valorInvalido) {
+			label_erro.setText("O valor da saida deve ser maior do que zero");
+			return false;
+		}
+
+		Boolean caixaNegativo = valorCaixaAtual - valorSaida < 0;
+		if (caixaNegativo) {
+			label_erro.setText("Valor de saida maior que o valor do caixa!");
+			return false;
+		}
+
+		return true;
 	}
 
 	@FXML
@@ -89,14 +114,18 @@ public class SaidaControler extends MenuControler implements Initializable {
 				observacoes = "-";
 			}
 
-			if (validarCampos(motivo, valor)) {
-				Saida nova_saida = Saida.cadastraSaidaInterface(Double.parseDouble(valor), dataCriacao, motivo,
-						observacoes, Usuario.usuarioLogado);
-				tabela_saidas.getItems().add(nova_saida);
-				limparCampos();
-			} else {
-				label_erro.setText("Preencha todos os campos que contem um '*'");
+			if (!validarCampos(motivo, valor)) {
+				return;
 			}
+
+			if (!validarValorSaida(valor)) {
+				return;
+			}
+
+			Saida nova_saida = Saida.cadastraSaidaInterface(Double.parseDouble(valor), dataCriacao, motivo,
+					observacoes, Usuario.usuarioLogado);
+			tabela_saidas.getItems().add(nova_saida);
+			limparCampos();
 		}
 	}
 
