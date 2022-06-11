@@ -7,8 +7,8 @@ module ProjetoPOO {
 	requires javafx.swing;
 	requires javafx.web;
 	requires java.sql;
-	// requires junit;
-	// requires org.junit.jupiter.api;
+	requires junit;
+	requires org.junit.jupiter.api;
 
 	opens controler;
 }
