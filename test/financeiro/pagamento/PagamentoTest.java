@@ -1,4 +1,4 @@
-package pagamento;
+package financeiro.pagamento;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -57,10 +57,6 @@ class PagamentoTest extends TestCase {
 
 	@Test
 	void getAndSetDataCriacaoFormatadaTest() throws ParseException {
-		setUp();
-		assertEquals(pagamento.getDataCriacaoFormatada(), "-");
-		pagamento.setDataCriacao(ValueToTest.getDateValue(1));
-
 		setUp();
 		assertEquals(pagamento.getDataCriacaoFormatada(), "-");
 		Date newDate = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("12/06/2022 09:36");
