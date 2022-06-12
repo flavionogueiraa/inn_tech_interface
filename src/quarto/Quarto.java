@@ -12,7 +12,6 @@ import java.util.List;
 import bd.Conection;
 import usuario.Usuario;
 
-@SuppressWarnings({"FieldMayBeFinal", "CanBeFinal"})
 public class Quarto {
 	private int id, numero, capacidade;
 	private String descricao;
