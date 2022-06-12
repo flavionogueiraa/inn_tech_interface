@@ -30,9 +30,9 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Label fx:id="mensagem_erro" layoutX="354.0" layoutY="570.0" prefHeight="27.0" prefWidth="190.0" textFill="#e70f0f">
+      <Label fx:id="mensagem_erro" layoutX="375.0" layoutY="585.0" prefHeight="27.0" prefWidth="150.0" textFill="#e70f0f">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font></Label>
       <ImageView fitHeight="282.0" fitWidth="291.0" layoutX="300.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" y="8.0">
          <image>
