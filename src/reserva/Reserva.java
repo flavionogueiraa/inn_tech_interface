@@ -15,7 +15,6 @@ import financeiro.Pagamento;
 import quarto.Quarto;
 import usuario.Usuario;
 
-@SuppressWarnings({"ALL", "CanBeFinal"})
 public class Reserva {
 	private int id;
 	private Date dataEstimadaCheckin;

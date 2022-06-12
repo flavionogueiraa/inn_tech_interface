@@ -9,7 +9,6 @@ import java.util.List;
 
 import bd.Conection;
 
-@SuppressWarnings({"FieldMayBeFinal", "CanBeFinal"})
 public class Usuario {
 	private int id;
 	private String nome;

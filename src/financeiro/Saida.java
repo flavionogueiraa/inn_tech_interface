@@ -14,9 +14,7 @@ import java.util.List;
 import bd.Conection;
 import usuario.Usuario;
 
-@SuppressWarnings("CanBeFinal")
 public class Saida {
-	@SuppressWarnings("FieldMayBeFinal")
 	private int id;
 	private double valor;
 	private Date dataCriacao;
@@ -127,7 +125,6 @@ public class Saida {
 		if (usuarioCriacao != null) {
 			this.usuarioCriacao = usuarioCriacao;
 		} else {
-
 			this.usuarioCriacao = Usuario.usuarioLogado;
 		}
 	}
