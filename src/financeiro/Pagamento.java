@@ -15,7 +15,6 @@ import bd.Conection;
 import reserva.Reserva;
 
 public class Pagamento {
-	@SuppressWarnings({"FieldMayBeFinal", "CanBeFinal"})
 	private int id;
 	private double valor;
 	private Date dataCriacao;
